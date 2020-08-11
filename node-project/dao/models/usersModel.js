@@ -6,6 +6,5 @@ const usersSchema = new mongoose.Schema({
     name:String,
     age:String,
     gender:String,
-    orders:Array
 }, { versionKey: false });
 module.exports.usersModel = mongoose.model('usersModel', usersSchema, 'users');
