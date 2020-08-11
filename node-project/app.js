@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var jwtAuth = require('./utils/jwt.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -32,6 +33,9 @@ app.set('view engine', 'jade');
 
 // 调用跨域
 app.use(allowCrossDomain); // 使用该中间件
+// token拦截
+app.use(jwtAuth);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
