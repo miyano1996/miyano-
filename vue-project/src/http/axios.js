@@ -1,8 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-11 14:48:33
+ * @LastEditTime: 2020-08-11 14:49:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \三阶段\Three-project\project\vue-project\src\http\axios.js
+ */
 // 对原生的 axios 做进一步的封装
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: 'http://localhost:3000',
     timeout: 3000 // 设置超时的时间，超过设置时间自动断开连接
 });
 
