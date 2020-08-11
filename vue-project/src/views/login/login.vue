@@ -1,5 +1,5 @@
 <template>
-  <h1>this is login</h1>
+  <h1>this is login，you need register</h1>
 </template>
 
 <script>
