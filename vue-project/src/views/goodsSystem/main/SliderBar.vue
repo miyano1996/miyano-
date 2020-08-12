@@ -62,10 +62,10 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="5-1">系统管理</el-menu-item>
-            <el-menu-item index="5-2"><router-link to="/shopManager" tag="span">店铺管理</router-link> </el-menu-item>
+            <el-menu-item index="/shopManager">店铺管理</el-menu-item>
             <el-menu-item index="5-3">用户管理</el-menu-item>
             <el-menu-item index="5-4">产品管理</el-menu-item>
-            <el-menu-item index="5-5"><router-link to="/messageCenter" tag="span">消息中心</router-link> </el-menu-item>
+            <el-menu-item index="/messageCenter">消息中心</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

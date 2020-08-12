@@ -14,9 +14,10 @@
 
 <script>
 import SliderBar from "./SliderBar.vue";
+
 export default {
   components: {
-    SliderBar,
+    SliderBar
   },
 };
 </script>
