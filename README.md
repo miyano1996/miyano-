@@ -1,6 +1,6 @@
 1.clone项目后 需要分别在 node-project  vue-project 执行npm i
 
-2.在node-project中执行 npm i npm i express-jwt 安装token解析
+2.在node-project中执行 npm i npm i express-jwt 安装token解析,在执行 npm i multer -save安装multer组件
 
 
 axios请求头token已被关闭,如果需要打开前往vue-project  http文件夹中axios.js将token添加到请求头的第一行打开
