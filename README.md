@@ -2,6 +2,8 @@
 
 2.在node-project中执行 npm i npm i express-jwt 安装token解析,在执行 npm i multer -save安装multer组件
 
+3.执行npm i echarts -S 安装echarts模快
+
 
 axios请求头token已被关闭,如果需要打开前往vue-project  http文件夹中axios.js将token添加到请求头的第一行打开
 ![Image text](https://gitee.com/xueyb_1997/READEME-img/raw/master/images/shopaxios.jpg)
