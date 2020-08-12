@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './plugins/element.js'
+//封装的axios
+import api from './http/api/api.js';
+Vue.prototype.$api = api;
 
 Vue.config.productionTip = false
 

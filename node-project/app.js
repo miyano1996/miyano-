@@ -3,18 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const jwtAuth=require('./utils/jwt.js');//token
+
+// 链接数据库 在一级路径之前  去三层拿
+require('./dao/database.js');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-// 链接数据库
-require('./dao/database');
-
-var app = express();
+var managersRouter = require('./routes/managers');
+var app = express();//token
 
 
 // 跨域
-var app = express();
 var allowCrossDomain = function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Origin,Content-Type,Accept,Authorization");
@@ -37,9 +37,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(jwtAuth);//token配置  不要验证就注释关闭
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', usersRouter);//用户登录注册
+app.use('/managers', managersRouter);//商家登录注册
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,4 +60,4 @@ app.use(function(err, req, res, next) {
 });
 
 // module.exports = app;
-app.listen(3000, () => console.log('3000 端口启动成功！'));
+app.listen(3000, () => console.log('3000 端口启动成功!!!'));

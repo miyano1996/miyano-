@@ -2,7 +2,7 @@
 <main>
   <div class="register">
     <h3>商家登录</h3>
-   <el-input placeholder='用户名' v-model="users.username" clearable size="medium"></el-input>
+   <el-input placeholder='用户名' v-model="users.account" clearable size="medium"></el-input>
     <br />
     <br />
     <!-- <label for>密码:</label> -->
@@ -22,25 +22,29 @@
 export default {
   data() {
     return {
-      users: { username: "", password: "" },
+      users: { account: "", password: "" },
     };
   },
   methods: {
     async login() {
-      // const data = await this.$api.users.login(this.users);1
+      const data = await this.$api.managers.login(this.users);
       console.log(data);
       if (data.success) {
-        //将生成带有时间限制的token保存到本地
+        // 将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
+        localStorage._id=data._id;
+        localStorage.name=data.name;
         // this.$router.push("/students");1
+      }else{
+        this.open4()
       }
     },
-    // login() {
-    //     this.$router.push("/students");
-    // },
-    register() {
-      this.$router.push("/register");
-    },
+    open4() {
+        this.$notify.error({
+          title: '登录失败',
+          message: '账号或密码错误'
+        });
+      }
   },
 };
 </script>

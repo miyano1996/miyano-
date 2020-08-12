@@ -6,5 +6,5 @@ const dbURI = 'mongodb://localhost/myDatabase';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 //当数据库连接成功后触发该事件
 mongoose.connection.on('connected', function() {
-    console.log(dbURI + '数据库连接成功!');
+    console.log(dbURI + '数据库连接成功!!!');
 });

@@ -4,7 +4,29 @@ var router = express.Router();
 const jwt=require('jsonwebtoken');//token
 const {KEY}=require('../utils/consts.js');//封装的密钥串
 const bcryptjs=require('bcryptjs');//加密方式
-const {login,register,isLogin}=require('../service/usersService.js')
+const {login,register,isLogin,Adminlogin}=require('../service/managersService.js')
+
+router.post('/loginAdmin', async (req, res)=> {//管理员登录
+  let {account,password}=req.body;
+  let data=(await Adminlogin({account}));
+  if(data.success){
+    // //不可逆无规律加密方式 比对密码  返回true或false
+    // let canlogin=bcryptjs.compareSync(password,data.password);
+    if(password==data.password){
+      const token=jwt.sign(
+        {account},//设置token中要保存的信息
+        KEY,//自定义密钥串
+        {expiresIn:60*100}//100分钟有效期
+      );
+      res.send({msg:'登录成功',success:true,token,_id:data._id,name:account})
+    }else{
+      res.send({msg:"登录失败",success:false})
+    }
+  }else{
+    res.send(data)
+  }
+  console.log({account,password});
+});
 
 router.post('/login', async (req, res)=> {//登录
   let {account,password}=req.body;
@@ -18,12 +40,10 @@ router.post('/login', async (req, res)=> {//登录
         KEY,//自定义密钥串
         {expiresIn:60*100}//100分钟有效期
       );
-      res.send({msg:'登录成功',success:true,token})
+      res.send({msg:'登录成功',success:true,token,_id:data._id,name:account})
     }else{
       res.send({msg:"登录失败",success:false})
     }
-    res.send({msg:'登录成功',success:true})
-
   }else{
     res.send(data)
   }

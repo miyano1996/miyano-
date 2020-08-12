@@ -2,7 +2,7 @@
 <main>
   <div class="register">
     <h3>用户登录</h3>
-   <el-input placeholder='用户名' v-model="users.username" clearable size="medium"></el-input>
+   <el-input placeholder='用户名' v-model="users.account" clearable size="medium"></el-input>
     <br />
     <br />
     <!-- <label for>密码:</label> -->
@@ -10,7 +10,6 @@
     <br />
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
-    <!-- <el-button type="danger" @click="register" size="medium">注册</el-button> -->
     <router-link to="/register" tag='p' class="span1"><i class="el-icon-s-custom"></i>还没有账号去注册>></router-link>
     <router-link to="/loginMg" tag='p' class="span2"><i class="el-icon-s-shop"></i>商家登录通道>></router-link>
 
@@ -22,25 +21,21 @@
 export default {
   data() {
     return {
-      users: { username: "", password: "" },
+      users: { account: "", password: "" },
     };
   },
   methods: {
     async login() {
-      // const data = await this.$api.users.login(this.users);1
+      const data = await this.$api.users.login(this.users);
       console.log(data);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
-        localStorage.token = data.token;
-        // this.$router.push("/students");1
+        // localStorage.token = data.token;
+        // this.$router.push("/students");
+        console.log('登录成功')
       }
     },
-    // login() {
-    //     this.$router.push("/students");
-    // },
-    register() {
-      this.$router.push("/register");
-    },
+   
   },
 };
 </script>

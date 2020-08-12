@@ -10,8 +10,8 @@
       class="demo-ruleForm"
     >
       <!-- 账号 -->
-      <el-form-item prop="username">
-        <el-input v-model="users.username" @blur="again" size="medium" placeholder="用户名"></el-input>
+      <el-form-item prop="account">
+        <el-input v-model="users.account" @blur="again" size="medium" placeholder="用户名"></el-input>
       </el-form-item>
       <!-- 密码 -->
       <el-form-item prop="password">
@@ -21,12 +21,27 @@
       <el-form-item prop="checkPass">
         <el-input type="password" v-model="users.checkPass" autocomplete="off" show-password size="medium" placeholder="确认密码"></el-input>
       </el-form-item>
+     <!-- 姓名 -->
+      <el-form-item prop="name">
+        <el-input v-model="users.name" size="medium" placeholder="真实姓名"></el-input>
+      </el-form-item>
+      <!-- 年龄 -->
+        <el-form-item prop="age">
+          <el-input v-model.number="users.age"  size="medium" placeholder="年龄"></el-input>
+        </el-form-item>
+        <!-- 性别 -->
+       <el-form-item label="性别" prop="gender">
+          <el-radio-group v-model="users.gender">
+            <el-radio label="男"></el-radio>
+            <el-radio label="女"></el-radio>
+          </el-radio-group>
+        </el-form-item>
       <!-- 提交 -->
       <el-form-item>
         <el-button  type="primary" @click="submitForm('ISverify')" :disabled="canRegister">提交</el-button>
         <el-button @click="resetForm('ISverify')" type="warning">重置</el-button>
       </el-form-item>
-        <router-link to="/login" tag='p' class="span1"><i class="el-icon-s-shop"></i>已有账号去登录>></router-link>
+        <router-link to="/loginMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>已有账号去登录>></router-link>
         <router-link to="/register" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户注册通道>></router-link>
         <!-- <router-link to="/login" tag='span' class="span1">已有账号去登录</router-link>
         <router-link to="/login" tag='span' class="span2">商家注册通道>></router-link> -->
@@ -58,50 +73,78 @@ export default {
         callback();
       }
     };
+    var checkAge = (rule, value, callback) => {//年龄验证
+        if (!value) {
+          return callback(new Error('年龄不能为空'));
+        }
+        setTimeout(() => {
+          if (!Number.isInteger(value)) {
+            callback(new Error('请输入数字值'));
+          } else {
+            if (value < 18) {
+              callback(new Error('必须年满18岁'));
+            } else {
+              callback();
+            }
+          }
+        }, 1000);
+      };
     return {
       canRegister:false,
       users: {
+        account:"",
         password: "",
         checkPass: "",
-        username: "",
+        name: "",
+        age:"",
+        gender:"男"
       },
       rules: {
-        username: [
+        account: [
           //required: true,为true时开启验证
           { required: true, message: "请输入注册账号", trigger: "blur" },
           { min: 2, max: 6, message: "长度在 2 到 6 个字符", trigger: "blur" },
         ],
+        name: [//实名认证
+          { required: true, message: "需要实名认证，请输入真实姓名。", trigger: "blur" },
+          { min: 2, max: 6, message: "长度在 2 到 6 个字符", trigger: "blur" },
+        ],
+        gender: [
+            { required: true, message: '请完善性别', trigger: 'change' }
+          ],
         password: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
+         age: [{ validator: checkAge, trigger: 'blur' }],
       },
     };
   },
   methods: {
     async register() {
-      const data = await this.$api.users.register({...this.users}); //将要注册的数据发送到后端1
+      const data = await this.$api.managers.register({...this.users}); //将要注册的数据发送到后端1
       console.log(data);
       if (data.success) {
         // alert("注册成功");
         this.open1();
-        this.$router.push("/Login");
+        this.$router.push("/loginMg");
       }
     },
     async again() {
-      // 验证重名
-      const data = await this.$api.users.again(this.users.username); //将要注册的数据发送到后端1
-      console.log(data);
-      if (data.success) {
-        alert("此用户名已存在");
-        this.canRegister=true;
-        // return true
-      }else{
-        this.canRegister=false;
-      }
+      // // 验证重名
+      // const data = await this.$api.managers.again(this.users.username); //将要注册的数据发送到后端1
+      // console.log(data);
+      // if (data.success) {
+      //   alert("此用户名已存在");
+      //   this.canRegister=true;
+      //   // return true
+      // }else{
+      //   this.canRegister=false;
+      // }
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {//资料填写无误
           this.register();
+          console.log(this.users)
         } else {
           console.log("error submit!!");
           this.open2();
@@ -162,7 +205,7 @@ p{
   position: absolute;
   top:50%;
   left:50%;
-  margin-top: -190px;
+  margin-top: -270px;
   margin-left: -210px;
 }
 
