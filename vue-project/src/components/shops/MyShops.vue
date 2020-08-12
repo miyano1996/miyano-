@@ -47,7 +47,9 @@
         </el-table>
         <div class="add" @click="toAdd">申请开店</div>
       </article>
-      <h1 style="color:greenyellow">等待审批</h1>
+      <h1 style="color:greenyellow">等待审批</h1>  
+
+      
       <div class="hr"></div>
       <article>
         <el-table :data="waitData" style="height: 100%">
