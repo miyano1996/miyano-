@@ -7,6 +7,7 @@
     </div>
     <div class='main-content'>
         <!--内容区 -->
+        <users-view-charts></users-view-charts>
       <router-view/>
     </div>
   </div>
@@ -14,9 +15,10 @@
 
 <script>
 import SliderBar from './SliderBar.vue'
+import UsersViewCharts from '../../../components/charts/UsersViewCharts'
 export default {
     components:{
-        SliderBar
+        SliderBar,UsersViewCharts
     }
 }
 </script>
