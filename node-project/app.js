@@ -3,15 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var jwtAuth = require('./utils/jwt.js');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 // 链接数据库
 require('./dao/database');
 
 var app = express();
-
+// 拦截二级路径的js文件
+var goods = require('./routes/good')
+var imagesRouter = require('./routes/images');
 
 // 跨域
 var app = express();
@@ -32,14 +34,25 @@ app.set('view engine', 'jade');
 
 // 调用跨域
 app.use(allowCrossDomain); // 使用该中间件
+
+
+// token拦截
+app.use(jwtAuth);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
+// 匹配前段ajax请求的URL中的一级路径
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/goods', goods);
+app.use('/images', imagesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
