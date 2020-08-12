@@ -1,7 +1,7 @@
 <template>
 <main>
   <div class="register">
-    <h3>用户注册</h3>
+    <h3>商家注册</h3>
     <el-form
       :model="users"
       status-icon
@@ -26,8 +26,8 @@
         <el-button  type="primary" @click="submitForm('ISverify')" :disabled="canRegister">提交</el-button>
         <el-button @click="resetForm('ISverify')" type="warning">重置</el-button>
       </el-form-item>
-        <router-link to="/login" tag='p' class="span1"><i class="el-icon-s-custom"></i>已有账号去登录>></router-link>
-        <router-link to="/registerMg" tag='p' class="span2"><i class="el-icon-s-shop"></i>商家注册通道>></router-link>
+        <router-link to="/login" tag='p' class="span1"><i class="el-icon-s-shop"></i>已有账号去登录>></router-link>
+        <router-link to="/register" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户注册通道>></router-link>
         <!-- <router-link to="/login" tag='span' class="span1">已有账号去登录</router-link>
         <router-link to="/login" tag='span' class="span2">商家注册通道>></router-link> -->
     </el-form>

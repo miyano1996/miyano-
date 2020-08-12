@@ -1,7 +1,7 @@
 <template>
 <main>
   <div class="register">
-    <h3>用户登录</h3>
+    <h3>超级管理员登录</h3>
    <el-input placeholder='用户名' v-model="users.username" clearable size="medium"></el-input>
     <br />
     <br />
@@ -10,10 +10,7 @@
     <br />
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
-    <!-- <el-button type="danger" @click="register" size="medium">注册</el-button> -->
-    <router-link to="/register" tag='p' class="span1"><i class="el-icon-s-custom"></i>还没有账号去注册>></router-link>
-    <router-link to="/loginMg" tag='p' class="span2"><i class="el-icon-s-shop"></i>商家登录通道>></router-link>
-
+    <p>务必遵循《超级管理员公约》相关条约,违者依法追究相关刑事责任！</p>
   </div>
   </main>
 </template>
@@ -38,9 +35,6 @@ export default {
     // login() {
     //     this.$router.push("/students");
     // },
-    register() {
-      this.$router.push("/register");
-    },
   },
 };
 </script>
@@ -55,14 +49,11 @@ h3{
   text-align: center;
 }
 p{
-  /* box-sizing: border-box; */
-  color: #e6a23c;
-  /* padding-right:30px ; */
-  width:100%;
-  cursor:pointer;
-  text-align: right;
+  color: red;
+  font-size: 13px;
 }
 .register {
+  width: 300px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,13 +66,5 @@ p{
 .el-button {
   width: 100%;
 }
-.el-button + .el-button{
-  margin-left: 20px;
-}
-/* .el-input {
-  width: 200px;
-}
-.el-button {
-  width: 100px;
-} */
+
 </style>

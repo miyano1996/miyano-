@@ -1,7 +1,7 @@
 <template>
 <main>
   <div class="register">
-    <h3>用户登录</h3>
+    <h3>商家登录</h3>
    <el-input placeholder='用户名' v-model="users.username" clearable size="medium"></el-input>
     <br />
     <br />
@@ -11,8 +11,8 @@
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
     <!-- <el-button type="danger" @click="register" size="medium">注册</el-button> -->
-    <router-link to="/register" tag='p' class="span1"><i class="el-icon-s-custom"></i>还没有账号去注册>></router-link>
-    <router-link to="/loginMg" tag='p' class="span2"><i class="el-icon-s-shop"></i>商家登录通道>></router-link>
+    <router-link to="/registerMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>还没有账号去注册>></router-link>
+    <router-link to="/login" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户登录通道>></router-link>
 
   </div>
   </main>
