@@ -24,8 +24,8 @@
           <el-menu-item-group>
             <el-menu-item index="2-1">商品列表</el-menu-item>
             <el-menu-item index="2-2">添加商品</el-menu-item>
-            <el-menu-item index="2-2">商品分类</el-menu-item>
-            <el-menu-item index="2-2">品牌管理</el-menu-item>
+            <el-menu-item index="2-3">商品分类</el-menu-item>
+            <el-menu-item index="2-4">品牌管理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="3">
@@ -36,8 +36,8 @@
           <el-menu-item-group>
             <el-menu-item index="3-1">订单列表</el-menu-item>
             <el-menu-item index="3-2">订单设置</el-menu-item>
-            <el-menu-item index="3-2">退货申请处理</el-menu-item>
-            <el-menu-item index="3-2">退货原因设置</el-menu-item>
+            <el-menu-item index="3-3">退货申请处理</el-menu-item>
+            <el-menu-item index="3-4">退货原因设置</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="4">
@@ -48,7 +48,7 @@
           <el-menu-item-group>
             <el-menu-item index="4-1">活动管理</el-menu-item>
             <el-menu-item index="4-2">专场活动</el-menu-item>
-            <el-menu-item index="4-2">促销专区</el-menu-item>
+            <el-menu-item index="4-3">促销专区</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="5">
@@ -58,7 +58,10 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="5-1">系统管理</el-menu-item>
-            <el-menu-item index="5-2">店铺管理</el-menu-item>
+            <el-menu-item index="5-2"><router-link to="/shopManager" tag="span">店铺管理</router-link> </el-menu-item>
+            <el-menu-item index="5-3">用户管理</el-menu-item>
+            <el-menu-item index="5-4">产品管理</el-menu-item>
+            <el-menu-item index="5-5"><router-link to="/messageCenter" tag="span">消息中心</router-link> </el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

@@ -22,10 +22,14 @@ Vue.use(VueRouter)
         component: () => import('../views/goodsSystem/main/Main.vue'),
         children:[
           //内容区子路由
-          // {
-          //   path:'',
-          //   component: () =>  import('')
-          // }
+          {
+            path:'/shopManager',
+            component: () => import('../components/admin/ShopManager.vue')
+          },
+          {
+            path:'/messageCenter',
+            component: () => import('../components/admin/MessageCenter.vue')
+          }
         ]
       }
     ]

@@ -31,6 +31,8 @@ export default {
   border-right: 2px solid #ccc;
 }
 .system-container .main-content{
+  box-sizing: border-box;
   width: 84%;
+  padding: 10px;
 }
 </style>
