@@ -11,9 +11,7 @@
     <el-col :span="24" class="search">
       <div class="input">
         <input type="text" placeholder="输入商品" id="saerch" />
-        <span>
-          <!-- <img src="../../assets/搜索.png" alt /> -->
-        </span>
+        <span></span>
       </div>
     </el-col>
     <el-col :span="4">
