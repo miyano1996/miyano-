@@ -1,7 +1,8 @@
-import goods from './models/goods/goods'
+import goods from './modules/goods/goods'
 import shops from './modules/shops.js'
 const api = {
-    goods,shops
+    goods,
+    shops
 }
 
 export default api;
