@@ -1,16 +1,36 @@
+<!-- 内容区主体-->
 <template>
-    <Container/>
+<div class='system-container'>
+    <div class='main-sidebar'>
+        <!--侧边栏 -->
+        <SliderBar/>
+    </div>
+    <div class='main-content'>
+        <!--内容区 -->
+      <router-view/>
+    </div>
+  </div>
 </template>
 
 <script>
-import Container from './Container.vue'
+import SliderBar from './SliderBar.vue'
 export default {
     components:{
-        Container
+        SliderBar
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+.system-container{
+  width: 100%;
+  display: flex;
+}
+.system-container .main-sidebar{
+  width: 16%;
+  border-right: 2px solid #ccc;
+}
+.system-container .main-content{
+  width: 84%;
+}
 </style>

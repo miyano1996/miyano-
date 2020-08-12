@@ -17,8 +17,16 @@ Vue.use(VueRouter)
         redirect:'/main'
       },
       {
+        //内容区路由
         path:'/main',
-        component: () => import('../views/goodsSystem/main/Main.vue')
+        component: () => import('../views/goodsSystem/main/Main.vue'),
+        children:[
+          //内容区子路由
+          {
+            path:'',
+            component: () =>  import('')
+          }
+        ]
       }
     ]
   },
