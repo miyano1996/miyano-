@@ -1,6 +1,8 @@
 import shopsManager from './shopsManagerModel/shopsManager.js'
+import goods from './modules/goods/goods'
+import shops from './modules/shops.js'
 const api = {
-    shopsManager
+    shopsManager,goods,shops
 }
 
 export default api;

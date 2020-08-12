@@ -28,7 +28,7 @@ Vue.use(VueRouter)
           },
           {
             path:'/messageCenter',
-            component: () => import('../components/admin/MessageCenter.vue')
+            component: () => import('../components/admin/')
           }
         ]
       }
