@@ -13,7 +13,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var jwtAuth = require('./utils/jwt.js');
 
-var indexRouter = require('./routes/index');
 
 // 链接数据库
 require('./dao/database');
@@ -56,7 +55,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // 匹配前段ajax请求的URL中的一级路径
-app.use('/', indexRouter);
 app.use('/goods', goods);
 app.use('/images', imagesRouter);
 app.use('/shops', shopsRouter);
