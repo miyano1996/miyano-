@@ -13,7 +13,8 @@ instance.interceptors.request.use(
         // 1. 获取本地存储中的 token
         const token = localStorage.token;
         // 2. 将 token 添加到请求头中
-        config.headers.Authorization = 'Bearer ' + token;
+        // config.headers.Authorization = 'Bearer ' + token;
+        config.headers.Authorization = 'Bearer ';
         return config;
     },
     err => {

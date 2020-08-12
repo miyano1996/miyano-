@@ -37,7 +37,7 @@ app.use(allowCrossDomain); // 使用该中间件
 
 
 // token拦截
-app.use(jwtAuth);
+// app.use(jwtAuth);
 
 app.use(logger('dev'));
 app.use(express.json());
