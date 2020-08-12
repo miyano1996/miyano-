@@ -3,11 +3,18 @@ export default {
     namespaced: true,
     state: {
         shops:[],
-        ownShops:[]
+        ownShops:[],
+        oneShop:{}
     },
     mutations: {
         getOwnShops(state,data){
             state.ownShops = data
+        },
+        addOneShop(state,data){
+            state.oneShop = data
+        },
+        backOne(state){
+            state.oneShops = {}
         }
     },
     actions: {
@@ -20,6 +27,9 @@ export default {
         },
         async delShopsSync(context,_id){
             return await $api.shops.delShopsSync(_id)
+        },
+        async updateShopsSync(context,data){
+            return await $api.shops.updateShopsSync(data)
         }
     },
 }

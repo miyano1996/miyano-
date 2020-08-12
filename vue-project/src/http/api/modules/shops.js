@@ -22,6 +22,13 @@ const shops = {
             method:'post',
             data:{_id}
         })
+    },
+    updateShopsSync(data){
+        return axios({
+            url:"/shops/updateShops",
+            method:'post',
+            data:data
+        })
     }
 }
 export default shops

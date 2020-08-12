@@ -10,12 +10,12 @@
       <span>店铺描述：</span>
       <el-input placeholder="请输入店铺描述" v-model="content.des" class="inp ma"></el-input>
       <span>产品类别：</span>
-      <el-select  placeholder="请选择" class="ma" v-model="content.type">
-      <el-option label="食品" value="食品"></el-option>
-      <el-option label="电器" value="电器"></el-option>
-      <el-option label="宠物" value="宠物"></el-option>
-      <el-option label="其他" value="其他"></el-option>
-    </el-select>
+      <el-select placeholder="请选择" class="ma" v-model="content.type">
+        <el-option label="食品" value="食品"></el-option>
+        <el-option label="电器" value="电器"></el-option>
+        <el-option label="宠物" value="宠物"></el-option>
+        <el-option label="其他" value="其他"></el-option>
+      </el-select>
     </div>
     <el-button type="primary" @click="addBtn" id="btn" plain>提交申请</el-button>
     <!-- <el-radio v-model="showStudents.sex" label="男" class="ma" value="男"></el-radio>
@@ -35,26 +35,26 @@ export default {
         boss: "",
         des: "",
         type: "",
-        status:'3',
-        managerId:'5f335ec79a560000630005c3',
-        credit:'1'
+        status: "3",
+        managerId: "5f335ec79a560000630005c3",
+        credit: "1",
       },
-      namegerName:''
+      namegerName: "",
     };
   },
   methods: {
-    ...mapActions(['addShopsSync']),
+    ...mapActions(["addShopsSync"]),
     async addBtn() {
-      this.managerName = localStorage.namegerName
+      this.managerName = localStorage.namegerName;
       // this.managerId = '1';
       this.content.date = new Date().toLocaleDateString();
       const data = await this.addShopsSync({ ...this.content });
       // console.log(data);
-        this.$notify({
-          title: "成功",
-          message: "已成功发送申请信息",
-          type: "success",
-        });
+      this.$notify({
+        title: "成功",
+        message: "已成功发送申请信息",
+        type: "success",
+      });
     },
   },
 };

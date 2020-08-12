@@ -10,3 +10,7 @@ module.exports.addShops = async data=>{
 module.exports.delShops = async data=>{
     return await shopsModel.deleteOne(data)
 }
+module.exports.updateShops =  async data=>{
+    // console.log(data);
+    return await shopsModel.updateOne({ _id:data._id }, { ...data });
+}

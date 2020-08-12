@@ -40,14 +40,14 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button size="mini" @click="give(scope.row._id)">编辑</el-button>
+              <el-button size="mini" @click="give(scope.row)">编辑</el-button>
               <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
         <div class="add">申请开店</div>
       </article>
-      <h1 style="color:greenyellow">正在申请</h1>
+      <h1 style="color:greenyellow">等待审批</h1>
       <div class="hr"></div>
       <article>
         <el-table :data="waitData" style="height: 100%">
@@ -87,7 +87,7 @@
           </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button size="mini" @click="give(scope.row._id)">编辑</el-button>
+              <el-button size="mini" @click="give(scope.row)">编辑</el-button>
               <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">撤回</el-button>
             </template>
           </el-table-column>
@@ -105,12 +105,14 @@ export default {
   },
   methods: {
     ...mapActions(["getOwnShopsSync","delShopsSync"]),
+    ...mapMutations(["addOneShop"]),
     handleDelete(a){
       this.delShopsSync(a)
       this.datas = this.datas.filter(value=>{return value._id!=a})
     },
-    give(){
-      console.log(waitData);
+    give(a){
+      this.addOneShop(a)
+      this.$router.push('/updateShops')
     }
   },
   computed: {
