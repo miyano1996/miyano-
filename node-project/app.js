@@ -13,6 +13,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var jwtAuth = require('./utils/jwt.js');
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var shopsManagerRouter = require('./routes/shopManagerRouter/shopManager');
 
 // 链接数据库
 require('./dao/database');
@@ -51,6 +54,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/shopsManager',shopsManagerRouter);
 
 
 

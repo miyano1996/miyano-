@@ -14,9 +14,10 @@
 
 <script>
 import SliderBar from "./SliderBar.vue";
+
 export default {
   components: {
-    SliderBar,
+    SliderBar
   },
 };
 </script>
@@ -30,7 +31,11 @@ export default {
   width: 16%;
   border-right: 2px solid #ccc;
 }
+.system-container .main-content{
+  box-sizing: border-box;
+}
 .system-container .main-content {
   width: 84%;
+  padding: 10px;
 }
 </style>
