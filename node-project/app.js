@@ -14,10 +14,11 @@ var app = express();
 // 拦截二级路径的js文件
 var goods = require('./routes/good')
 var imagesRouter = require('./routes/images');
+var shopsRouter = require('./routes/shops')
 
 // 跨域
 var app = express();
-var allowCrossDomain = function (req, res, next) {
+var allowCrossDomain = function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Origin,Content-Type,Accept,Authorization");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -52,17 +53,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/goods', goods);
 app.use('/images', imagesRouter);
-
-app.use('/users', usersRouter);
 app.use('/shops', shopsRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

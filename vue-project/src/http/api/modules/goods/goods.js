@@ -6,12 +6,13 @@ const goods = {
             method: "post",
             // 只有get使用params,其他的都使用data
             data: {
+                type: data.type,
                 name: data.name,
                 image: data.image,
                 store: data.store,
                 detail: data.detail,
                 price: data.price,
-                status: data.statue,
+                status: data.status,
                 shopId: data.shopId
             },
         })
