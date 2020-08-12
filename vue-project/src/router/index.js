@@ -1,42 +1,42 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    redirect: '/system'
-},
-{
-    path: '/system',
-    component: () =>
-        import('../views/goodsSystem/system/System.vue'),
-    children: [{
         path: '/',
-        redirect: '/main'
+        redirect: '/system'
     },
     {
-        //内容区路由
-        path: '/main',
+        path: '/system',
         component: () =>
-            import('../views/goodsSystem/main/Main.vue'),
-        children: [
-            //内容区子路由
+            import ('../views/goodsSystem/system/System.vue'),
+        children: [{
+                path: '/',
+                redirect: '/main'
+            },
             {
-                path: 'addGood',
+                //内容区路由
+                path: '/main',
                 component: () =>
-                    import('../components/goods/addGoods.vue')
+                    import ('../views/goodsSystem/main/Main.vue'),
+                children: [
+                    //内容区子路由
+                    {
+                        path: 'addGood',
+                        component: () =>
+                            import ('../components/goods/addGoods.vue')
+                    }
+                ]
+            },
+            {
+                path: '/MyShops',
+                name: 'MyShops',
+                component: () =>
+                    import ('../views/MyShops.vue')
             }
         ]
     },
-    {
-        path: '/MyShops',
-        name: 'MyShops',
-        component: () => import('../views/MyShops.vue')
-    }
-    ]
-},
 
 
     // import { component } from 'vue/types/umd'
