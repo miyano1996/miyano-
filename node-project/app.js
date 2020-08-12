@@ -13,8 +13,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var jwtAuth = require('./utils/jwt.js');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var shopsManagerRouter = require('./routes/shopManagerRouter/shopManager');
 
 // 链接数据库
