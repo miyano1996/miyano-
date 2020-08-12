@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import addGoods from '../components/goods/addGoods.vue'
 
 Vue.use(VueRouter)
 
@@ -23,18 +22,16 @@ const routes = [{
                     import ('../views/goodsSystem/main/Main.vue'),
                 children: [
                     //内容区子路由
-                    // {
-                    //   path:'',
-                    //   component: () =>  import('')
-                    // }
+                    {
+                        path: 'addGood',
+                        component: () =>
+                            import ('../components/goods/addGoods.vue')
+                    }
                 ]
             }
         ]
     },
-    // {
-    //   name: 'Home',
-    //   component: addGoods
-    // }
+
 ]
 
 
