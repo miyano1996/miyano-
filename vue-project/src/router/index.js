@@ -22,10 +22,10 @@ Vue.use(VueRouter)
         component: () => import('../views/goodsSystem/main/Main.vue'),
         children:[
           //内容区子路由
-          {
-            path:'',
-            component: () =>  import('')
-          }
+          // {
+          //   path:'',
+          //   component: () =>  import('')
+          // }
         ]
       }
     ]
