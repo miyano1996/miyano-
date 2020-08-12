@@ -14,6 +14,7 @@ var app = express();
 // 拦截二级路径的js文件
 var goods = require('./routes/good')
 var imagesRouter = require('./routes/images');
+var shopsRouter = require('./routes/shops')
 
 // 跨域
 var app = express();
@@ -53,7 +54,7 @@ app.use('/', indexRouter);
 app.use('/goods', goods);
 app.use('/images', imagesRouter);
 
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('/shops', shopsRouter);
 
 // catch 404 and forward to error handler

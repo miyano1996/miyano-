@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const shopsSchema = new mongoose.Schema({
     name: String,
     credit:String,
-    status: Boolean,
+    status: String,
+    type:String,
+    des:String,
+    date:String,
+    boss:String,
     managerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'managersModel'

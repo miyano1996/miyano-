@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -27,14 +26,24 @@ const routes = [{
                 path: 'addGood',
                 component: () =>
                     import('../components/goods/addGoods.vue')
-            }
+            },
+            {
+                path: '/MyShops',
+                name: 'MyShops',
+                component: () => import('../components/shops//MyShops.vue')
+            },
+            {
+                path: '/AddShops',
+                component: () => import('../components/shops//AddShops.vue')
+            },
+            {
+                path: '/UpdateShops',
+                name: 'MyShops',
+                component: () => import('../components/shops//UpdateShops.vue')
+            },
         ]
     },
-    {
-        path: '/MyShops',
-        name: 'MyShops',
-        component: () => import('../views/MyShops.vue')
-    }
+
     ]
 },
 

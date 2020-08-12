@@ -1,6 +1,6 @@
 <!--页面主体 -->
 <template>
-  <div style="color:red">
+  <div>
     <p class="system-use">
       <i :class="weather"></i>
       <span>{{msg}}：{{useName}}</span>
