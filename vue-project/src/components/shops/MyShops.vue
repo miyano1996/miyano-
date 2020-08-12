@@ -45,7 +45,7 @@
             </template>
           </el-table-column>
         </el-table>
-        <div class="add">申请开店</div>
+        <div class="add" @click="toAdd">申请开店</div>
       </article>
       <h1 style="color:greenyellow">等待审批</h1>
       <div class="hr"></div>
@@ -113,6 +113,9 @@ export default {
     give(a){
       this.addOneShop(a)
       this.$router.push('/updateShops')
+    },
+    toAdd(){
+      this.$router.push('/addShops')
     }
   },
   computed: {

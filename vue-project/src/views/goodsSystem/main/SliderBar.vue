@@ -17,6 +17,17 @@
             <span>首页</span>
           </template>
         </el-submenu>
+        <el-submenu index="10">
+          <template slot="title">
+            <i class="el-icon-goods"></i>
+            <span>我的店铺</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/myShops">所有店铺</el-menu-item>
+            <el-menu-item index="/updateShops">修改店铺信息</el-menu-item>
+            <el-menu-item index="/addShops">新增店铺</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-goods"></i>

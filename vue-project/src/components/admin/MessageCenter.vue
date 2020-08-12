@@ -14,7 +14,7 @@
     <el-badge :value="1" class="item" type="primary">
       <el-button size="small">留言</el-button>
     </el-badge>
-    <el-badge :value="2" class="item" type="warning">
+    <el-badge :value="2" class="item" type="warning">x`
       <el-button size="small">回复</el-button>
     </el-badge>
 
