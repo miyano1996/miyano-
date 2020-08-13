@@ -1,18 +1,18 @@
 import axios from '../../axios.js'
 
 const shopsManager = {
-    getShopsSync: params =>{
+    getShopsSync: params => {
         return axios({
-            url:'/shopsManager/getShops',
-            method:'get',
+            url: '/shopsManager/getShops',
+            method: 'get',
             params
         })
     },
-    changeStateSync: data =>{
+    changeStateSync: data => {
         console.log(data);
         return axios({
-            url:'/shopsManager/changeState',
-            method:'post',
+            url: '/shopsManager/changeState',
+            method: 'post',
             data
         })
     }
