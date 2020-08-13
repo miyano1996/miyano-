@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { delGood, addGood, findGood, findAllGoods, updateGood } = require('../server/goodsServer');
+const { delGood, addGood, findGood, findAllGoods, updateGood } = require('../service/goodsServer');
 // 添加商品
 router.post('/addGood', async function(req, res, next) {
     let data = req.body;
