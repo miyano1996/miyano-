@@ -25,7 +25,7 @@ var app = express();
 var goods = require('./routes/good')
 var imagesRouter = require('./routes/images');
 var shopsRouter = require('./routes/shops')
-// const jwtAuth=require('./utils/jwt.js');//token
+    // const jwtAuth=require('./utils/jwt.js');//token
 
 // 链接数据库 在一级路径之前  去三层拿
 
@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-app.use('/shopsManager',shopsManagerRouter);
+app.use('/shopsManager', shopsManagerRouter);
 
 
 
@@ -76,8 +76,8 @@ app.use('/images', imagesRouter);
 // app.use('/users', usersRouter);
 app.use('/shops', shopsRouter);
 // app.use('/', indexRouter);
-app.use('/users', usersRouter);//用户登录注册
-app.use('/managers', managersRouter);//商家登录注册
+app.use('/users', usersRouter); //用户登录注册
+app.use('/managers', managersRouter); //商家登录注册
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
