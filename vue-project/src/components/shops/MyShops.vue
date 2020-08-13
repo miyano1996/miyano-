@@ -7,6 +7,8 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>店铺列表</el-breadcrumb-item>
     </el-breadcrumb>
+    <users-view-charts></users-view-charts>
+
     <h1>正在营业</h1>
     <div class="hr"></div>
     <article>
@@ -154,8 +156,12 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
+import UsersViewCharts from '../charts/UsersView/UsersViewCharts'
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
+  components:{
+    UsersViewCharts
+  },
   async created() {
     this.datas = (await this.getOwnShopsSync(this.managerId)).data;
     // console.log(await this.getOwnShopsSync(this.managerId));

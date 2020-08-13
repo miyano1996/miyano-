@@ -1,6 +1,6 @@
 
 <template>
-  <div id="users-view-charts"></div>
+  <div id="daily-view"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
     this.getDays()
   },
   mounted() {
-    const chartsDom = document.getElementById("users-view-charts");
+    const chartsDom = document.getElementById("daily-view");
     const myChart = this.$echarts.init(chartsDom);
     myChart.setOption({
       title: {
@@ -44,6 +44,9 @@ export default {
       },
       yAxis: {
         type: "value",
+        splitLine:{
+          show:false
+        }
       },
       series: [
         {
@@ -99,8 +102,8 @@ export default {
 </script>
 
 <style scope>
-#users-view-charts {
-  width: 100%;
+#daily-view {
+  width: 1400px;
   height: 300px;
 }
 </style>
