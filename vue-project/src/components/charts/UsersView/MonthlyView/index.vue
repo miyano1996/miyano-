@@ -1,20 +1,20 @@
 
 <template>
-  <div id="users-view-charts"></div>
+  <div id="monthly-view" ></div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      xAxisData:[]
-    }
+      xAxisData: [],
+    };
   },
-  created(){
-    this.getDays()
+  created() {
+    this.getMonths();
   },
   mounted() {
-    const chartsDom = document.getElementById("users-view-charts");
+    const chartsDom = document.getElementById("monthly-view");
     const myChart = this.$echarts.init(chartsDom);
     myChart.setOption({
       title: {
@@ -44,63 +44,72 @@ export default {
       },
       yAxis: {
         type: "value",
+        splitLine: {
+          show: false,
+        },
       },
       series: [
         {
           name: "店铺1",
           type: "line",
           stack: "总量",
-          data: [120, 132, 101, 134, 90, 230, 210],
+          data: [1120, 1132, 1101, 1314, 901, 1230],
         },
         {
           name: "店铺2",
           type: "line",
           stack: "总量",
-          data: [220, 182, 191, 234, 290, 330, 310],
+          data: [1220, 1182, 1191, 1234, 2190, 3130],
         },
         {
           name: "店铺3",
           type: "line",
           stack: "总量",
-          data: [150, 232, 201, 154, 190, 330, 410],
+          data: [1350, 2232, 2201, 2154, 2190, 2330],
         },
         {
           name: "店铺4",
           type: "line",
           stack: "总量",
-          data: [320, 332, 301, 334, 390, 330, 320],
+          data: [3320, 3332, 3301, 3334, 3390, 3330],
         },
         {
           name: "店铺5",
           type: "line",
           stack: "总量",
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          data: [8120, 9132, 9301, 9034, 12900, 13300],
         },
       ],
     });
   },
   methods: {
-    getDays() {
-      //设置日期，当前日期的前七天
-      var myDate = new Date(); //获取今天日期
-      myDate.setDate(myDate.getDate() - 7);
-      var dateArray = [];
-      var dateTemp;
-      var flag = 1;
-      for (var i = 0; i < 7; i++) {
-        dateTemp = myDate.getMonth() + 1 + "月" + myDate.getDate() + "日";
-        dateArray.push(dateTemp);
-        myDate.setDate(myDate.getDate() + flag);
+    getMonths() {
+      let datelist = [];
+      let date = new Date();
+      let Y = date.getFullYear();
+      let M = date.getMonth();
+      for (let i = 0; i < 6; i++) {
+        let dateoption = "";
+        if (M - 1 !== 0) {
+        } else {
+          M = 12;
+          Y = Y - 1;
+        }
+        let m = M;
+        m = m < 10 ? "0" + m : m;
+        dateoption = Y + "/" + m;
+        M--;
+        datelist.push(dateoption);
       }
-      this.xAxisData = dateArray
+      this.xAxisData = datelist.reverse();
     },
   },
 };
 </script>
 
 <style scope>
-#users-view-charts {
-  width: 100%;
+#monthly-view {
+  width: 1200px;
   height: 300px;
 }
 </style>
