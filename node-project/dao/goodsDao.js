@@ -7,7 +7,7 @@ module.exports.delGood = async function(data) {
     let msg = await goodsModel.deleteOne({ _id: data.id });
     return msg
 };
-module.exports.findAllGoods = async function(data) {
+module.exports.findAllGoods = async function() {
     let msg = await goodsModel.find();
     return {
         data: msg,

@@ -43,8 +43,6 @@
       </el-form-item>
         <router-link to="/loginMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>已有账号去登录>></router-link>
         <router-link to="/register" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户注册通道>></router-link>
-        <!-- <router-link to="/login" tag='span' class="span1">已有账号去登录</router-link>
-        <router-link to="/login" tag='span' class="span2">商家注册通道>></router-link> -->
     </el-form>
  
   </div>
@@ -180,18 +178,12 @@ main{
   width: 100%;
   height: 100%;
   position: relative;
-  /* background-color: blueviolet; */
-  /* overflow: hidden; */
-
-  /* background-color: rgb(33, 32, 59); */
 }
 h3{
   text-align: center;
 }
 p{
-  /* box-sizing: border-box; */
   color: #e6a23c;
-  /* padding-right:30px ; */
   width:100%;
   cursor:pointer;
   text-align: right;

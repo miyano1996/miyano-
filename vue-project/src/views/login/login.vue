@@ -31,11 +31,18 @@ export default {
       if (data.success) {
         //将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
-        // this.$router.push("/students");
+        this.$router.push("/system");
         console.log('登录成功')
+      }else{
+        this.open4()
       }
     },
-   
+   open4() {
+        this.$notify.error({
+          title: '登录失败',
+          message: '账号或密码错误'
+        });
+      }
   },
 };
 </script>
@@ -50,9 +57,7 @@ h3{
   text-align: center;
 }
 p{
-  /* box-sizing: border-box; */
   color: #e6a23c;
-  /* padding-right:30px ; */
   width:100%;
   cursor:pointer;
   text-align: right;
@@ -73,10 +78,4 @@ p{
 .el-button + .el-button{
   margin-left: 20px;
 }
-/* .el-input {
-  width: 200px;
-}
-.el-button {
-  width: 100px;
-} */
 </style>
