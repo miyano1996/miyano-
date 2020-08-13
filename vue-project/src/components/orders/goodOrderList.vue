@@ -10,17 +10,17 @@
       height="600px"
     >
       <el-table-column align="center" label="商品图片" width="200">
-        <template slot-scope="scope">
-          <!-- <el-image
+        <!-- <template slot-scope="scope">
+          <el-image
             style="width: 100px; height: 100px"
             :src="'http://localhost:3000/images/'+scope.row.goodId.image"
             fit="cover"
-          ></el-image>-->
-        </template>
+          ></el-image>
+        </template>-->
       </el-table-column>
       <el-table-column align="center" prop="goodId.name" label="商品名称" width="250"></el-table-column>
       <el-table-column align="center" prop="_id" label="订单编号" width="300"></el-table-column>
-      <el-table-column align="center" label="用户名称" width="300"></el-table-column>
+      <el-table-column align="center" prop="userId.name" label="用户名称" width="300"></el-table-column>
       <el-table-column align="center" prop="status" label="状态" width="250"></el-table-column>
       <el-table-column align="center" fixed="right" label="操作" width="200">
         <template slot="header" slot-scope="scope">
@@ -47,11 +47,18 @@ export default {
     this.getOrders();
   },
   methods: {
-    ...mapActions(["getAllOrders"]),
+    ...mapActions(["getAllOrders", "delOrder"]),
     async getOrders() {
       await this.getAllOrders();
     },
-    delit() {},
+    async delit(id) {
+      let { msg } = await this.delOrder(id);
+      if (msg.success) {
+        this.getOrders();
+      } else {
+        alert("删除失败");
+      }
+    },
   },
   computed: {
     ...mapState(["orders"]),

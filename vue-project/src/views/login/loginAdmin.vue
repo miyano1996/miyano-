@@ -24,16 +24,22 @@ export default {
   },
   methods: {
     async login() {
-      const data = await this.$api.managers.loginAdmin(this.users);
-      console.log(data);
+      const {data} = await this.$api.managers.loginAdmin(this.users);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
         this.$router.push("/system");
+        this.open2()
       }else{
         this.open4()
       }
     },
+   open2() {
+      this.$message({
+          message: '登录成功',
+          type: 'success'
+        });
+      },
     open4() {
         this.$notify.error({
           title: '登录失败',

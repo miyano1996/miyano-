@@ -39,9 +39,6 @@ app.set('view engine', 'jade');
 app.use(allowCrossDomain); // 使用该中间件
 
 
-//启用token拦截==========================================================================
-// app.use(jwtAuth);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -49,7 +46,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/shopsManager', shopsManagerRouter);
 
-
+//启用token拦截  在所有一级路径前===============================================
+app.use(jwtAuth);
 
 
 

@@ -3,7 +3,6 @@ import axios from '../../axios.js';
 const managers={
 
     loginAdmin:data=>{
-        console.log(data);
         return axios({
             url:'/managers/loginAdmin',
             method:'post',
@@ -11,7 +10,6 @@ const managers={
         })
     },
     login:data=>{
-        console.log(data);
         return axios({
             url:'/managers/login',
             method:'post',
@@ -19,7 +17,6 @@ const managers={
         })
     },
     register:data=>{
-        console.log(data);
         return axios({
             url:'/managers/register',
             method:'post',

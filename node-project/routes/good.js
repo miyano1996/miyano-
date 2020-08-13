@@ -33,7 +33,7 @@ router.get('/findAllGoods', async function(req, res, next) {
 
 });
 // 获取某个商品信息
-router.get('/findGood', async function(req, res, next) {
+router.post('/findGood', async function(req, res, next) {
     const data = req.query;
     let msg = await findGood(data);
     if (msg.success) {

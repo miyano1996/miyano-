@@ -26,13 +26,13 @@ export default {
   },
   methods: {
     async login() {
-      const data = await this.$api.users.login(this.users);
-      console.log(data);
+      const {data} = await this.$api.users.login(this.users);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
         this.$router.push("/system");
-        console.log('登录成功')
+        this.open2();
+        // console.log('登录成功')
       }else{
         this.open4()
       }
@@ -42,7 +42,13 @@ export default {
           title: '登录失败',
           message: '账号或密码错误'
         });
-      }
+      },
+    open2() {
+      this.$message({
+          message: '登录成功',
+          type: 'success'
+        });
+      },
   },
 };
 </script>

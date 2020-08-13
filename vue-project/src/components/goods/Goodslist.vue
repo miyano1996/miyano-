@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \三阶段\Three-project\project\vue-project\src\components\Goodslist.vue
 -->
-<template>
+<template >
   <el-row :gutter="20" style="margin:0px">
     <el-col :span="24" class="search">
       <div class="input">
@@ -14,17 +14,23 @@
         <span></span>
       </div>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="4" v-for="item in goods" :key="item._id">
       <div class="list">
-        <i>
-          <router-link to="goodsDetails.vue">
-            <img src="../../assets/商品图片.jpg" alt />
-          </router-link>
-        </i>
-        <strong>VUE.js</strong>
+        <template>
+          <i>
+            <router-link to="goodsDetails.vue">
+              <img
+                :src="'http://localhost:3000/images/'+item.image"
+                alt
+                @click="getgoods(item._id)"
+              />
+            </router-link>
+          </i>
+        </template>
+        <strong>{{item.name}}</strong>
         <div class="box">
-          <span class="price">￥255454564</span>
-          <span class="stock">库存:5565件</span>
+          <span class="price">￥{{item.price}}</span>
+          <span class="stock">库存:{{item.store}}件</span>
         </div>
         <p class="btn">
           <span class="activegoods">上架商品</span>
@@ -32,44 +38,30 @@
         </p>
       </div>
     </el-col>
-    <el-col :span="4">
-      <div class="list">
-        <i>
-          <img src="../../assets/商品图片.jpg" alt />
-        </i>
-        <strong>商品名称</strong>
-        <div class="box">
-          <span class="price">商品价格</span>
-          <span class="stock">库存:5565件</span>
-        </div>
-        <p class="btn">
-          <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
-        </p>
-      </div>
-    </el-col>
-    <el-col :span="4">
-      <div class="list">
-        <i>
-          <img src="../../assets/商品图片.jpg" alt />
-        </i>
-        <strong>商品名称</strong>
-        <div class="box">
-          <span class="price">商品价格</span>
-          <span class="stock">库存:5565件</span>
-        </div>
-        <p class="btn">
-          <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
-        </p>
-      </div>
-    </el-col>
-    <el-col :span="4"></el-col>
   </el-row>
 </template>
 
 <script>
-export default {};
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState, mapMutations } = createNamespacedHelpers("goods");
+export default {
+  data() {
+    return {};
+  },
+  created() {
+    this.getAllGoods();
+  },
+  methods: {
+    ...mapMutations(["goodsid"]),
+    ...mapActions(["getAllGoods"]),
+    getgoods(id) {
+      this.goodsid(id);
+    },
+  },
+  computed: {
+    ...mapState(["goods"]),
+  },
+};
 </script>
 
 <style scoped>
@@ -149,6 +141,7 @@ input::placeholder {
 }
 .list i img {
   width: 200px;
+  height: 200px;
   transition: 0.3s;
 }
 .list i img:hover {
