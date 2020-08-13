@@ -42,15 +42,22 @@
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="进入店铺" width="250">
+        <el-table-column label="封禁状态" width="100">
+          <template slot-scope="scope">
+            
+            <span v-if="scope.row.isLift" style="margin-left: 10px;color:red">封禁中{{scope.row.isLift}}</span>
+            <span v-else style="margin-left: 10px;color:green">正常</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="进入店铺" width="150">
           <template slot-scope="scope">
             <el-button size="mini" type="success" @click="gogogo(scope.row._id)">进入店铺</el-button>
           </template>
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button size="mini" @click="give(scope.row)">编辑</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">删除</el-button>
+            <el-button size="mini" @click="give(scope.row)">修改信息</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">关闭店铺</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -99,7 +106,7 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="give(scope.row)">编辑</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">撤回</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">撤回申请</el-button>
           </template>
         </el-table-column>
       </el-table>
