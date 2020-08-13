@@ -14,7 +14,7 @@
     <el-badge :value="1" class="item" type="primary">
       <el-button size="small">留言</el-button>
     </el-badge>
-    <el-badge :value="2" class="item" type="warning">x`
+    <el-badge :value="2" class="item" type="warning">
       <el-button size="small">回复</el-button>
     </el-badge>
 
@@ -41,7 +41,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="text item">
-        <el-table :data="shopsInfo" style="width: 106%; overflow: hidden;" height="600">
+        <el-table :data="shopsInfo" style="width: 106%; overflow: hidden;" height="500">
           <el-table-column type="expand">
             <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
