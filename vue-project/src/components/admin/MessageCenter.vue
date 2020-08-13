@@ -103,12 +103,13 @@ export default {
           center: true,
         })
           .then(() => {
-            this.changeStateSync({_id:row._id,status:'1'})
             this.getShopsSync({status:'3'})
+            this.changeStateSync({_id:row._id,status:'5'})
             this.$message({
               type: "success",
               message: "已同意!",
             });
+            this.getShopsSync({status:'3'})
           })
           .catch(() => {
             this.$message({
@@ -130,6 +131,7 @@ export default {
               type: "warning",
               message: "已驳回!",
             });
+            this.getShopsSync({status:'3'})
           })
           .catch(() => {
             this.$message({
