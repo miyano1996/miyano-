@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>申请店铺</el-breadcrumb-item>
     </el-breadcrumb>
-    <h1>申请店铺</h1>
+    <h1 style="color:gray">申请店铺</h1>
     <div class="hr"></div>
     <div class="demo-input-suffix">
       <span>店铺名称：</span>
@@ -39,16 +39,15 @@ export default {
       content: {
         date: "",
         name: "",
-        // boss: localStorage.managerName,
-        boss:'1',
+        boss: localStorage.managerName,
+        // boss:'1',
         des: "",
         type: "",
         status: "3",
-        // managerId: localStorage.managerId,
-        managerId:'5f335ec79a560000630005c3',
+        managerId: localStorage.managerId,
+        // managerId:'5f335ec79a560000630005c3',
         credit: "1",
       },
-      managerName: "",
     };
   },
   computed:{
@@ -62,7 +61,7 @@ export default {
   methods: {
     ...mapActions(["addShopsSync"]),
     async addBtn() {
-      this.managerName = localStorage.managerName;
+      // this.managerName = localStorage.managerName;
       // this.managerId = '1';
       this.content.date = new Date().toLocaleDateString();
       const data = await this.addShopsSync({ ...this.content });

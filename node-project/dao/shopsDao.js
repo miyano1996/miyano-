@@ -1,7 +1,7 @@
 const { shopsModel } = require('./../dao/models/shopsModel');
 module.exports.getShops = async data=>{
     // console.log(data);
-    return await shopsModel.find()
+    return await shopsModel.find({managerId:data.managerId})
 }
 module.exports.addShops = async data=>{
     // console.log(data);

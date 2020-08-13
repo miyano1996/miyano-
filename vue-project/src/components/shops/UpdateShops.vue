@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>修改店铺信息</el-breadcrumb-item>
     </el-breadcrumb>
-    <h1>修改店铺</h1>
+    <h1 style="color:gray">修改店铺</h1>
     <div class="hr"></div>
     <div class="demo-input-suffix">
       <span>店铺名称：</span>

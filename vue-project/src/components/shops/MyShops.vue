@@ -25,11 +25,6 @@
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="店铺编号" width="250">
-          <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row._id }}</span>
-          </template>
-        </el-table-column>
         <el-table-column label="申请日期" width="180">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
@@ -45,6 +40,11 @@
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="进入店铺" width="250">
+          <template slot-scope="scope">
+            <el-button size="mini" type='success' @click="gogogo(scope.row._id)">进入店铺</el-button>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="give(scope.row)">编辑</el-button>
@@ -54,7 +54,7 @@
       </el-table>
       <div class="add" @click="toAdd">申请开店</div>
     </article>
-    <h1 style="color:greenyellow">等待审批</h1>
+    <h1>等待审批</h1>
 
     <div class="hr"></div>
     <article>
@@ -73,11 +73,7 @@
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="店铺编号" width="250">
-          <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row._id }}</span>
-          </template>
-        </el-table-column>
+        
         <el-table-column label="申请日期" width="180">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
@@ -93,6 +89,11 @@
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="店铺编号" width="250">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row._id }}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="give(scope.row)">编辑</el-button>
@@ -101,7 +102,7 @@
         </el-table-column>
       </el-table>
     </article>
-    <h1 style="color:red">审批失败</h1>
+    <h1>审批失败</h1>
 
     <div class="hr"></div>
     <article>
@@ -120,11 +121,7 @@
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="店铺编号" width="250">
-          <template slot-scope="scope">
-            <span style="margin-left: 10px">{{ scope.row._id }}</span>
-          </template>
-        </el-table-column>
+        
         <el-table-column label="申请日期" width="180">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
@@ -140,10 +137,14 @@
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="店铺编号" width="250">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row._id }}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="to2(scope.row)">确定</el-button>
-            <el-button size="mini" type="danger" @click="to3(scope.row._id)">再次申请</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -161,7 +162,7 @@ export default {
     const num = this.datas.filter((value) => {
       return value.status == 4;
     });
-    console.log(this.datas);
+    // console.log(this.datas);
     if (num.length > 0) {
       this.$notify({
         title: "新消息",
@@ -172,7 +173,7 @@ export default {
   },
   methods: {
     ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),
-    ...mapMutations(["addOneShop"]),
+    ...mapMutations(["addOneShop","changeShopsId"]),
     handleDelete(a) {
       this.delShopsSync(a);
       this.datas = this.datas.filter((value) => {
@@ -182,6 +183,10 @@ export default {
     give(a) {
       this.addOneShop(a);
       this.$router.push("/updateShops");
+    },
+    gogogo(shopsId){
+      this.changeShopsId(shopsId);
+      this.$router.push('/main/goodsList')
     },
     toAdd() {
       this.$router.push("/addShops");
@@ -195,8 +200,8 @@ export default {
   computed: {
     //用户名
     managerId() {
-      return "5f335ec79a560000630005c3";
-      // return localStorage.managerId
+      // return "5f335ec79a560000630005c3";
+      return localStorage.managerId
     },
     tableData() {
       return this.datas.filter((value) => {
@@ -232,7 +237,7 @@ export default {
   box-sizing: border-box;
 }
 h1 {
-  color: green;
+  color: gray;
   font-size: 26px;
 }
 .hr {
