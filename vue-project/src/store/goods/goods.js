@@ -9,5 +9,9 @@ export default {
             const msg = await api.goods.addGood(data);
             return msg
         },
+        async getAllGoods({ state, commit, actions }) {
+            const msg = await api.goods.getAllGoods();
+            return msg;
+        }
     }
 }
