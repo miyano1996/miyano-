@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-08-11 14:48:33
+ * @LastEditTime: 2020-08-11 14:49:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \三阶段\Three-project\project\vue-project\src\http\axios.js
+ */
 // 对原生的 axios 做进一步的封装
 import axios from 'axios';
 
