@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" style="box-shadow:0px 0px 10px gray;padding:20px;border-radius:0px;margin:15px">
     <el-breadcrumb
       separator="/"
       style="background-color:#f2f2f2;border-radius:10px;padding-left:10px;margin-bottom:20px;"
@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>申请店铺</el-breadcrumb-item>
     </el-breadcrumb>
-    <h1>申请店铺</h1>
+    <h1 style="color:gray">申请店铺</h1>
     <div class="hr"></div>
     <div class="demo-input-suffix">
       <span>店铺名称：</span>
@@ -39,20 +39,29 @@ export default {
       content: {
         date: "",
         name: "",
-        boss: "",
+        boss: localStorage.managerName,
+        // boss:'1',
         des: "",
         type: "",
         status: "3",
-        managerId: "5f335ec79a560000630005c3",
+        managerId: localStorage.managerId,
+        // managerId:'5f335ec79a560000630005c3',
         credit: "1",
       },
-      managerName: "",
     };
+  },
+  computed:{
+    // content(){
+    //   return this.content.managerId = '123'
+    // }
+  },
+  created(){
+    // console.log(this.content);
   },
   methods: {
     ...mapActions(["addShopsSync"]),
     async addBtn() {
-      this.managerName = localStorage.managerName;
+      // this.managerName = localStorage.managerName;
       // this.managerId = '1';
       this.content.date = new Date().toLocaleDateString();
       const data = await this.addShopsSync({ ...this.content });

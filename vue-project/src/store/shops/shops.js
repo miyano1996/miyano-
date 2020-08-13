@@ -4,7 +4,8 @@ export default {
     state: {
         shops:[],
         ownShops:[],
-        oneShop:{}
+        oneShop:{},
+        shopsId:''
     },
     mutations: {
         getOwnShops(state,data){
@@ -15,6 +16,9 @@ export default {
         },
         backOne(state){
             state.oneShops = {}
+        },
+        changeShopsId(state,_id){
+            state.shopsId = _id
         }
     },
     actions: {

@@ -118,8 +118,7 @@ export default {
   },
   methods: {
     async register() {
-      const data = await this.$api.managers.register({...this.users}); //将要注册的数据发送到后端1
-      console.log(data);
+      const {data} = await this.$api.managers.register({...this.users}); //将要注册的数据发送到后端1
       if (data.success) {
         // alert("注册成功");
         this.open1();
@@ -128,8 +127,7 @@ export default {
     },
     async again() {
       // // 验证重名
-      const data = await this.$api.managers.againName(this.users.account); //将要注册的数据发送到后端1
-      console.log(data);
+      const {data} = await this.$api.managers.againName(this.users.account); //将要注册的数据发送到后端1
       if (data.success) {
         alert("此用户名已存在");
         this.canRegister=true;

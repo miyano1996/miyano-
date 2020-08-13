@@ -15,7 +15,7 @@ router.post('/login', async(req, res) => { //登录
         if (canlogin) {
             const token = jwt.sign({ account }, //设置token中要保存的信息
                 KEY, //自定义密钥串
-                { expiresIn: 60 * 100 } //100分钟有效期
+                { expiresIn: 60*100} //100分钟有效期
             );
             res.send({ msg: '登录成功', success: true, token })
         } else {
@@ -36,15 +36,13 @@ router.post('/register', async(req, res) => { //注册
 
 router.post('/isLogin', async(req, res) => { //验证重名
     const { account } = req.body;
-    console.log(req.body);
-    console.log(account);
     res.send(await isLogin({ account }));
 });
 
 router.get('/tokenLogin', async(req, res) => { //验证是否登录
     const tokenStr = req.get('Authorization'); //返回字符串  Bearer '需要的用户名编码信息'
     const token = tokenStr.split(' ')[1]; //字符串变为数组 空格后的就是我们需要的
-    const { account } = jwt.verify(token, KEY);
+    const { account } = jwt.verify(token, KEY);//data:{ account}
     res.send({
         msg: "用户以登录",
         success: true,

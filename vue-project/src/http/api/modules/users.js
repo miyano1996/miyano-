@@ -23,6 +23,12 @@ const users={
             data:{account:data}
         })
     },
+    whetherlogin:()=>{//是否登录  token是否失效
+        return axios({
+            url:'/users/tokenLogin',
+            method:'get',
+        })
+    },
 }
 
 export default users;

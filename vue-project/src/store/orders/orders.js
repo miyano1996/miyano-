@@ -13,7 +13,14 @@ export default {
     actions: {
         async getAllOrders({ state, commit, actions }) {
             const { data } = await api.orders.getAllOrders();
-            commit('saveOrders', data.data.data)
+            let arr = data.data.data.filter(item => !item.removed)
+            commit('saveOrders', arr)
+        },
+        async delOrder({ state, commit, actions }, id) {
+            const data = await api.orders.delOrder(id);
+            return {
+                msg: data.data
+            }
         },
     }
 }
