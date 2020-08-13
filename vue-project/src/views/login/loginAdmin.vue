@@ -11,6 +11,7 @@
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
     <p>务必遵循《超级管理员公约》相关条约,违者依法追究相关刑事责任！</p>
+    <el-divider content-position="left"></el-divider>
   </div>
   </main>
 </template>
