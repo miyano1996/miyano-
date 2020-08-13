@@ -7,5 +7,15 @@ const shopsManager = {
             method:'get',
             params
         })
+    },
+    changeStateSync: data =>{
+        console.log(data);
+        return axios({
+            url:'/shopsManager/changeState',
+            method:'post',
+            data
+        })
     }
 }
+
+export default shopsManager;
