@@ -17,16 +17,12 @@ const users={
         })
     },
     againName:data=>{//验证重名
-        console.log(data);
         return axios({
             url:'/users/isLogin',
             method:'post',
-            data
+            data:{account:data}
         })
     },
-    // lll:data=>{
-    //     return data
-    // }
 }
 
 export default users;

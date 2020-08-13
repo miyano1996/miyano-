@@ -27,23 +27,19 @@ router.post('/login', async (req, res)=> {//登录
   }else{
     res.send(data)
   }
-  console.log({account,password});
 });
 
 router.post('/register', async (req, res)=> {//注册
  const {account,password,name,age,gender}=req.body;
  let newpassword=bcryptjs.hashSync(password,10);//不可逆无规律加密方式
  res.send(await register({account,password:newpassword,name,age,gender})); 
- 
- console.log({account,password,name,age,gender});
 });
 
 router.post('/isLogin', async (req, res)=> {//验证重名
  const {account}=req.body;
+ console.log(req.body);
  console.log(account);
  res.send(await isLogin({account})); 
- 
- console.log({account,password,name,age,gender});
 });
 
 router.get('/tokenLogin', async (req, res)=> {//验证是否登录

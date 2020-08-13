@@ -30,7 +30,7 @@ const managers={
         return axios({
             url:'/managers/isLogin',
             method:'post',
-            data
+            data:{account:data}
         })
     },
 }

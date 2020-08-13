@@ -30,7 +30,7 @@ export default {
       console.log(data);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
-        // localStorage.token = data.token;
+        localStorage.token = data.token;
         // this.$router.push("/students");
         console.log('登录成功')
       }

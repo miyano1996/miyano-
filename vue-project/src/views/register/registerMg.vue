@@ -130,15 +130,15 @@ export default {
     },
     async again() {
       // // 验证重名
-      // const data = await this.$api.managers.again(this.users.username); //将要注册的数据发送到后端1
-      // console.log(data);
-      // if (data.success) {
-      //   alert("此用户名已存在");
-      //   this.canRegister=true;
-      //   // return true
-      // }else{
-      //   this.canRegister=false;
-      // }
+      const data = await this.$api.managers.againName(this.users.account); //将要注册的数据发送到后端1
+      console.log(data);
+      if (data.success) {
+        alert("此用户名已存在");
+        this.canRegister=true;
+        // return true
+      }else{
+        this.canRegister=false;
+      }
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
