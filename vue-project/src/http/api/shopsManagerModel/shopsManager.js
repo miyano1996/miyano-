@@ -17,8 +17,5 @@ const shopsManager = {
         })
     }
 }
-<<<<<<< HEAD
 
 export default shopsManager;
-=======
->>>>>>> zjf

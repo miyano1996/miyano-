@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" style="box-shadow:0px 0px 15px #f2f2f2;padding:20px;margin:15px;border-radius:0px">
     <el-breadcrumb
       separator="/"
       style="background-color:#f2f2f2;border-radius:10px;padding:18px 10px;margin-bottom:20px;"
@@ -11,7 +11,7 @@
     <div class="hr"></div>
     <article>
       <el-table :data="tableData" style="height: 100%">
-        <el-table-column label="店名" width="130">
+        <el-table-column label="店名" width="150">
           <template slot-scope="scope">
             <el-popover>
               <div slot="reference" class="name-wrapper">
@@ -20,12 +20,12 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column label="信用评级" width="130">
+        <el-table-column label="信用评级" width="100">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="店铺编号" width="280">
+        <el-table-column label="店铺编号" width="250">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row._id }}</span>
           </template>
@@ -40,7 +40,7 @@
             <span style="margin-left: 10px">{{ scope.row.des }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="商品种类" width="180">
+        <el-table-column label="商品种类" width="100">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
@@ -59,7 +59,7 @@
     <div class="hr"></div>
     <article>
       <el-table :data="waitData" style="height: 100%">
-        <el-table-column label="店名" width="130">
+        <el-table-column label="店名" width="150">
           <template slot-scope="scope">
             <el-popover>
               <div slot="reference" class="name-wrapper">
@@ -68,12 +68,12 @@
             </el-popover>
           </template>
         </el-table-column>
-        <el-table-column label="信用评级" width="130">
+        <el-table-column label="信用评级" width="100">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="店铺编号" width="280">
+        <el-table-column label="店铺编号" width="250">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row._id }}</span>
           </template>
@@ -88,7 +88,7 @@
             <span style="margin-left: 10px">{{ scope.row.des }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="商品种类" width="180">
+        <el-table-column label="商品种类" width="100">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.type }}</span>
           </template>
@@ -131,8 +131,8 @@ export default {
   computed: {
     //用户名
     managerId() {
-      return "1";
-      // return localStorage.managerId
+      // return "1";
+      return localStorage.managerId
     },
     tableData() {
       return this.datas.filter((value) => {
@@ -157,7 +157,8 @@ export default {
 
 <style scoped>
 .box {
-  width: 100%;
+  width: 95%;
+  box-sizing: border-box;
 }
 h1 {
   color: green;
