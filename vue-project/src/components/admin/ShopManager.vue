@@ -34,10 +34,6 @@
           <el-input v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="活动区域" :label-width="formLabelWidth">
-          <!-- <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>-->
           <div class="block">
             <span class="demonstration">默认不区分颜色</span>
             <el-rate v-model="value1" show-text></el-rate>
@@ -53,6 +49,8 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+const {mapState,mapActions} = createNamespacedHelpers('shopManager');
 export default {
   data() {
     return {
@@ -97,7 +95,15 @@ export default {
         colors: ['#99A9BF', '#F7BA2A', '#FF9900'] 
     };
   },
+  created(){
+    console.log(this.shopsInfo);
+    this.getShopsSync();
+  },
+  computed:{
+    ...mapState(['shopsInfo'])
+  },
   methods: {
+    ...mapActions(['getShopsSync']),
     handleEdit(index, row) {
       console.log(index, row);
       this.dialogFormVisible = true;

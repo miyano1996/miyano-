@@ -5,8 +5,8 @@
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
       <el-breadcrumb-item>消息中心</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-badge :value="12" class="item">
-      <el-button size="small">店铺申请</el-button>
+    <el-badge :value="shopsInfo.length" class="item">
+      <el-button size="small" active-text-color="#ffd04b">店铺申请</el-button>
     </el-badge>
     <el-badge :value="3" class="item">
       <el-button size="small">新增用户</el-button>
@@ -41,40 +41,36 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="text item">
-        <el-table :data="tableData" style="width: 100%;">
+        <el-table :data="shopsInfo" style="width: 106%; overflow: hidden;" height="600">
           <el-table-column type="expand">
             <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
-                <el-form-item label="申请店铺名称">
+                <el-form-item label="申请店铺名称：">
                   <span>{{ props.row.name }}</span>
                 </el-form-item>
-                <el-form-item label="所属店铺">
-                  <span>{{ props.row.shop }}</span>
+                <el-form-item label="店铺 ID：">
+                  <span>{{ props.row._id }}</span>
                 </el-form-item>
-                <el-form-item label="商品 ID">
-                  <span>{{ props.row.id }}</span>
+                <el-form-item label="经营类目：">
+                  <span>{{ props.row.type }}</span>
                 </el-form-item>
-                <el-form-item label="店铺 ID">
-                  <span>{{ props.row.shopId }}</span>
+                <el-form-item label="店铺申请者 ID：">
+                  <span>{{ props.row.managerId }}</span>
                 </el-form-item>
-                <el-form-item label="商品分类">
-                  <span>{{ props.row.category }}</span>
-                </el-form-item>
-                <el-form-item label="店铺地址">
-                  <span>{{ props.row.address }}</span>
-                </el-form-item>
-                <el-form-item label="商品描述">
-                  <span>{{ props.row.desc }}</span>
+                <el-form-item label="申请描述：">
+                  <span>{{ props.row.des }}</span>
                 </el-form-item>
               </el-form>
             </template>
           </el-table-column>
-          <el-table-column label="申请日期" prop="id"></el-table-column>
+          <el-table-column label="申请日期" prop="date"></el-table-column>
           <el-table-column label="店铺名称" prop="name"></el-table-column>
-          <el-table-column label="申请人" prop="desc"></el-table-column>
+          <el-table-column label="申请人" prop="boss"></el-table-column>
           <el-table-column label="操作" prop="desc">
-              <el-button type="success">同意</el-button>
-              <el-button type="warning">驳回</el-button>
+            <template slot-scope="scope">
+              <el-button type="success" @click="open(scope.$index, scope.row,'yes')">同意</el-button>
+              <el-button type="warning" @click="open(scope.$index, scope.row,'no')">驳回</el-button>
+            </template>
           </el-table-column>
         </el-table>
       </div>
@@ -83,53 +79,65 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapState, mapActions } = createNamespacedHelpers("shopManager");
 export default {
   data() {
-    return {
-      activeName: "second",
-      tableData: [
-        {
-          id: "12987122",
-          name: "好滋好味鸡蛋仔",
-          category: "江浙小吃、小吃零食",
-          desc: "荷兰优质淡奶，奶香浓而不腻",
-          address: "上海市普陀区真北路",
-          shop: "王小虎夫妻店",
-          shopId: "10333",
-        },
-        {
-          id: "12987123",
-          name: "好滋好味鸡蛋仔",
-          category: "江浙小吃、小吃零食",
-          desc: "荷兰优质淡奶，奶香浓而不腻",
-          address: "上海市普陀区真北路",
-          shop: "王小虎夫妻店",
-          shopId: "10333",
-        },
-        {
-          id: "12987125",
-          name: "好滋好味鸡蛋仔",
-          category: "江浙小吃、小吃零食",
-          desc: "荷兰优质淡奶，奶香浓而不腻",
-          address: "上海市普陀区真北路",
-          shop: "王小虎夫妻店",
-          shopId: "10333",
-        },
-        {
-          id: "12987126",
-          name: "好滋好味鸡蛋仔",
-          category: "江浙小吃、小吃零食",
-          desc: "荷兰优质淡奶，奶香浓而不腻",
-          address: "上海市普陀区真北路",
-          shop: "王小虎夫妻店",
-          shopId: "10333",
-        },
-      ],
-    };
+    return {};
+  },
+  created() {
+    this.getShopsSync({status:'3'});
+  },
+  computed: {
+    ...mapState(["shopsInfo"]),
   },
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    ...mapActions(["getShopsSync","changeStateSync"]),
+    open(index, row, th) {
+      console.log(index, row, th);
+      if (th == "yes") {
+        this.$confirm(`此操作将同意“${row.boss}：${row.name}”的店铺开通申请, 是否继续?`, "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          center: true,
+        })
+          .then(() => {
+            this.changeStateSync({_id:row._id,status:'1'})
+            this.getShopsSync({status:'3'})
+            this.$message({
+              type: "success",
+              message: "已同意!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消",
+            });
+          });
+      }else{
+         this.$confirm(`此操作将驳回“${row.boss}：${row.name}”的店铺开通申请, 是否继续?`, "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          center: true,
+        })
+          .then(() => {
+            this.changeStateSync({_id:row._id,status:'4'})
+            this.getShopsSync({status:'3'})
+            this.$message({
+              type: "warning",
+              message: "已驳回!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消",
+            });
+          });
+      }
     },
   },
 };
