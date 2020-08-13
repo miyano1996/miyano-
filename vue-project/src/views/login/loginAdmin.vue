@@ -24,8 +24,7 @@ export default {
   },
   methods: {
     async login() {
-      const data = await this.$api.managers.loginAdmin(this.users);
-      console.log(data);
+      const {data} = await this.$api.managers.loginAdmin(this.users);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
         localStorage.token = data.token;

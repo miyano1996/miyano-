@@ -15,14 +15,13 @@ const instance = axios.create({
 });
 
 // 设置请求拦截器：给所有的 axios 请求设置统一的请求头（添加 token）
-instance.interceptors.request.use(
+instance.interceptors.request.use(//数据返回到发送请求的地方
     config => {
         // 如果请求拦截成功
         // 1. 获取本地存储中的 token
         const token = localStorage.token;
         // 2. 将 token 添加到请求头中
-        // config.headers.Authorization = 'Bearer ' + token;
-        config.headers.Authorization = 'Bearer ';
+        config.headers.Authorization = 'Bearer ' + token;
         return config;
     },
     err => {
@@ -39,12 +38,10 @@ instance.interceptors.response.use(
     },
     // 响应失败
     err => {
-        console.log(err.response);
-        if (err.response.status === 401) {
-            return {
-                msg: '身份认证失败,请重新登录',
-                isable: false
-            }
+        // console.log(err.response);
+        if (err.response.status === 401) {//401 token 头过期
+            console.log('401');
+            return  {data:{msg: '身份认证失败,请重新登录',success: false}}
         }
         return err;
     }
