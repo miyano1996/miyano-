@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">账号</label><input type="text" name="" id="username"><br>
+    <label for="">密码</label><input type="text" name="" id="password">
+    <button id="Btn">注册</button>
+    <script src="jquery/jquery.min.js"></script>
+    <script>
+        //验证重名
+        $('#username').blur(()=>{
+            const username=$('#username').val();
+            $.ajax({
+                url:'/users/again',
+                type:'get',
+                data:{username},
+                success(msg){
+                    if(msg.success){
+                        console.log("1");
+                        $('#username').val('此账号以存在');
+                        $('#Btn').prop('disabled',true);
+                    }else{
+                        console.log(msg.msg);
+
+                        $('#Btn').prop('disabled',false);
+                    }
+            }
+            })
+        });
+        //注册
+        $('#Btn').click(()=>{
+            const username=$('#username').val();
+            const password=$('#password').val();
+            $.ajax({
+                url:'/users/register',
+                type:'post',
+                data:{username,password},
+                success(msg){
+                    if(msg.success){
+                        alert('注册成功');
+                      location.href='./login.html';
+                    }else{
+                        console.log(msg);
+                    }
+            }
+            })
+        });
+
+   
+    </script>
+</body>
+</html>

@@ -9,7 +9,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import goods from './goods/goods'
-import shops from './shops.js'
+import shops from './shops/shops.js'
+import shopManager from './shopManager/shopManager.js'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     actions: {},
     modules: {
         goods,
-        shops
+        shops,
+        shopManager
     }
 })

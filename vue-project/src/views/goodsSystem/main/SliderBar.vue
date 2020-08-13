@@ -17,6 +17,17 @@
             <span>首页</span>
           </template>
         </el-submenu>
+        <el-submenu index="10">
+          <template slot="title">
+            <i class="el-icon-goods"></i>
+            <span>我的店铺</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/myShops">所有店铺</el-menu-item>
+            <el-menu-item index="/updateShops">修改店铺信息</el-menu-item>
+            <el-menu-item index="/addShops">新增店铺</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-goods"></i>
@@ -24,7 +35,10 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="2-1">商品列表</el-menu-item>
-            <el-menu-item index="/main/addGood">添加商品</el-menu-item>
+            <el-menu-item index="2-2">添加商品</el-menu-item>
+            <el-menu-item index="2-3">商品分类</el-menu-item>
+            <el-menu-item index="2-4">品牌管理</el-menu-item>
+            <el-menu-item index="/addGood">添加商品</el-menu-item>
             <el-menu-item index="2-2">商品分类</el-menu-item>
             <el-menu-item index="2-2">品牌管理</el-menu-item>
           </el-menu-item-group>
@@ -37,8 +51,8 @@
           <el-menu-item-group>
             <el-menu-item index="3-1">订单列表</el-menu-item>
             <el-menu-item index="3-2">订单设置</el-menu-item>
-            <el-menu-item index="3-2">退货申请处理</el-menu-item>
-            <el-menu-item index="3-2">退货原因设置</el-menu-item>
+            <el-menu-item index="3-3">退货申请处理</el-menu-item>
+            <el-menu-item index="3-4">退货原因设置</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="4">
@@ -49,7 +63,7 @@
           <el-menu-item-group>
             <el-menu-item index="4-1">活动管理</el-menu-item>
             <el-menu-item index="4-2">专场活动</el-menu-item>
-            <el-menu-item index="4-2">促销专区</el-menu-item>
+            <el-menu-item index="4-3">促销专区</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="5">
@@ -59,7 +73,10 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="5-1">系统管理</el-menu-item>
-            <el-menu-item index="5-2">店铺管理</el-menu-item>
+            <el-menu-item index="/shopManager">店铺管理</el-menu-item>
+            <el-menu-item index="5-3">用户管理</el-menu-item>
+            <el-menu-item index="5-4">产品管理</el-menu-item>
+            <el-menu-item index="/messageCenter">消息中心</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

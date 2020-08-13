@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">账号</label><input type="text" name="" id="username">
+    <label for="">密码</label><input type="text" name="" id="password">
+    <button id="Btn">登录</button>
+    <script src="jquery/jquery.min.js"></script>
+    <script>
+        // let a=[{name:'a股',money:100},{name:'a股',money:100},{name:'b股',money:200},{name:'c股',money:300},{name:'c股',money:300}];
+        // function max(arr){//去重
+        //     return arr.reduce((set,isme)=>{
+        //      let find=set.find(item=>item.name==isme.name)  ;
+        //      if(!find){
+        //          set.push(isme)
+        //      }
+        //      return set
+        //     },[]);
+        // }
+        // console.table(max(a));
+        // function max(arr){//找最大数
+        //     return arr.reduce((set,isme)=>set.money>isme.money ? set:isme);
+        // }
+        // console.table(max(a));
+        $('#Btn').click(()=>{
+            const username=$('#username').val();
+            const password=$('#password').val();
+            $.ajax({
+                url:'/users/login',
+                type:'post',
+                data:{username,password},
+                success(msg){
+                    if(msg.success){
+                        //将登录的用户名保存到本地 是编码过后的 其他页面使用还得编译使用  
+                        localStorage.token=msg.token;
+                        console.log(msg);
+                        location.href='./system.html';
+                }else{
+                    console.log(msg);
+                }
+                // msg.success?console.log(msg):console.log(msg)
+            }
+            })
+        });
+
+   
+    </script>
+</body>
+</html>

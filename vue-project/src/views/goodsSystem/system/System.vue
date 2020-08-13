@@ -1,6 +1,6 @@
 <!--页面主体 -->
 <template>
-  <div style="color:red">
+  <div>
     <p class="system-use">
       <i :class="weather"></i>
       <span>{{msg}}：{{useName}}</span>
@@ -104,7 +104,7 @@ export default {
   font-weight: 400;
 }
 .system-box {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
