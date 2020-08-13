@@ -23,6 +23,16 @@ const goods = {
             method: 'get'
         })
     },
+    getGood() {
+        return axios({
+            url: "/goods/findGood",
+            method: "post",
+            data: {
+
+            }
+
+        })
+    },
     updatedGoods() {
 
     },

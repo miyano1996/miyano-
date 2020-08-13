@@ -44,7 +44,7 @@
         </el-table-column>
         <el-table-column label="进入店铺" width="250">
           <template slot-scope="scope">
-            <el-button size="mini" type='success' @click="gogogo(scope.row._id)">进入店铺</el-button>
+            <el-button size="mini" type="success" @click="gogogo(scope.row._id)">进入店铺</el-button>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -75,7 +75,7 @@
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        
+
         <el-table-column label="申请日期" width="180">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
@@ -123,7 +123,7 @@
             <span style="margin-left: 10px">{{ scope.row.credit }}</span>
           </template>
         </el-table-column>
-        
+
         <el-table-column label="申请日期" width="180">
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
@@ -156,11 +156,11 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-import UsersViewCharts from '../charts/UsersView/UsersViewCharts'
+import UsersViewCharts from "../charts/UsersView/UsersViewCharts";
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
-  components:{
-    UsersViewCharts
+  components: {
+    UsersViewCharts,
   },
   async created() {
     this.datas = (await this.getOwnShopsSync(this.managerId)).data;
@@ -179,7 +179,7 @@ export default {
   },
   methods: {
     ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),
-    ...mapMutations(["addOneShop","changeShopsId"]),
+    ...mapMutations(["addOneShop", "changeShopsId"]),
     handleDelete(a) {
       this.delShopsSync(a);
       this.datas = this.datas.filter((value) => {
@@ -190,9 +190,9 @@ export default {
       this.addOneShop(a);
       this.$router.push("/updateShops");
     },
-    gogogo(shopsId){
+    gogogo(shopsId) {
       this.changeShopsId(shopsId);
-      this.$router.push('/main/goodsList')
+      this.$router.push("/main/goodsList");
     },
     toAdd() {
       this.$router.push("/addShops");
@@ -207,7 +207,7 @@ export default {
     //用户名
     managerId() {
       // return "5f335ec79a560000630005c3";
-      return localStorage.managerId
+      return localStorage.managerId;
     },
     tableData() {
       return this.datas.filter((value) => {
