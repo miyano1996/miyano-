@@ -33,5 +33,6 @@ export default {
 .system-container .main-content {
   width: 84%;
   background: rgb(248, 248, 248);
+  padding: 20px;
 }
 </style>

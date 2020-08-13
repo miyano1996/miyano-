@@ -1,6 +1,6 @@
 <!--页面主体 -->
-<template>
-  <div>
+<template >
+  <div class='system-main'>
     <p class="system-use">
       <i :class="weather"></i>
       <span>{{msg}}：{{useName}}</span>
@@ -85,6 +85,9 @@ export default {
 </script>
 
 <style scoped>
+.system-mian{
+  position: relative;
+}
 .system-use {
   position: absolute;
   right: 80px;
@@ -107,6 +110,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .el-header,
 .el-footer {
@@ -120,5 +124,6 @@ export default {
 .main {
   width: 100%;
   height: 100%;
+  flex-grow: 1;
 }
 </style>
