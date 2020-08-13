@@ -9,3 +9,4 @@ const shopsManager = {
         })
     }
 }
+export default shopsManager
