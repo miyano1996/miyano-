@@ -6,16 +6,17 @@
       <el-breadcrumb-item>店铺管理</el-breadcrumb-item>
     </el-breadcrumb>
     <el-table
-      :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+      :data="shopsInfo.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       style="width: 100%"
     >
       <el-table-column label="店铺开启日期" prop="date"></el-table-column>
       <el-table-column label="店铺名称" prop="name"></el-table-column>
-      <el-table-column label="店铺所有者" prop="name"></el-table-column>
-      <el-table-column label="店铺ID" prop="name"></el-table-column>
-      <el-table-column label="店铺评级" prop="name"></el-table-column>
+      <el-table-column label="店铺所有者" prop="boss"></el-table-column>
+      <el-table-column label="店铺ID" prop="_id"></el-table-column>
+      <el-table-column label="店铺评级" prop="credit"></el-table-column>
       <el-table-column label="封禁/解除封禁" prop="name">
-        <el-switch v-model="value" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+        <!-- <el-switch  prop="status" active-color="#13ce66" inactive-color="#ff4949" @change="handelChange(value)"></el-switch> -->
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
       </el-table-column>
       <el-table-column align="right">
         <template slot="header" slot-scope>
@@ -54,28 +55,6 @@ const {mapState,mapActions} = createNamespacedHelpers('shopManager');
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄",
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄",
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄",
-        },
-      ],
       search: "",
       value: true,
       dialogTableVisible: false,
@@ -96,8 +75,7 @@ export default {
     };
   },
   created(){
-    console.log(this.shopsInfo);
-    this.getShopsSync();
+    this.getShopsSync({status:'1'});
   },
   computed:{
     ...mapState(['shopsInfo'])
@@ -110,6 +88,9 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    handelChange(value){
+      console.log('改变',value);
     },
   },
 };

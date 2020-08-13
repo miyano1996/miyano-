@@ -6,6 +6,7 @@ import './plugins/element.js'
 import api from './http/api/api.js'
 import Echarts from "echarts"
 //封装的axios
+import './commonStyle/chartsCommonStyle.css'
 
 Vue.prototype.$api = api;
 

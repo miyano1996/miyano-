@@ -1,6 +1,4 @@
 import $api from '../../http/api/api.js'
-import { changeState } from '../../../../node-project/shopManagerService/shopManagerService.js';
-
 export default{
     namespaced: true,
     state:{
@@ -9,12 +7,11 @@ export default{
     mutations:{
         getShops(state,newData){
             state.shopsInfo = newData;
-            // console.log(state.shopsInfo);
         },
         changeState(state,data){
             console.log(data);
             return data
-        }
+        },
     },
     actions:{
         async getShopsSync({commit},params){
