@@ -33,10 +33,17 @@ export default {
         localStorage.managerId=data._id;
         localStorage.managerName=data.name;
         this.$router.push("/system");
+        this.open2();
       }else{
         this.open4()
       }
     },
+    open2() {
+      this.$message({
+          message: '登录成功',
+          type: 'success'
+        });
+      },
     open4() {
         this.$notify.error({
           title: '登录失败',
