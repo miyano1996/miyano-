@@ -13,7 +13,8 @@ instance.interceptors.request.use(
         // 1. 获取本地存储中的 token
         const token = localStorage.token;
         // 2. 将 token 添加到请求头中
-        config.headers.Authorization = 'Bearer ' + token;
+        // config.headers.Authorization = 'Bearer ' + token;
+        config.headers.Authorization = 'Bearer ';
         return config;
     },
     err => {
@@ -22,22 +23,22 @@ instance.interceptors.request.use(
     }
 );
 
-// 设置响应拦截器
-instance.interceptors.response.use(
-    // 响应成功
-    res => {
-        return res.data; // { data: {}}
-    },
-    // 响应失败
-    err => {
-        console.log(err.response);
-        if (err.response.status === 401) {
-            return {
-                msg: '身份认证失败,请重新登录',
-                isable: false
-            }
-        }
-        return err;
-    }
-);
+// // 设置响应拦截器
+// instance.interceptors.response.use(
+//     // 响应成功
+//     res => {
+//         return res.data; // { data: {}}
+//     },
+//     // 响应失败
+//     err => {
+//         console.log(err.response);
+//         if (err.response.status === 401) {
+//             return {
+//                 msg: '身份认证失败,请重新登录',
+//                 isable: false
+//             }
+//         }
+//         return err;
+//     }
+// );
 export default instance;
