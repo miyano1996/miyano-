@@ -57,6 +57,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapActions } = createNamespacedHelpers("goods");
+const { mapState } = createNamespacedHelpers("shops");
 
 export default {
   data() {
@@ -69,6 +70,7 @@ export default {
         detail: "",
         price: "",
         status: true,
+        shopId: "",
       },
       type: ["电子产品", "食品酒水", "服装饰品"],
       rules: {
@@ -100,6 +102,7 @@ export default {
         }
       });
       if (this.formisable) {
+        this.good.shopId = this.shopsId;
         let msg = await this.addGood(this.good);
         if (msg.data.success) {
           alert("添加成功");
@@ -111,6 +114,9 @@ export default {
         this.good.image = res.filename[0];
       }
     },
+  },
+  computed: {
+    ...mapState(["shopsId"]),
   },
 };
 </script>
