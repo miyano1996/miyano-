@@ -9,6 +9,8 @@
         <!--内容区 -->
         <users-view-charts></users-view-charts>
         <shop-data></shop-data>
+        <shop-sales></shop-sales>
+        <type-sales></type-sales>
       <router-view/>
     </div>
   </div>
@@ -18,9 +20,11 @@
 import SliderBar from './SliderBar.vue'
 import UsersViewCharts from '../../../components/charts/UsersView/UsersViewCharts'
 import ShopData from '../../../components/charts/ShopData/ShopData'
+import ShopSales from '../../../components/charts/ShopSales/ShopSales'
+import TypeSales from '../../../components/charts/ShopSales/TypeSales'
 export default {
     components:{
-        SliderBar,UsersViewCharts,ShopData
+        SliderBar,UsersViewCharts,ShopData,ShopSales,TypeSales
     }
 }
 </script>

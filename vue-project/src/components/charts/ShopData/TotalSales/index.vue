@@ -9,8 +9,8 @@
 
         </div>
         <div class="compare">
-          <span>日同比</span>
-          <span>4.24%</span>
+          <span>月同比</span>
+          <span>3.13%</span>
           <div class="decrease"></div>
         </div>
       </div>
@@ -43,6 +43,7 @@ export default {
     border-width: 3px;
     border-color: transparent transparent red transparent;
     border-style: solid;
+    margin:-3px 0 0 3px
     
   }
   .decrease {
@@ -51,6 +52,7 @@ export default {
     border-width: 3px;
     border-color: green transparent transparent transparent;
     border-style: solid;
+    margin:0 0 -3px 3px
   }
 }
 </style>

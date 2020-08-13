@@ -20,6 +20,8 @@ export default {
     const chartsDom = document.getElementById("today-users-charts");
     const chart = this.$echarts.init(chartsDom);
     chart.setOption({
+        tooltip:{},
+
         color:['#3398DB'],
         series:[{
             type:'bar',

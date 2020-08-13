@@ -1,5 +1,5 @@
 <template>
-  <div class="common-card" :style="{width:'100%',height:'100%'}">
+  <div class="common-card" >
     <el-card shadow="hover">
       <div class="title">{{title}}</div>
       <div class="value">{{value}}</div>
@@ -25,9 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .common-card{
-        height: 100%;
-    }
+
     .title{
         font-size: 12px;
         color:#888;
@@ -48,9 +46,5 @@ export default {
     .total{
         font-size: 12px;
         color:#888
-    }
-    .emphasis{
-        color: #000;
-        font-weight: 900;
     }
 </style>

@@ -4,7 +4,7 @@
       <div id="total-orders-charts" :style="{width:'100%',height:'100%'}"></div>
     </template>
     <template v-slot:footer>
-      <span>昨日成交量 </span>
+      <span>昨日成交量</span>
       <span class="emphasis">2000</span>
     </template>
   </shop-common-card>
@@ -21,6 +21,14 @@ export default {
     const chartsDom = document.getElementById("total-orders-charts");
     const chart = this.$echarts.init(chartsDom);
     chart.setOption({
+      tooltip: {
+        axisPointer: {
+          type: "cross",
+          crossStyle: {
+            color: "#999",
+          },
+        },
+      },
       xAxis: {
         type: "category",
         show: false,

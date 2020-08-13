@@ -1,17 +1,17 @@
 
 <template>
-  <div id="monthly-view"></div>
+  <div id="monthly-view" ></div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      xAxisData:[]
-    }
+      xAxisData: [],
+    };
   },
-  created(){
-    this.getMonths()
+  created() {
+    this.getMonths();
   },
   mounted() {
     const chartsDom = document.getElementById("monthly-view");
@@ -44,6 +44,9 @@ export default {
       },
       yAxis: {
         type: "value",
+        splitLine: {
+          show: false,
+        },
       },
       series: [
         {
@@ -81,24 +84,24 @@ export default {
   },
   methods: {
     getMonths() {
-      let datelist = []
-      let date = new Date()
-      let Y = date.getFullYear()
-      let M = date.getMonth()
+      let datelist = [];
+      let date = new Date();
+      let Y = date.getFullYear();
+      let M = date.getMonth();
       for (let i = 0; i < 6; i++) {
-        let dateoption = ''
+        let dateoption = "";
         if (M - 1 !== 0) {
         } else {
-          M = 12
-          Y = Y - 1
+          M = 12;
+          Y = Y - 1;
         }
-        let m = M
-        m = m < 10 ? '0' + m : m
-        dateoption = Y + '/' + m
-        M--
-        datelist.push(dateoption)
+        let m = M;
+        m = m < 10 ? "0" + m : m;
+        dateoption = Y + "/" + m;
+        M--;
+        datelist.push(dateoption);
       }
-      this.xAxisData = datelist.reverse()
+      this.xAxisData = datelist.reverse();
     },
   },
 };

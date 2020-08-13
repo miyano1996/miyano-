@@ -11,7 +11,7 @@
         <today-users></today-users>
       </el-col>
       <el-col :span="6">
-        <type-sales></type-sales>
+        <credit-points></credit-points>
       </el-col>
     </el-row>
   </div>
@@ -21,22 +21,18 @@
 import TotalSales from "./TotalSales/";
 import TotalOrders from "./TotalOrders";
 import TodayUsers from "./TodayUsers";
-import TypeSales from "./TypeSales";
+import CreditPoints from "./CreditPoints";
 export default {
   components: {
     TotalSales,
     TotalOrders,
     TodayUsers,
-    TypeSales,
+    CreditPoints,
   },
 };
 </script>
 
-<style>
-#shop-data {
-
-  height: 300px;
-}
+<style scoped>
 .el-row,
 .el-col {
   height: 100%;
