@@ -34,11 +34,8 @@
             <span>商品中心</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="2-1">商品列表</el-menu-item>
-            <el-menu-item index="2-2">添加商品</el-menu-item>
-            <el-menu-item index="2-3">商品分类</el-menu-item>
-            <el-menu-item index="2-4">品牌管理</el-menu-item>
-            <el-menu-item index="/addGood">添加商品</el-menu-item>
+            <el-menu-item index="/main/">商品列表</el-menu-item>
+            <el-menu-item index="/main/addGood">添加商品</el-menu-item>
             <el-menu-item index="2-2">商品分类</el-menu-item>
             <el-menu-item index="2-2">品牌管理</el-menu-item>
           </el-menu-item-group>
