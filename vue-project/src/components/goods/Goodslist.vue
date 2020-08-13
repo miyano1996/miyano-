@@ -17,7 +17,9 @@
     <el-col :span="4">
       <div class="list">
         <i>
-          <img src="../../assets/logo.png" alt />
+          <router-link to="goodsDetails.vue">
+            <img src="../../assets/商品图片.jpg" alt />
+          </router-link>
         </i>
         <strong>VUE.js</strong>
         <div class="box">
@@ -33,7 +35,7 @@
     <el-col :span="4">
       <div class="list">
         <i>
-          <img src="../../assets/logo.png" alt />
+          <img src="../../assets/商品图片.jpg" alt />
         </i>
         <strong>商品名称</strong>
         <div class="box">
@@ -49,7 +51,7 @@
     <el-col :span="4">
       <div class="list">
         <i>
-          <img src="../../assets/logo.png" alt />
+          <img src="../../assets/商品图片.jpg" alt />
         </i>
         <strong>商品名称</strong>
         <div class="box">
@@ -123,6 +125,11 @@ input::placeholder {
   vertical-align: middle;
   margin-bottom: 2px;
 }
+.input span:hover {
+  background: rgb(228, 59, 59) url("../../assets/搜索.png") no-repeat center
+    center;
+  background-size: 18px;
+}
 .list {
   list-style: none;
   background: white;
@@ -138,9 +145,14 @@ input::placeholder {
   box-sizing: border-box;
   padding: 5px 5px 0 5px;
   width: 100%;
+  overflow: hidden;
 }
 .list i img {
   width: 200px;
+  transition: 0.3s;
+}
+.list i img:hover {
+  transform: scale(1.2);
 }
 .list p {
   margin: 0;

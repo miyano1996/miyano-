@@ -37,7 +37,7 @@
             <el-menu-item index="/main/goodsList">商品列表</el-menu-item>
             <el-menu-item index="/main/addGood">添加商品</el-menu-item>
             <el-menu-item index="2-2">商品分类</el-menu-item>
-            <el-menu-item index="2-2">品牌管理</el-menu-item>
+            <el-menu-item index="/main/notListedGoods">未上架商品</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="3">
