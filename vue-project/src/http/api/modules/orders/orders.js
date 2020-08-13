@@ -1,11 +1,13 @@
 import axios from '../../../axios'
 const orders = {
-    getAllOrders: function() {
+    getAllOrders: function(data) {
         return axios({
             url: "/orders/getAllOders",
             method: "get",
             // 只有get使用params,其他的都使用data
-            params: {}
+            params: {
+                data
+            }
         })
     },
     delOrder: function(id) {

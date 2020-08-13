@@ -4,7 +4,7 @@ var router = express.Router();
 const { getAllOrders, delOrder } = require('../service/orderServer');
 // 获取所有订单
 router.get('/getAllOders', async function(req, res, next) {
-    let msg = await getAllOrders();
+    let msg = await getAllOrders(req.query);
     if (msg.success) {
         res.send({
             data: msg.data,
