@@ -31,8 +31,8 @@ export default {
       if (data.success) {
         // 将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
-        localStorage._id=data._id;
-        localStorage.name=data.name;
+        localStorage.managerId=data._id;
+        localStorage.managerName=data.name;
         this.$router.push("/system");
       }else{
         this.open4()
