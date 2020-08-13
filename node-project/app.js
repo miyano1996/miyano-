@@ -25,11 +25,11 @@ var app = express();
 var goods = require('./routes/good')
 var imagesRouter = require('./routes/images');
 var shopsRouter = require('./routes/shops')
-const jwtAuth=require('./utils/jwt.js');//token
+// const jwtAuth=require('./utils/jwt.js');//token
 
 // 链接数据库 在一级路径之前  去三层拿
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var managersRouter = require('./routes/managers');
 
@@ -75,7 +75,7 @@ app.use('/images', imagesRouter);
 
 // app.use('/users', usersRouter);
 app.use('/shops', shopsRouter);
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);//用户登录注册
 app.use('/managers', managersRouter);//商家登录注册
 
