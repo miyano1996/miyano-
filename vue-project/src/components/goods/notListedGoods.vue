@@ -17,9 +17,7 @@
     <el-col :span="4">
       <div class="list">
         <i>
-          <router-link to="goodsDetails.vue">
-            <img src="../../assets/商品图片.jpg" alt />
-          </router-link>
+          <img src="../../assets/商品图片.jpg" alt />
         </i>
         <strong>VUE.js</strong>
         <div class="box">
@@ -27,8 +25,8 @@
           <span class="stock">库存:5565件</span>
         </div>
         <p class="btn">
-          <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
+          <span class>上架商品</span>
+          <span class="activegoods">下架商品</span>
         </p>
       </div>
     </el-col>
@@ -43,8 +41,8 @@
           <span class="stock">库存:5565件</span>
         </div>
         <p class="btn">
-          <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
+          <span class>上架商品</span>
+          <span class="activegoods">下架商品</span>
         </p>
       </div>
     </el-col>
@@ -59,8 +57,8 @@
           <span class="stock">库存:5565件</span>
         </div>
         <p class="btn">
-          <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
+          <span class>上架商品</span>
+          <span class="activegoods">下架商品</span>
         </p>
       </div>
     </el-col>

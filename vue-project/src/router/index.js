@@ -80,6 +80,18 @@ const routes = [{ //买家  用户
                             import ('../components/admin/MessageCenter.vue')
                     },
                     {
+                        path: 'goodsList',
+                        component: () =>
+                            import ('../components/goods/Goodslist.vue')
+                    }, {
+                        path: 'notListedGoods',
+                        component: () =>
+                            import ('../components/goods/notListedGoods.vue')
+                    }, {
+                        path: "goodsDetails.vue",
+                        component: () =>
+                            import ('../components/goods/goodsDetails.vue')
+                    }, {
                         path: 'addGood',
                         component: () =>
                             import ('../components/goods/addGoods.vue')
@@ -91,9 +103,14 @@ const routes = [{ //买家  用户
                     }
                 ]
             }
+
+
+
         ]
-    },
+    }
 ]
+
+
 
 const router = new VueRouter({
     routes
