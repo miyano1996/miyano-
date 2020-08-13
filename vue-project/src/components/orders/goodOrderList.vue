@@ -21,7 +21,7 @@
       <el-table-column align="center" prop="goodId.name" label="商品名称" width="250"></el-table-column>
       <el-table-column align="center" prop="_id" label="订单编号" width="300"></el-table-column>
       <el-table-column align="center" label="用户名称" width="300"></el-table-column>
-      <el-table-column align="center" prop="status" label="状态" width="250"></el-table-column>
+      <el-table-column align="center" prop="status" label="状态" width="200"></el-table-column>
       <el-table-column align="center" fixed="right" label="操作" width="200">
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" :value="scope" />
