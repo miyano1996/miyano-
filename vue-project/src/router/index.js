@@ -4,43 +4,6 @@ import login from '../views/login/login.vue'
 
 Vue.use(VueRouter)
 
-// const routes = [{
-//   path: '/',
-//   redirect: '/system'
-// },
-// {
-//   path: '/system',
-//   component: () =>
-//     import('../views/goodsSystem/system/System.vue'),
-//   children: [{
-//     path: '/',
-//     redirect: '/main'
-//   },
-//   {
-//     //内容区路由
-//     path: '/main',
-//     component: () =>
-//       import('../views/goodsSystem/main/Main.vue'),
-//     children: [
-//       //内容区子路由
-//       {
-//         path: 'addGood',
-//         component: () =>
-//           import('../components/goods/addGoods.vue')
-//       }
-//     ]
-//   },
-  
-//   ]
-// },
-
-// ]
-
-// import { component } from 'vue/types/umd'
-
-
-
-
 const routes = [
    {//买家  用户
     path: '/login',

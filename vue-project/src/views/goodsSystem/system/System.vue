@@ -104,7 +104,7 @@ export default {
   font-weight: 400;
 }
 .system-box {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
