@@ -40,7 +40,6 @@ instance.interceptors.response.use(
     err => {
         // console.log(err.response);
         if (err.response.status === 401) {//401 token 头过期
-            console.log('401');
             return  {data:{msg: '身份认证失败,请重新登录',success: false}}
         }
         return err;
