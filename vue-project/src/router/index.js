@@ -51,7 +51,7 @@ const routes = [
     children: [
       {
         path: '/',
-        redirect: '/main'
+        redirect: '/myShops'
       },
       {
         //内容区路由

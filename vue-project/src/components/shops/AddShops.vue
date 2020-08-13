@@ -39,13 +39,13 @@ export default {
         managerId: "5f335ec79a560000630005c3",
         credit: "1",
       },
-      namegerName: "",
+      managerName: "",
     };
   },
   methods: {
     ...mapActions(["addShopsSync"]),
     async addBtn() {
-      this.managerName = localStorage.namegerName;
+      this.managerName = localStorage.managerName;
       // this.managerId = '1';
       this.content.date = new Date().toLocaleDateString();
       const data = await this.addShopsSync({ ...this.content });

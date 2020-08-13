@@ -121,6 +121,7 @@ export default {
     }
   },
   computed: {
+    //用户名
     managerId() {
       return "1";
     },
