@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" style="box-shadow:0px 0px 15px #f2f2f2;padding:20px;border-radius:0px;margin:15px">
     <el-breadcrumb
       separator="/"
       style="background-color:#f2f2f2;border-radius:10px;padding-left:10px;margin-bottom:20px;"
@@ -39,15 +39,23 @@ export default {
       content: {
         date: "",
         name: "",
-        boss: "",
+        boss: localStorage.managerName,
         des: "",
         type: "",
         status: "3",
-        managerId: "5f335ec79a560000630005c3",
+        managerId: localStorage.managerId,
         credit: "1",
       },
       managerName: "",
     };
+  },
+  computed:{
+    // content(){
+    //   return this.content.managerId = '123'
+    // }
+  },
+  created(){
+    // console.log(this.content);
   },
   methods: {
     ...mapActions(["addShopsSync"]),

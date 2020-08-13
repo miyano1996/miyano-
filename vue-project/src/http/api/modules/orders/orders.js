@@ -7,6 +7,16 @@ const orders = {
             // 只有get使用params,其他的都使用data
             params: {}
         })
+    },
+    delOrder: function(id) {
+        return axios({
+            url: "/orders/delOrder",
+            method: "post",
+            // 只有get使用params,其他的都使用data
+            data: {
+                _id: id
+            }
+        })
     }
 }
 

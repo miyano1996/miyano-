@@ -10,8 +10,8 @@ export default {
             return msg
         },
         async getAllGoods({ state, commit, actions }) {
-            const msg = await api.goods.getAllGoods();
-            return msg;
+            const { data } = await api.goods.getAllGoods();
+            return data.data.data;
         }
     }
 }
