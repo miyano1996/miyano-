@@ -104,11 +104,11 @@ export default {
         })
           .then(() => {
             this.changeStateSync({_id:row._id,status:'1'})
-            this.getShopsSync({status:'3'})
             this.$message({
               type: "success",
               message: "已同意!",
             });
+            this.getShopsSync({status:'3'})
           })
           .catch(() => {
             this.$message({
@@ -125,11 +125,11 @@ export default {
         })
           .then(() => {
             this.changeStateSync({_id:row._id,status:'4'})
-            this.getShopsSync({status:'3'})
             this.$message({
               type: "warning",
               message: "已驳回!",
             });
+            this.getShopsSync({status:'3'})
           })
           .catch(() => {
             this.$message({

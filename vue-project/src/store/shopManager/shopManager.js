@@ -7,6 +7,7 @@ export default{
     mutations:{
         getShops(state,newData){
             state.shopsInfo = newData;
+            console.log(state.shopsInfo);
         },
         changeState(state,data){
             console.log(data);

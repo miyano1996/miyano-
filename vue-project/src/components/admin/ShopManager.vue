@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/system' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
@@ -7,24 +7,27 @@
     </el-breadcrumb>
     <el-table
       :data="shopsInfo.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-      style="width: 100%"
+      style="width: 100%;margin-top:20px;"
     >
       <el-table-column label="店铺开启日期" prop="date"></el-table-column>
       <el-table-column label="店铺名称" prop="name"></el-table-column>
       <el-table-column label="店铺所有者" prop="boss"></el-table-column>
       <el-table-column label="店铺ID" prop="_id"></el-table-column>
       <el-table-column label="店铺评级" prop="credit"></el-table-column>
-      <el-table-column label="封禁/解除封禁" prop="name">
-        <!-- <el-switch  prop="status" active-color="#13ce66" inactive-color="#ff4949" @change="handelChange(value)"></el-switch> -->
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      <el-table-column label="封禁/解除封禁">
+        <template slot-scope="scope">
+          <el-button v-if="scope.row.isLift" @click="isLift(scope.row)" type="danger">封禁</el-button>
+          <el-button v-else @click="isLift(scope.row)" type="success">解禁</el-button>
+        </template>
       </el-table-column>
+
       <el-table-column align="right">
         <template slot="header" slot-scope>
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
         </template>
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">修改评级</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">强制下架</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -50,8 +53,8 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-const {mapState,mapActions} = createNamespacedHelpers('shopManager');
+import { createNamespacedHelpers } from "vuex";
+const { mapState, mapActions } = createNamespacedHelpers("shopManager");
 export default {
   data() {
     return {
@@ -71,17 +74,17 @@ export default {
       },
       formLabelWidth: "120px",
       value1: 3,
-        colors: ['#99A9BF', '#F7BA2A', '#FF9900'] 
+      colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
     };
   },
-  created(){
-    this.getShopsSync({status:'1'});
+  created() {
+    this.getShopsSync({ status: "1" });
   },
-  computed:{
-    ...mapState(['shopsInfo'])
+  computed: {
+    ...mapState(["shopsInfo"]),
   },
   methods: {
-    ...mapActions(['getShopsSync']),
+    ...mapActions(["getShopsSync"]),
     handleEdit(index, row) {
       console.log(index, row);
       this.dialogFormVisible = true;
@@ -89,8 +92,33 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
-    handelChange(value){
-      console.log('改变',value);
+    handelChange(value) {
+      console.log("改变", value);
+    },
+    isLift(row) {
+      console.log(document.body);
+      document.body.style.overflow = 'hidden'
+      console.log(row);
+      row.isLift = !row.isLift;
+      if(row.isLift){
+        this.open1()
+      }else{
+        this.open2()
+      }
+    },
+    open1() {
+      this.$notify({
+        title: "成功",
+        message: "已解除店铺封禁",
+        type: "success",
+      });
+    },
+    open2() {
+      this.$notify({
+        title: "警告",
+        message: "已封禁该店铺",
+        type: "warning",
+      });
     },
   },
 };
