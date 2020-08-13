@@ -16,6 +16,21 @@ const goods = {
                 shopId: data.shopId
             },
         })
+    },
+    getAllGoods: () => {
+        return axios({
+            url: "/goods/findAllGoods",
+            method: 'get'
+        })
+    },
+    updatedGoods() {
+
+    },
+    delGoods() {
+
+    },
+    searchGoods() {
+
     }
 }
 
