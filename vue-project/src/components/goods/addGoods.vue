@@ -86,9 +86,11 @@ export default {
       formisable: false,
     };
   },
-  created() {},
+  created() {
+    this.getAllGoods();
+  },
   methods: {
-    ...mapActions(["addGood"]),
+    ...mapActions(["addGood", "getAllGoods"]),
     async sureadd(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {

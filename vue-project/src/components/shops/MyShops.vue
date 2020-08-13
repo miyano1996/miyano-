@@ -138,7 +138,7 @@ export default {
     //用户名
     managerId() {
       // return "1";
-      return localStorage.managerId
+      return localStorage.managerId;
     },
     tableData() {
       return this.datas.filter((value) => {

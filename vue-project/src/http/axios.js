@@ -35,11 +35,10 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     // 响应成功
     res => {
-        return res.data; // { data: {}}
+        return res; // { data: {}}
     },
     // 响应失败
     err => {
-        console.log(err.response);
         if (err.response.status === 401) {
             return {
                 msg: '身份认证失败,请重新登录',
