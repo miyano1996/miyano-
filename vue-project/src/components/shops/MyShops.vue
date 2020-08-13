@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="box"
-    style="box-shadow:0px 0px 15px #f2f2f2;padding:20px;border-radius:0px;margin:15px"
-  >
+  <div class="box" style="box-shadow:0px 0px 10px gray;padding:20px;border-radius:0px;margin:15px">
     <el-breadcrumb
       separator="/"
       style="background-color:#f2f2f2;border-radius:10px;padding:18px 10px;margin-bottom:20px;"
@@ -104,6 +101,53 @@
         </el-table-column>
       </el-table>
     </article>
+    <h1 style="color:red">审批失败</h1>
+
+    <div class="hr"></div>
+    <article>
+      <el-table :data="refuseData" style="height: 100%">
+        <el-table-column label="店名" width="150">
+          <template slot-scope="scope">
+            <el-popover>
+              <div slot="reference" class="name-wrapper">
+                <el-tag size="medium">{{ scope.row.name }}</el-tag>
+              </div>
+            </el-popover>
+          </template>
+        </el-table-column>
+        <el-table-column label="信用评级" width="100">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.credit }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="店铺编号" width="250">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row._id }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="申请日期" width="180">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.date }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="店铺描述" width="180">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.des }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="商品种类" width="100">
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.type }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button size="mini" @click="to2(scope.row)">确定</el-button>
+            <el-button size="mini" type="danger" @click="to3(scope.row._id)">再次申请</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </article>
   </div>
 </template>
 
@@ -113,12 +157,21 @@ const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
   async created() {
     this.datas = (await this.getOwnShopsSync(this.managerId)).data;
+    // console.log(await this.getOwnShopsSync(this.managerId));
     const num = this.datas.filter((value) => {
       return value.status == 4;
     });
+    console.log(this.datas);
+    if (num.length > 0) {
+      this.$notify({
+        title: "新消息",
+        message: "您有申请被驳回，请到页面底部确认信息",
+        type: "warning",
+      });
+    }
   },
   methods: {
-    ...mapActions(["getOwnShopsSync", "delShopsSync"]),
+    ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),
     ...mapMutations(["addOneShop"]),
     handleDelete(a) {
       this.delShopsSync(a);
@@ -133,12 +186,17 @@ export default {
     toAdd() {
       this.$router.push("/addShops");
     },
+    to2(content) {
+      content.status = "2";
+      // console.log(content);
+      this.updateShopsSync(content);
+    },
   },
   computed: {
     //用户名
     managerId() {
-      // return "1";
-      return localStorage.managerId
+      return "5f335ec79a560000630005c3";
+      // return localStorage.managerId
     },
     tableData() {
       return this.datas.filter((value) => {
@@ -151,11 +209,18 @@ export default {
         return value.status == 3;
       });
     },
+    refuseData() {
+      return this.datas.filter((value) => {
+        return value.status == 4;
+      });
+    },
   },
   data() {
     return {
       // tableData: [],
       datas: [],
+      agree: "",
+      refuse: "",
     };
   },
 };
