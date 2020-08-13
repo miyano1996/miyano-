@@ -6,7 +6,7 @@ export default {
         orders: [{}],
         page: {
             pagenum: 1,
-            datanum: 7
+            datanum: 5
         },
         allnum: null,
         lastpage: null
