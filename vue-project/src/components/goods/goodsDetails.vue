@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapState } = createNamespacedHelpers("goods");
 export default {
   data() {
     return {
@@ -99,10 +101,14 @@ export default {
       textarea: "",
     };
   },
+  created() {},
   methods: {
     isShowedit() {
       this.flag = !this.flag;
     },
+  },
+  computed: {
+    ...mapState(["goodid"]),
   },
 };
 </script>
