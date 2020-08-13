@@ -1,7 +1,7 @@
 <template>
   <div
     class="box"
-    style="box-shadow:0px 0px 15px #f2f2f2;padding:20px;border-radius:0px;margin:15px"
+    style="box-shadow:0px 0px 10px gray;padding:20px;border-radius:0px;margin:15px"
   >
     <el-breadcrumb
       separator="/"
@@ -113,6 +113,7 @@ const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
   async created() {
     this.datas = (await this.getOwnShopsSync(this.managerId)).data;
+    // console.log(await this.getOwnShopsSync(this.managerId));
     const num = this.datas.filter((value) => {
       return value.status == 4;
     });
@@ -137,8 +138,8 @@ export default {
   computed: {
     //用户名
     managerId() {
-      // return "1";
-      return localStorage.managerId
+      return "5f335ec79a560000630005c3";
+      // return localStorage.managerId
     },
     tableData() {
       return this.datas.filter((value) => {

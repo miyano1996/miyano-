@@ -35,7 +35,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     // 响应成功
     res => {
-        return res.data; // { data: {}}
+        return res; // { data: {}}
     },
     // 响应失败
     err => {
