@@ -10,7 +10,6 @@
     <br />
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
-    <!-- <el-button type="danger" @click="register" size="medium">注册</el-button> -->
     <router-link to="/registerMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>还没有账号去注册>></router-link>
     <router-link to="/login" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户登录通道>></router-link>
 
@@ -32,9 +31,9 @@ export default {
       if (data.success) {
         // 将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
-        localStorage._id=data._id;
-        localStorage.name=data.name;
-        // this.$router.push("/students");1
+        localStorage.managerId=data._id;
+        localStorage.managerName=data.name;
+        this.$router.push("/system");
       }else{
         this.open4()
       }
@@ -59,9 +58,7 @@ h3{
   text-align: center;
 }
 p{
-  /* box-sizing: border-box; */
   color: #e6a23c;
-  /* padding-right:30px ; */
   width:100%;
   cursor:pointer;
   text-align: right;
@@ -82,10 +79,4 @@ p{
 .el-button + .el-button{
   margin-left: 20px;
 }
-/* .el-input {
-  width: 200px;
-}
-.el-button {
-  width: 100px;
-} */
 </style>

@@ -177,10 +177,6 @@ main{
   width: 100%;
   height: 100%;
   position: relative;
-  /* background-color: blueviolet; */
-  /* overflow: hidden; */
-
-  /* background-color: rgb(33, 32, 59); */
 }
 h3{
   text-align: center;
@@ -198,7 +194,6 @@ p{
 
 } */
 .register{
-  /* width: 420px; */
   position: absolute;
   top:50%;
   left:50%;
