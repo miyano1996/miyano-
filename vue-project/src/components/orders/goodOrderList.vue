@@ -11,11 +11,11 @@
     >
       <el-table-column align="center" label="商品图片" width="200">
         <template slot-scope="scope">
-          <el-image
+              <!-- <el-image
             style="width: 100px; height: 100px"
             :src="'http://localhost:3000/images/'+scope.row.goodId.image"
             fit="cover"
-          ></el-image>
+          ></el-image> -->
         </template>
       </el-table-column>
       <el-table-column align="center" prop="goodId.name" label="商品名称" width="250"></el-table-column>
