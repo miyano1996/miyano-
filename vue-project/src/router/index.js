@@ -88,7 +88,19 @@ const routes = [{ //买家  用户
                         path: 'goodOrderList',
                         component: () =>
                             import ('../components/orders/goodOrderList.vue')
-                    }
+                    }, {
+                        path: 'goodsList',
+                        component: () =>
+                            import ('../components/goods/Goodslist.vue')
+                    }, {
+                        path: 'notListedGoods',
+                        component: () =>
+                            import ('../components/goods/notListedGoods.vue')
+                    }, {
+                        path: "goodsDetails",
+                        component: () =>
+                            import ('../components/goods/goodsDetails.vue')
+                    },
                 ]
             }
         ]
