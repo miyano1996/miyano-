@@ -54,7 +54,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="add" @click="toAdd">申请开店</div>
+      <div class="add" @click="toAdd">点击申请新店铺</div>
     </article>
     <h1>等待审批</h1>
 
@@ -171,11 +171,27 @@ export default {
     // console.log(this.datas);
     if (num.length > 0) {
       this.$notify({
-        title: "新消息",
+        title: "审批",
         message: "您有申请被驳回，请到页面底部确认信息",
         type: "warning",
+        duration:0
       });
     }
+    const suc = this.datas.filter((value) => {
+      return value.status == 5;
+    });
+    if (suc.length > 0) {
+      this.$notify({
+        title: "审批",
+        message: "您有"+suc.length+"个申请已通过审批，请注意查看您的新店铺",
+        offset: 100,
+        duration:0,
+        type: "success",
+      });
+    };
+    suc.forEach(value=>{value.status='1';this.updateShopsSync(value)});
+
+    
   },
   methods: {
     ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),
@@ -257,7 +273,7 @@ h1 {
   text-align: center;
   /* margin-top: 20px; */
   margin: 20px 5px;
-  border: 1px dashed #909399;
+  border: 2px dashed #909399;
   padding: 10px;
   cursor: pointer;
   /* background-color: pink; */
