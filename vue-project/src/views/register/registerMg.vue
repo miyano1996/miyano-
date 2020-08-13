@@ -1,7 +1,7 @@
 <template>
 <main>
   <div class="register">
-    <h3>商家注册</h3>
+   <el-divider><h3>商家注册</h3></el-divider>
     <el-form
       :model="users"
       status-icon
@@ -30,7 +30,7 @@
           <el-input v-model.number="users.age"  size="medium" placeholder="年龄"></el-input>
         </el-form-item>
         <!-- 性别 -->
-       <el-form-item label="性别" prop="gender">
+       <el-form-item label="性别" prop="gender" class="sex">
           <el-radio-group v-model="users.gender">
             <el-radio label="男"></el-radio>
             <el-radio label="女"></el-radio>
@@ -44,7 +44,7 @@
         <router-link to="/loginMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>已有账号去登录>></router-link>
         <router-link to="/register" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户注册通道>></router-link>
     </el-form>
- 
+    <el-divider content-position="left"><i>已阅读并同意蜗牛《用户协议》、《隐私政策》</i></el-divider>
   </div>
  </main>
 </template>
@@ -176,12 +176,23 @@ main{
   width: 100%;
   height: 100%;
   position: relative;
+ background-color: #285f62;
+
+}
+.el-divider__text{
+  background-color: #285f62;
+  
 }
 h3{
   text-align: center;
+  color: #dde0e2;
+}
+.el-divider__text>i{
+  color: #dde0e2;
+  font-size: 11px;
 }
 p{
-  color: #e6a23c;
+  color: #409eff;
   width:100%;
   cursor:pointer;
   text-align: right;
@@ -201,6 +212,8 @@ p{
 
 .el-input {
   width: 300px;
+  opacity: .8;
+
 }
 .el-button {
   width: 140px;
@@ -208,7 +221,8 @@ p{
 .el-button + .el-button{
   margin-left: 20px;
 }
-.el-form-item__label{
-  color: rgb(245, 245, 245);
+.el-radio{
+  color: rgb(255, 255, 255)!important;
 }
+
 </style>

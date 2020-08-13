@@ -1,7 +1,7 @@
 <template>
 <main>
   <div class="register">
-    <h3>商家登录</h3>
+   <el-divider><h3>商家登录</h3></el-divider>
    <el-input placeholder='用户名' v-model="users.account" clearable size="medium"></el-input>
     <br />
     <br />
@@ -10,9 +10,9 @@
     <br />
     <br />
     <el-button type="primary" @click="login" size="medium">登录</el-button>
-    <router-link to="/registerMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>还没有账号去注册>></router-link>
+    <router-link to="/registerMg" tag='p' class="span1"><i class="el-icon-s-shop"></i>去注册新账号>></router-link>
     <router-link to="/login" tag='p' class="span2"><i class="el-icon-s-custom"></i>用户登录通道>></router-link>
-
+    <el-divider><i class="el-icon-milk-tea"> have a good time</i></el-divider>
   </div>
   </main>
 </template>
@@ -59,12 +59,22 @@ main{
   width: 100%;
   height: 100%;
   position: relative;
+  background-color: #285f62;
+}
+.el-divider__text{
+  background-color: #285f62;
+  
 }
 h3{
   text-align: center;
+  color: #dde0e2;
+}
+.el-divider__text>i{
+  color: #dde0e2;
+  font-size: 11px;
 }
 p{
-  color: #e6a23c;
+  color: #409eff;
   width:100%;
   cursor:pointer;
   text-align: right;
@@ -78,6 +88,7 @@ p{
 }
 .el-input {
   width: 300px;
+  opacity: .8;
 }
 .el-button {
   width: 100%;
