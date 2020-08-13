@@ -19,9 +19,10 @@ require('./dao/database');
 
 var app = express();
 // 拦截二级路径的js文件
-var goods = require('./routes/good')
+var goodsRouter = require('./routes/good')
 var imagesRouter = require('./routes/images');
-var shopsRouter = require('./routes/shops')
+var shopsRouter = require('./routes/shops');
+var ordersRouter = require('./routes/orders')
 
 // 跨域
 var app = express();
@@ -55,9 +56,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // 匹配前段ajax请求的URL中的一级路径
-app.use('/goods', goods);
+app.use('/goods', goodsRouter);
 app.use('/images', imagesRouter);
 app.use('/shops', shopsRouter);
+app.use('/orders', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
