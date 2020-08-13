@@ -11,7 +11,6 @@ import Vuex from 'vuex'
 import goods from './goods/goods'
 import shops from './shops/shops.js'
 import shopManager from './shopManager/shopManager.js'
-import shops from './shops.js'
 import orders from './orders/orders'
 
 Vue.use(Vuex)
