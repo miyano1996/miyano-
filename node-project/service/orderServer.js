@@ -1,7 +1,7 @@
 const { addOrder, getAllOrders, delOrder, getOrder } = require('../dao/ordersDao');
 
-module.exports.getAllOrders = async function() {
-    let msg = await getAllOrders();
+module.exports.getAllOrders = async function(data) {
+    let msg = await getAllOrders(data);
     if (msg.data.length > 0) {
         return {
             data: msg,

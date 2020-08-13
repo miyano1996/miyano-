@@ -4,10 +4,13 @@ module.exports.addOrder = async function(data) {
     await ordersModel.create(data);
 };
 // 获取所有订单
-module.exports.getAllOrders = async function() {
-    const msg = await ordersModel.find().populate('goodId').populate('userId')
+module.exports.getAllOrders = async function(data) {
+    const num = await ordersModel.find();
+    const msg = await ordersModel.find().populate('goodId').populate('userId').
+    limit(data.datanum - 0).skip((data.pagenum - 1) * (data.datanum - 0));
     return {
-        data: msg
+        data: msg,
+        num: num.length
     }
 };
 // 获取指定的订单

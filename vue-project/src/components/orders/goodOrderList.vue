@@ -20,7 +20,7 @@
       </el-table-column>
       <el-table-column align="center" prop="goodId.name" label="商品名称" width="250"></el-table-column>
       <el-table-column align="center" prop="_id" label="订单编号" width="300"></el-table-column>
-      <el-table-column align="center" prop="userId.name" label="用户名称" width="300"></el-table-column>
+      <el-table-column align="center" prop="userId.name" label="用户名称" width="250"></el-table-column>
       <el-table-column align="center" prop="status" label="状态" width="250"></el-table-column>
       <el-table-column align="center" fixed="right" label="操作" width="200">
         <template slot="header" slot-scope="scope">
@@ -31,12 +31,24 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="page.pagenum-0"
+        :page-size="page.datanum-0"
+        layout="total, prev, pager, next, jumper"
+        :total="allnum"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapActions, mapState } = createNamespacedHelpers("orders");
+const { mapActions, mapState, mapMutations } = createNamespacedHelpers(
+  "orders"
+);
 export default {
   data() {
     return {
@@ -48,6 +60,7 @@ export default {
   },
   methods: {
     ...mapActions(["getAllOrders", "delOrder"]),
+    ...mapMutations(["changedatanum", "changepagenum"]),
     async getOrders() {
       await this.getAllOrders();
     },
@@ -59,9 +72,17 @@ export default {
         alert("删除失败");
       }
     },
+    handleSizeChange(val) {
+      this.changedatanum(val);
+      this.getOrders();
+    },
+    handleCurrentChange(val) {
+      this.changepagenum(val);
+      this.getOrders();
+    },
   },
   computed: {
-    ...mapState(["orders"]),
+    ...mapState(["orders", "page", "allnum", "lastpage"]),
   },
 };
 </script>
@@ -77,5 +98,9 @@ export default {
 #orders .el-table {
   height: 95%;
   margin: 20px auto;
+}
+#orders .block {
+  display: flex;
+  justify-content: center;
 }
 </style>
