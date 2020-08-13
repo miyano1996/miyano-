@@ -103,7 +103,7 @@ export default {
 
 <style scope>
 #daily-view {
-  width: 1200px;
+  width: 1400px;
   height: 300px;
 }
 </style>
