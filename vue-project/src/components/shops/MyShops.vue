@@ -45,7 +45,7 @@
         <el-table-column label="封禁状态" width="100">
           <template slot-scope="scope">
             
-            <span v-if="scope.row.isLift" style="margin-left: 10px;color:red">封禁中{{scope.row.isLift}}</span>
+            <span v-if="scope.row.isLift" style="margin-left: 10px;color:red">封禁中</span>
             <span v-else style="margin-left: 10px;color:green">正常</span>
           </template>
         </el-table-column>
