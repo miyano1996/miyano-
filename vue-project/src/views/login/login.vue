@@ -33,9 +33,16 @@ export default {
         localStorage.token = data.token;
         // this.$router.push("/students");
         console.log('登录成功')
+      }else{
+        this.open4()
       }
     },
-   
+   open4() {
+        this.$notify.error({
+          title: '登录失败',
+          message: '账号或密码错误'
+        });
+      }
   },
 };
 </script>
