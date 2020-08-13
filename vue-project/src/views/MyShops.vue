@@ -30,9 +30,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="add">
-        申请开店
-      </div>
+      <div class="add">申请开店</div>
     </article>
   </div>
 </template>
@@ -42,21 +40,21 @@ import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
   async created() {
-    this.tableData =await this.getOwnShopsSync(this.managerId);
+    this.tableData = await this.getOwnShopsSync(this.managerId);
     console.log(this.tableData);
   },
   methods: {
     ...mapActions(["getOwnShopsSync"]),
-    give(){}
+    give() {},
   },
   computed: {
     managerId() {
-      return "1"
+      return "1";
     },
   },
   data() {
     return {
-      tableData:[]
+      tableData: [],
     };
   },
 };
@@ -71,7 +69,7 @@ h1 {
   height: 3px;
   background-color: gainsboro;
 }
-.add{
+.add {
   color: green;
   font-weight: bold;
   text-align: center;

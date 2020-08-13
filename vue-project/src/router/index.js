@@ -34,6 +34,18 @@ const routes = [{
                         path: 'addGood',
                         component: () =>
                             import ('../components/goods/addGoods.vue')
+                    }, {
+                        path: 'goodsList',
+                        component: () =>
+                            import ('../components/goods/Goodslist.vue')
+                    }, {
+                        path: 'notListedGoods',
+                        component: () =>
+                            import ('../components/goods/notListedGoods.vue')
+                    }, {
+                        path: "goodsDetails.vue",
+                        component: () =>
+                            import ('../components/goods/goodsDetails.vue')
                     }
                 ]
             },
