@@ -123,12 +123,13 @@ export default {
           }
         )
           .then(() => {
-            this.changeStateSync({ _id: row._id, status: "1" });
+            this.getShopsSync({status:'3'})
+            this.changeStateSync({_id:row._id,status:'5'})
             this.$message({
               type: "success",
               message: "已同意!",
             });
-            this.getShopsSync({ status: "3" });
+            this.getShopsSync({status:'3'})
           })
           .catch(() => {
             this.$message({
