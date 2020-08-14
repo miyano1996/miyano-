@@ -228,7 +228,11 @@ const routes = [{
                         path: "recycledOrders",
                         component: () =>
                             import ("../components/orders/recycledOrders.vue"),
-                    },
+                    },{
+                        path:"shopCharts",
+                        component:()=> import ("../components/shops/shopCharts.vue")
+                    }
+
                 ],
             },
         ],
