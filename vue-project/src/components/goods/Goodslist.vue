@@ -34,7 +34,7 @@
         </div>
         <p class="btn">
           <span class="activegoods">上架商品</span>
-          <span class>下架商品</span>
+          <span class @click="downgood(item._id)">下架商品</span>
         </p>
       </div>
     </el-col>
@@ -46,20 +46,31 @@ import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState, mapMutations } = createNamespacedHelpers("goods");
 export default {
   data() {
-    return {};
+    return {
+      good: {
+        id: "",
+        status: false,
+      },
+      Goods: [],
+    };
   },
   created() {
     this.getAllGoods();
   },
   methods: {
     ...mapMutations(["goodsid"]),
-    ...mapActions(["getAllGoods"]),
+    ...mapActions(["getAllGoods", "delGood", "getGood"]),
     getgoods(id) {
       this.goodsid(id);
     },
+    downgood(id) {
+      this.good.id = id;
+      this.delGood(this.good);
+      this.getAllGoods();
+    },
   },
   computed: {
-    ...mapState(["goods"]),
+    ...mapState(["goods", "goodone"]),
   },
 };
 </script>

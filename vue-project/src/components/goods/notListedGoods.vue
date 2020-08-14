@@ -14,60 +14,58 @@
         <span></span>
       </div>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="4" v-for="(item, index) in goods" :key="index">
       <div class="list">
         <i>
-          <img src="../../assets/商品图片.jpg" alt />
+          <router-link to="goodsDetails.vue">
+            <img :src="'http://localhost:3000/images/'+item.image" alt @click="getgoods(item._id)" />
+          </router-link>
         </i>
-        <strong>VUE.js</strong>
+        <strong>{{item.name}}</strong>
         <div class="box">
-          <span class="price">￥255454564</span>
-          <span class="stock">库存:5565件</span>
+          <span class="price">￥{{item.price}}</span>
+          <span class="stock">库存:{{item.store}}件</span>
         </div>
         <p class="btn">
-          <span class>上架商品</span>
+          <span class @click="upgood(item._id)">上架商品</span>
           <span class="activegoods">下架商品</span>
         </p>
       </div>
     </el-col>
-    <el-col :span="4">
-      <div class="list">
-        <i>
-          <img src="../../assets/商品图片.jpg" alt />
-        </i>
-        <strong>商品名称</strong>
-        <div class="box">
-          <span class="price">商品价格</span>
-          <span class="stock">库存:5565件</span>
-        </div>
-        <p class="btn">
-          <span class>上架商品</span>
-          <span class="activegoods">下架商品</span>
-        </p>
-      </div>
-    </el-col>
-    <el-col :span="4">
-      <div class="list">
-        <i>
-          <img src="../../assets/商品图片.jpg" alt />
-        </i>
-        <strong>商品名称</strong>
-        <div class="box">
-          <span class="price">商品价格</span>
-          <span class="stock">库存:5565件</span>
-        </div>
-        <p class="btn">
-          <span class>上架商品</span>
-          <span class="activegoods">下架商品</span>
-        </p>
-      </div>
-    </el-col>
-    <el-col :span="4"></el-col>
   </el-row>
 </template>
 
 <script>
-export default {};
+import { createNamespacedHelpers } from "vuex";
+const { mapActions, mapState, mapMutations } = createNamespacedHelpers("goods");
+export default {
+  data() {
+    return {
+      good: {
+        id: "",
+        status: true,
+      },
+    };
+  },
+  created() {
+    this.getNotlistedGoods();
+  },
+  methods: {
+    ...mapMutations(["goodsid"]),
+    ...mapActions(["getNotlistedGoods", "delGood"]),
+    getgoods(id) {
+      this.goodsid(id);
+    },
+    upgood(id) {
+      this.good.id = id;
+      this.delGood(this.good);
+      this.getNotlistedGoods();
+    },
+  },
+  computed: {
+    ...mapState(["goods"]),
+  },
+};
 </script>
 
 <style scoped>
@@ -147,6 +145,7 @@ input::placeholder {
 }
 .list i img {
   width: 200px;
+  height: 200px;
   transition: 0.3s;
 }
 .list i img:hover {
