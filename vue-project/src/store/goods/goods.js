@@ -5,6 +5,7 @@ export default {
     state: {
         goods: [],
         goodid: "",
+        goodone: {},
     },
     mutations: {
         getAllGood(state, data) {
@@ -12,6 +13,9 @@ export default {
         },
         goodsid(state, id) {
             state.goodid = id
+        },
+        getgood(state, data) {
+            state.goodone = data
         }
     },
     actions: {
@@ -21,10 +25,22 @@ export default {
         },
         async getAllGoods({ state, commit, actions }) {
             const msg = await api.goods.getAllGoods();
-            commit('getAllGood', msg.data.data.data);
+            commit('getAllGood', msg.data.data.data.filter((item) => item.status != false));
         },
-        async getGood({ state, commit, actions }) {
-            const msg = await api.goods.getGood();
+        async getGood({ state, commit, actions }, _id) {
+            const msg = await api.goods.getGood(_id);
+            commit('getgood', msg.data.data.data)
+        },
+        async updatedGood({ state, commit, actions }, data) {
+            const msg = await api.goods.updatedGoods(data)
+        },
+        async delGood({ state, commit, actions }, data) {
+            const msg = await api.goods.delGoods(data);
+
+        },
+        async getNotlistedGoods({ state, commit, actions }) {
+            const msg = await api.goods.getAllGoods();
+            commit('getAllGood', msg.data.data.data.filter((item) => item.status == false));
         }
     }
 }

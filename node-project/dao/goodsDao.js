@@ -4,7 +4,7 @@ module.exports.addGood = async function(data) {
     await goodsModel.create(data);
 };
 module.exports.delGood = async function(data) {
-    let msg = await goodsModel.deleteOne({ _id: data.id });
+    let msg = await goodsModel.updateOne({ _id: data.id }, { status: data.status });
     return msg
 };
 module.exports.findAllGoods = async function() {
@@ -35,6 +35,7 @@ module.exports.updateGood = async function(data) {
         detail: data.detail,
         price: data.price,
         status: data.statue,
+        typ: data.type
     });
     return {
         data: msg,
