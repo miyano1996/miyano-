@@ -44,7 +44,6 @@
         </el-table-column>
         <el-table-column label="封禁状态" width="100">
           <template slot-scope="scope">
-            
             <span v-if="scope.row.isLift" style="margin-left: 10px;color:red">封禁中</span>
             <span v-else style="margin-left: 10px;color:green">正常</span>
           </template>
@@ -181,7 +180,7 @@ export default {
         title: "审批",
         message: "您有申请被驳回，请到页面底部确认信息",
         type: "warning",
-        duration:0
+        duration: 0,
       });
     }
     const suc = this.datas.filter((value) => {
@@ -190,15 +189,16 @@ export default {
     if (suc.length > 0) {
       this.$notify({
         title: "审批",
-        message: "您有"+suc.length+"个申请已通过审批，请注意查看您的新店铺",
+        message: "您有" + suc.length + "个申请已通过审批，请注意查看您的新店铺",
         offset: 100,
-        duration:0,
+        duration: 0,
         type: "success",
       });
-    };
-    suc.forEach(value=>{value.status='1';this.updateShopsSync(value)});
-
-    
+    }
+    suc.forEach((value) => {
+      value.status = "1";
+      this.updateShopsSync(value);
+    });
   },
   methods: {
     ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),
