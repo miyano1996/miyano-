@@ -23,21 +23,41 @@ const goods = {
             method: 'get'
         })
     },
-    getGood() {
+    getGood(_id) {
         return axios({
             url: "/goods/findGood",
             method: "post",
             data: {
-
+                _id: _id
             }
 
         })
     },
-    updatedGoods() {
-
+    updatedGoods(data) {
+        return axios({
+            url: '/goods/updateGood',
+            method: 'post',
+            data: {
+                type: data.type,
+                name: data.name,
+                image: data.image,
+                store: data.store,
+                detail: data.detail,
+                price: data.price,
+                status: data.status,
+                id: data._id
+            }
+        })
     },
-    delGoods() {
-
+    delGoods(data) {
+        return axios({
+            url: '/goods/delGood',
+            method: 'post',
+            data: {
+                status: data.status,
+                id: data.id
+            }
+        })
     },
     searchGoods() {
 
