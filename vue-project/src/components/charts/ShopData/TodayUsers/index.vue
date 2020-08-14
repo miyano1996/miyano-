@@ -21,7 +21,6 @@ export default {
     const chart = this.$echarts.init(chartsDom);
     chart.setOption({
         tooltip:{},
-
         color:['#3398DB'],
         series:[{
             type:'bar',

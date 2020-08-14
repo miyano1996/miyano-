@@ -18,17 +18,39 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
 import TotalSales from "./TotalSales/";
 import TotalOrders from "./TotalOrders";
 import TodayUsers from "./TodayUsers";
 import CreditPoints from "./CreditPoints";
+const {  mapActions } = createNamespacedHelpers("shops");
 export default {
+  data(){
+    return{
+      // dailySales:[],
+      // totalOrders:[],
+      // todayUsers:[],
+      // creditPoints:""
+    }
+  },
   components: {
     TotalSales,
     TotalOrders,
     TodayUsers,
     CreditPoints,
   },
+  async created(){
+    const shopData = await this.getOwnShopsSync('5f335ec79a560000630005c3').data
+    // this.dailySales = shopData.chartsData.dailySales;
+    // this.totalOrders = shopData.chartsData.totalOrders;
+    // this.todayUsers = shopData.chartsData.todayUsers;
+    // this.creditPoints = shopData.chartsData.creditPoints;
+    console.log(shopData)
+    
+  },
+  methods:{
+    ...mapActions(['getOwnShopsSync']),
+  }
 };
 </script>
 
