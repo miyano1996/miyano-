@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>店铺列表</el-breadcrumb-item>
     </el-breadcrumb>
-    <users-view-charts></users-view-charts>
+    <users-view-charts :chartsData="datas"></users-view-charts>
 
     <h1>正在营业</h1>
     <div class="hr"></div>
@@ -44,7 +44,6 @@
         </el-table-column>
         <el-table-column label="封禁状态" width="100">
           <template slot-scope="scope">
-            
             <span v-if="scope.row.isLift" style="margin-left: 10px;color:red">封禁中</span>
             <span v-else style="margin-left: 10px;color:green">正常</span>
           </template>
@@ -57,7 +56,7 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="give(scope.row)">修改信息</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">关闭店铺</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">注销店铺</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -181,7 +180,7 @@ export default {
         title: "审批",
         message: "您有申请被驳回，请到页面底部确认信息",
         type: "warning",
-        duration:0
+        duration: 0,
       });
     }
     const suc = this.datas.filter((value) => {
@@ -190,15 +189,16 @@ export default {
     if (suc.length > 0) {
       this.$notify({
         title: "审批",
-        message: "您有"+suc.length+"个申请已通过审批，请注意查看您的新店铺",
+        message: "您有" + suc.length + "个申请已通过审批，请注意查看您的新店铺",
         offset: 100,
-        duration:0,
+        duration: 0,
         type: "success",
       });
-    };
-    suc.forEach(value=>{value.status='1';this.updateShopsSync(value)});
-
-    
+    }
+    suc.forEach((value) => {
+      value.status = "1";
+      this.updateShopsSync(value);
+    });
   },
   methods: {
     ...mapActions(["getOwnShopsSync", "delShopsSync", "updateShopsSync"]),

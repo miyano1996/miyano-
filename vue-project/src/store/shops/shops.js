@@ -2,37 +2,37 @@ import $api from '../../http/api/api'
 export default {
     namespaced: true,
     state: {
-        shops:[],
-        ownShops:[],
-        oneShop:{},
-        shopsId:''
+        shops: [],
+        ownShops: [],
+        oneShop: {},
+        shopsId: ''
     },
     mutations: {
-        getOwnShops(state,data){
+        getOwnShops(state, data) {
             state.ownShops = data
         },
-        addOneShop(state,data){
+        addOneShop(state, data) {
             state.oneShop = data
         },
-        backOne(state){
+        backOne(state) {
             state.oneShops = {}
         },
-        changeShopsId(state,_id){
+        changeShopsId(state, _id) {
             state.shopsId = _id
         }
     },
     actions: {
-        async getOwnShopsSync(context,_managerId){
+        async getOwnShopsSync(context, _managerId) {
             // console.log(_managerId);
             return await $api.shops.getOwnShopsSync(_managerId)
         },
-        async addShopsSync(context,data){
+        async addShopsSync(context, data) {
             return await $api.shops.addShopsSync(data)
         },
-        async delShopsSync(context,_id){
+        async delShopsSync(context, _id) {
             return await $api.shops.delShopsSync(_id)
         },
-        async updateShopsSync(context,data){
+        async updateShopsSync(context, data) {
             return await $api.shops.updateShopsSync(data)
         }
     },

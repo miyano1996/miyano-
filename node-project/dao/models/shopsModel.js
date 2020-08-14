@@ -17,6 +17,7 @@ const shopsSchema = new mongoose.Schema({
     date:String,
     boss:String,
     isLift:Boolean,
+    chartsData:Object,
     managerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'managersModel'

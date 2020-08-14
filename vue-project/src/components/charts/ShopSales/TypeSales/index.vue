@@ -38,11 +38,11 @@ export default {
           radius: "55%",
           center: ["50%", "50%"],
           data: [
-            { value: 335, name: "男士上衣" },
-            { value: 310, name: "女士上衣" },
-            { value: 274, name: "女士下装" },
-            { value: 235, name: "家居服" },
-            { value: 400, name: "婴儿服饰" },
+            { value: 335, name: "大娃" },
+            { value: 310, name: "六娃" },
+            { value: 274, name: "三娃" },
+            { value: 235, name: "四娃" },
+            { value: 400, name: "小金刚" },
           ].sort(function (a, b) {
             return a.value - b.value;
           }),

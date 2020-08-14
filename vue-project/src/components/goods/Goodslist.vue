@@ -10,11 +10,11 @@
   <el-row :gutter="20" style="margin:0px">
     <el-col :span="24" class="search">
       <div class="input">
-        <input type="text" placeholder="输入商品" id="saerch" />
+        <input type="text" placeholder="输入商品" id="saerch" v-model="search" />
         <span></span>
       </div>
     </el-col>
-    <el-col :span="4" v-for="item in goods" :key="item._id">
+    <el-col :span="4" v-for="item in searchGood" :key="item._id">
       <div class="list">
         <template>
           <i>
@@ -44,6 +44,7 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 const { mapActions, mapState, mapMutations } = createNamespacedHelpers("goods");
+const { mapState: mapStates } = createNamespacedHelpers("shops");
 export default {
   data() {
     return {
@@ -51,14 +52,16 @@ export default {
         id: "",
         status: false,
       },
+      search: "",
       Goods: [],
     };
   },
   created() {
     this.getAllGoods();
+    this.isgetGoods(this.shopsId);
   },
   methods: {
-    ...mapMutations(["goodsid"]),
+    ...mapMutations(["goodsid", "isgetGoods"]),
     ...mapActions(["getAllGoods", "delGood", "getGood"]),
     getgoods(id) {
       this.goodsid(id);
@@ -70,7 +73,17 @@ export default {
     },
   },
   computed: {
-    ...mapState(["goods", "goodone"]),
+    ...mapStates(["shopsId"]),
+    ...mapState(["goods", "goodone", "flag"]),
+    searchGood() {
+      if (this.search != "") {
+        return (this.Goods = this.goods.filter((item) =>
+          item.name.includes(this.search)
+        ));
+      } else {
+        return (this.Goods = this.goods);
+      }
+    },
   },
 };
 </script>
