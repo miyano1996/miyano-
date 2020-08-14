@@ -32,6 +32,8 @@ export default {
         localStorage.token = data.token;
         localStorage.managerId=data._id;
         localStorage.managerName=data.name;
+        localStorage.useName = this.users.account;
+        localStorage.isAdmin = false;
         this.$router.push("/system");
         this.open2();
       }else{
