@@ -1,19 +1,19 @@
 <template>
   <div class="mian">
-    <div class="top">
+    <div class="top" v-for="(item, index) in goodone" :key="index">
       <div class="nav">
         <strong>店铺名称</strong>
         <span class="edit" @click="isShowedit">编辑商品</span>
       </div>
       <div class="left">
-        <img src="../../assets/商品图片.jpg" alt />
+        <img :src="'http://localhost:3000/images/'+item.image" alt />
       </div>
       <div class="right">
-        <h2>陶瓷：晴天娃娃</h2>
-        <span class="price">价格: 25元</span>
-        <span class="stock">库存: 1500件</span>
+        <h2>{{item.name}}</h2>
+        <span class="price">价格： {{item.price}}元</span>
+        <span class="stock">库存： {{item.store}}件</span>
         <p>商品描述:</p>
-        <span class="text">陶瓷晴天娃娃,好看实惠</span>
+        <span class="text">{{item.detail}}</span>
       </div>
     </div>
     <div class="bottom" v-if="flag">
@@ -21,8 +21,7 @@
       <div class="updatetext">
         <span>商品类别：</span>
         <el-select
-          v-model="value"
-          multiple
+          v-model="goods.type"
           filterable
           allow-create
           default-first-option
@@ -37,25 +36,28 @@
         </el-select>
         <div>
           <span>商品名字：</span>
-          <el-input placeholder="新的商品名字" v-model="input" clearable></el-input>
+          <el-input placeholder="新的商品名字" v-model="goods.name" clearable></el-input>
         </div>
         <div>
           <span>商品价格：</span>
-          <el-input placeholder="新的商品价格" v-model="input" clearable></el-input>
+          <el-input placeholder="新的商品价格" v-model="goods.price" clearable></el-input>
         </div>
         <span>商品库存：</span>
-        <el-input-number v-model="num" :min="1" :max="100000" label="描述文字"></el-input-number>
+        <el-input-number v-model="goods.store" :min="1" :max="100000" label="描述文字"></el-input-number>
         <div class="textarea">
           <span>商品描述：</span>
           <el-input
             type="textarea"
             placeholder="请输入商品描述"
-            v-model="textarea"
+            v-model="goods.detail"
             maxlength="100"
             show-word-limit
             :autosize="{minRows:4}"
           ></el-input>
         </div>
+        <el-row class="btn">
+          <el-button type="primary" @click="updatedgoods">确认修改</el-button>
+        </el-row>
       </div>
     </div>
   </div>
@@ -63,7 +65,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState } = createNamespacedHelpers("goods");
+const { mapState, mapActions } = createNamespacedHelpers("goods");
 export default {
   data() {
     return {
@@ -94,26 +96,45 @@ export default {
           label: "服装服饰",
         },
       ],
-      value: [],
-      input: "",
-      num: 1,
-      text: "",
-      textarea: "",
+      goods: {
+        type: [],
+        name: "",
+        price: "",
+        store: 1,
+        text: "",
+        detail: "",
+      },
     };
   },
-  created() {},
+  created() {
+    this.getGood(this.goodid);
+  },
   methods: {
     isShowedit() {
       this.flag = !this.flag;
     },
+    ...mapActions(["getGood", "updatedGood"]),
+    updatedgoods() {
+      alert("修改成功");
+      this.updatedGood(this.goods);
+      this.getGood(this.goodid);
+    },
   },
   computed: {
-    ...mapState(["goodid"]),
+    ...mapState(["goodid", "goodone"]),
+  },
+  watch: {
+    goodone(newValue) {
+      this.goods = newValue[0];
+    },
   },
 };
 </script>
 
 <style scoped>
+.btn {
+  margin: 30px auto;
+}
 .textarea {
   width: 500px;
 }
