@@ -34,6 +34,7 @@
             <span>商品中心</span>
           </template>
           <el-menu-item-group>
+            <el-menu-item index="/main/shopCharts">店铺数据</el-menu-item>
             <el-menu-item index="/main/goodsList">商品列表</el-menu-item>
             <el-menu-item index="/main/addGood">添加商品</el-menu-item>
             <el-menu-item index="2-2">商品分类</el-menu-item>
