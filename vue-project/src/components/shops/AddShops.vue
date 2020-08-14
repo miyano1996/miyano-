@@ -47,16 +47,24 @@ export default {
         managerId: localStorage.managerId,
         // managerId:'5f335ec79a560000630005c3',
         credit: "1",
-        isLift:false
+        isLift:false,
+               chartsData: {
+          dailyViews: [0, 0, 0, 0, 0, 0, 0],
+          monthlyViews: [0, 0, 0, 0, 0, 0],
+          dailySales: [],
+          monthlySales: [],
+          todayUsers: [],
+          totalOrders: [],
+        },
       },
     };
   },
-  computed:{
+  computed: {
     // content(){
     //   return this.content.managerId = '123'
     // }
   },
-  created(){
+  created() {
     // console.log(this.content);
   },
   methods: {

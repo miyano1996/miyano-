@@ -7,7 +7,7 @@
       <el-breadcrumb-item :to="{ path: '/' }">我的店铺</el-breadcrumb-item>
       <el-breadcrumb-item>店铺列表</el-breadcrumb-item>
     </el-breadcrumb>
-    <users-view-charts></users-view-charts>
+    <users-view-charts :chartsData="datas"></users-view-charts>
 
     <h1>正在营业</h1>
     <div class="hr"></div>

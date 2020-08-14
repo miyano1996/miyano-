@@ -37,6 +37,7 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
+
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
 export default {
   async created() {

@@ -1,88 +1,92 @@
 
 <template>
-  <div id="monthly-view" ></div>
+  <div id="monthly-view"></div>
 </template>
 
 <script>
 export default {
+props: {
+    chartsData: Array,
+  },
   data() {
     return {
       xAxisData: [],
+      legendData: [],
+      seriesData: [],
     };
+  },
+  watch: {
+    chartsData: function () {
+      this.getLegendData();
+      this.getSeriesData();
+      this.renderCharts();
+    },
   },
   created() {
     this.getMonths();
   },
-  mounted() {
-    const chartsDom = document.getElementById("monthly-view");
-    const myChart = this.$echarts.init(chartsDom);
-    myChart.setOption({
-      title: {
-        text: "店铺点击量",
-      },
-      tooltip: {
-        trigger: "axis",
-      },
-      legend: {
-        data: ["店铺1", "店铺2", "店铺3", "店铺4", "店铺5"],
-      },
-      grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true,
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {},
-        },
-      },
-      xAxis: {
-        type: "category",
-        boundaryGap: false,
-        data: this.xAxisData,
-      },
-      yAxis: {
-        type: "value",
-        splitLine: {
-          show: false,
-        },
-      },
-      series: [
-        {
-          name: "店铺1",
-          type: "line",
-          stack: "总量",
-          data: [1120, 1132, 1101, 1314, 901, 1230],
-        },
-        {
-          name: "店铺2",
-          type: "line",
-          stack: "总量",
-          data: [1220, 1182, 1191, 1234, 2190, 3130],
-        },
-        {
-          name: "店铺3",
-          type: "line",
-          stack: "总量",
-          data: [1350, 2232, 2201, 2154, 2190, 2330],
-        },
-        {
-          name: "店铺4",
-          type: "line",
-          stack: "总量",
-          data: [3320, 3332, 3301, 3334, 3390, 3330],
-        },
-        {
-          name: "店铺5",
-          type: "line",
-          stack: "总量",
-          data: [8120, 9132, 9301, 9034, 12900, 13300],
-        },
-      ],
-    });
-  },
+
   methods: {
+        renderCharts() {
+
+      const chartsDom = document.getElementById("monthly-view");
+      const myChart = this.$echarts.init(chartsDom);
+      myChart.setOption({
+        title: {
+          text: "店铺访问量",
+        },
+        tooltip: {
+          trigger: "axis",
+        },
+        legend: {
+          data: this.legendData,
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true,
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {},
+          },
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: false,
+          data: this.xAxisData,
+        },
+        yAxis: {
+          type: "value",
+          splitLine: {
+            show: false,
+          },
+        },
+        series: this.seriesData,
+      });
+    },
+        getLegendData() {
+      const arr = [];
+      this.chartsData.forEach((item) => {
+        arr.push(item.name);
+      });
+      this.legendData = arr;
+
+    },
+    getSeriesData() {
+      const arr = [];
+      this.chartsData.forEach((item) => {
+        arr.push({
+          name: item.name,
+          type: "line",
+          stack: "总量",
+          smooth:true,
+          data: item.chartsData.monthlyViews.slice(item.chartsData.monthlyViews.length-6)
+        });
+      });
+      this.seriesData = arr;
+    },
     getMonths() {
       let datelist = [];
       let date = new Date();

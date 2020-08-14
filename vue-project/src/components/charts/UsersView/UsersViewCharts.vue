@@ -1,8 +1,8 @@
 
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="月度" name="monthly"><monthly-view></monthly-view></el-tab-pane>
-    <el-tab-pane label="日度" name="daily"><daily-view></daily-view></el-tab-pane>
+    <el-tab-pane label="月度" name="monthly"><monthly-view :chartsData="chartsData"></monthly-view></el-tab-pane>
+    <el-tab-pane label="日度" name="daily"><daily-view :chartsData="chartsData"></daily-view></el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -13,13 +13,14 @@ export default {
     DailyView,
     MonthlyView,
   },
+  props:{
+    chartsData:Array
+  },
   data() {
     return {
       activeName: "daily",
     };
   },
-  created() {},
-  mounted() {},
   methods: {
     handleClick(tab, event) {
       console.log(tab, event);
