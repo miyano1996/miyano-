@@ -57,7 +57,7 @@
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button size="mini" @click="give(scope.row)">修改信息</el-button>
-            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">关闭店铺</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(scope.row._id)">注销店铺</el-button>
           </template>
         </el-table-column>
       </el-table>
