@@ -41,7 +41,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="text item">
-        <el-table :data="pageData.row" style="width: 106%; overflow: hidden;" height="500">
+        <el-table :data="pageData.row" style="width: 70vw; overflow: hidden;" height="500">
           <el-table-column type="expand">
             <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
@@ -149,7 +149,7 @@ export default {
           }
         )
           .then(() => {
-            this.changeStateSync({ _id: row._id, status: "4" });
+            this.changeStateSync({ _id: row._id, status: "5" });
             this.$message({
               type: "warning",
               message: "已驳回!",
