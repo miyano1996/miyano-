@@ -1,7 +1,7 @@
 <template>
-  <div id="orders">
+  <div id="deledOrders">
     <el-table
-      :data="orders.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase())
+      :data="deledOrders.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase())
       ||data.age.toLowerCase().includes(search.toLowerCase())||data.sex.toLowerCase().includes(search.toLowerCase())
       ||data.classid.name.toLowerCase().includes(search.toLowerCase())||
       data.classid.teacherid.name.toLowerCase().includes(search.toLowerCase()))"
@@ -27,7 +27,7 @@
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" :value="scope" />
         </template>
         <template slot-scope="scope">
-          <el-button @click="delit(scope.row._id)" type="danger" size="small">删除</el-button>
+          <el-button @click="recoverit(scope.row._id)" type="success" size="small">还原</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -38,7 +38,7 @@
         :current-page="page.pagenum-0"
         :page-size="page.datanum-0"
         layout="total, prev, pager, next, jumper"
-        :total="allnum"
+        :total="lastpage"
       ></el-pagination>
     </div>
   </div>
@@ -56,25 +56,26 @@ export default {
       search: "",
     };
   },
-  mounted() {
+  created() {
     this.getOrders();
   },
   methods: {
-    ...mapActions(["getAllOrders", "delOrder"]),
+    ...mapActions(["getAllOrders", "delOrder", "getDelOrders"]),
     ...mapMutations(["changedatanum", "changepagenum"]),
     async getOrders() {
       await this.getAllOrders(this.shopsId);
+      await this.getDelOrders(this.shopsId);
     },
-    async delit(id) {
-      let { msg } = await this.delOrder({ id, success: true });
+    async recoverit(id) {
+      let { msg } = await this.delOrder({ id, success: false });
       if (msg.success) {
         this.$message({
-          message: "删除成功,可在订单还原处恢复",
+          message: "恢复成功",
           type: "success",
         });
         this.getOrders();
       } else {
-        alert("删除失败");
+        alert("恢复失败");
       }
     },
     handleSizeChange(val) {
@@ -87,25 +88,25 @@ export default {
     },
   },
   computed: {
-    ...mapState(["orders", "page", "allnum", "lastpage"]),
+    ...mapState(["deledOrders", "page", "allnum", "lastpage"]),
     ...mapStates(["shopsId"]),
   },
 };
 </script>
 
 <style scoped>
-#orders {
+#deledOrders {
   width: 100%;
   min-width: 600px;
   height: 100%;
   overflow: auto;
   background-color: #efefef;
 }
-#orders .el-table {
+#deledOrders .el-table {
   height: 95%;
   margin: 20px auto;
 }
-#orders .block {
+#deledOrders .block {
   display: flex;
   justify-content: center;
 }
