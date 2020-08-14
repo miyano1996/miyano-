@@ -31,6 +31,8 @@ export default {
       if (data.success) {
         //将生成带有时间限制的token保存到本地
         localStorage.token = data.token;
+        localStorage.useName = this.users.account;
+        localStorage.isAdmin = false;
         this.$router.push("/system");
         this.open2();
         // console.log('登录成功')
