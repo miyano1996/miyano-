@@ -135,7 +135,7 @@ export default {
       this.getShopsSync({status: "1"});
     },
     isLift(row) {
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
       this.changeLiftSync({ _id: row._id, isLift: !row.isLift });
       this.getShopsSync({status: "1"});
       if (row.isLift) {

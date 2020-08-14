@@ -17,7 +17,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   min-width: 1500px;
   /* min-height: 1000px; */
