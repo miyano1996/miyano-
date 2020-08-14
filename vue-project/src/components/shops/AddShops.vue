@@ -55,6 +55,10 @@ export default {
           monthlySales: [],
           todayUsers: [],
           totalOrders: [],
+           typeSales: [ ],
+      dailySalesRank: [],
+        monthlySalesRank: [],
+        creditPoints: "500"
         },
       },
     };
