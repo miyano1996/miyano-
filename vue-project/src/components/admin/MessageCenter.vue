@@ -109,7 +109,7 @@ export default {
     ...mapActions(["getShopsSync", "changeStateSync"]),
     ...mapMutations(["changePageSize", "changeCurrentPage"]),
     open(index, row, th) {
-      console.log(index, row, th);
+      // console.log(index, row, th);
       if (th == "yes") {
         document.body.style.overflow = "scroll";
         this.$confirm(
@@ -149,7 +149,7 @@ export default {
           }
         )
           .then(() => {
-            this.changeStateSync({ _id: row._id, status: "5" });
+            this.changeStateSync({ _id: row._id, status: "4" });
             this.$message({
               type: "warning",
               message: "已驳回!",
