@@ -89,6 +89,6 @@ export default {
 
 <style scoped>
 .el-col {
-  width: 100%;
+  width: 240px;
 }
 </style>
