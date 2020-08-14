@@ -62,8 +62,8 @@ export default {
   methods: {
     ...mapActions(["getAllOrders", "delOrder"]),
     ...mapMutations(["changedatanum", "changepagenum"]),
-    async getOrders() {
-      await this.getAllOrders(this.shopsId);
+    getOrders() {
+      this.getAllOrders(this.shopsId);
     },
     async delit(id) {
       let { msg } = await this.delOrder({ id, success: true });
