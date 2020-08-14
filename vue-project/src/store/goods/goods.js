@@ -6,6 +6,7 @@ export default {
         goods: [],
         goodid: "",
         goodone: {},
+        shopId: "",
     },
     mutations: {
         getAllGood(state, data) {
@@ -16,6 +17,9 @@ export default {
         },
         getgood(state, data) {
             state.goodone = data
+        },
+        isgetGoods(state, data) {
+            state.shopId = data
         }
     },
     actions: {
@@ -25,7 +29,7 @@ export default {
         },
         async getAllGoods({ state, commit, actions }) {
             const msg = await api.goods.getAllGoods();
-            commit('getAllGood', msg.data.data.data.filter((item) => item.status != false));
+            commit('getAllGood', msg.data.data.data.filter((item) => item.status != false && item.shopId == state.shopId));
         },
         async getGood({ state, commit, actions }, _id) {
             const msg = await api.goods.getGood(_id);
@@ -36,6 +40,7 @@ export default {
         },
         async delGood({ state, commit, actions }, data) {
             const msg = await api.goods.delGoods(data);
+            // commit("isgetGoods", msg.data)
 
         },
         async getNotlistedGoods({ state, commit, actions }) {
