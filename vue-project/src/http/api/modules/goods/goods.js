@@ -44,7 +44,6 @@ const goods = {
                 store: data.store,
                 detail: data.detail,
                 price: data.price,
-                status: data.status,
                 id: data._id
             }
         })
