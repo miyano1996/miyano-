@@ -47,7 +47,7 @@
           </template>
           <el-menu-item-group>
             <el-menu-item index="/main/goodOrderList">订单列表</el-menu-item>
-            <el-menu-item index="3-2">订单设置</el-menu-item>
+            <el-menu-item index="/main/recycledOrders">订单还原</el-menu-item>
             <el-menu-item index="3-3">退货申请处理</el-menu-item>
             <el-menu-item index="3-4">退货原因设置</el-menu-item>
           </el-menu-item-group>
@@ -89,6 +89,6 @@ export default {
 
 <style scoped>
 .el-col {
-  width: 100%;
+  width: 240px;
 }
 </style>

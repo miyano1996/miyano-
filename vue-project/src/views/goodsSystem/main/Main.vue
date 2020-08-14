@@ -24,6 +24,7 @@ export default {
 <style scoped>
 .system-container {
   width: 100%;
+  min-height: 100vh;
   display: flex;
 }
 .system-container .main-sidebar {

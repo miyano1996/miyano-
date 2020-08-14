@@ -47,6 +47,7 @@ export default {
         managerId: localStorage.managerId,
         // managerId:'5f335ec79a560000630005c3',
         credit: "1",
+        isLift:false
       },
     };
   },

@@ -9,10 +9,23 @@ const shopsManager = {
         })
     },
     changeStateSync: data => {
-        console.log(data);
         return axios({
             url: '/shopsManager/changeState',
             method: 'post',
+            data
+        })
+    },
+    changeCreditSync:data =>{
+        return axios({
+            url:'/shopsManager/changeCredit',
+            method:'post',
+            data
+        })
+    },
+    changeLiftSync:data =>{
+        return axios({
+            url:'/shopsManager/changeLift',
+            method:'post',
             data
         })
     }
