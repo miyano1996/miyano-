@@ -16,7 +16,8 @@ const orders = {
             method: "post",
             // 只有get使用params,其他的都使用data
             data: {
-                _id: id
+                _id: id.id,
+                success: id.success
             }
         })
     }
