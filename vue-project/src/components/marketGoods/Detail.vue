@@ -62,9 +62,9 @@
           <div>
             <span class="p1">尺寸</span>
           </div>
-          <div>
-            <p class="p3" style="border:2px solid red">小号（适合小学生）</p>
-            <p class="p3">中号（适合中学生）</p>
+          <div class="p-size">
+            <p class="p3">小号（适合小学生）</p>
+            <p class="p3" style="border:2px solid red">中号（适合中学生）</p>
             <p class="p3">大号（适合大学生）</p>
             <p class="p3">超大号（适合绿巨人）</p>
           </div>
@@ -74,7 +74,7 @@
           单人仅限一件
         </div>
         <div>
-            <el-button type="danger" @click="toCar">加入购物车</el-button>
+          <el-button type="danger" @click="toCar">加入购物车</el-button>
         </div>
         <div class="hr1"></div>
         <div>
@@ -95,7 +95,7 @@
 import { createNamespacedHelpers } from "vuex";
 const { mapMutations, mapActions, mapState } = createNamespacedHelpers("goods");
 const { mapActions: mapAction } = createNamespacedHelpers("shops");
-const {mapActions:order} = createNamespacedHelpers("orders")
+const { mapActions: order } = createNamespacedHelpers("orders");
 export default {
   computed: {
     ...mapState(["oneGood"]),
@@ -103,15 +103,24 @@ export default {
   methods: {
     ...mapAction(["getOwnShopsSync"]),
     ...order(["addOrderSync"]),
-    toCar(){
-        this.addOrderSync(this.oneGood)
-    }
+    toCar() {
+      // console.log({status:'未付款',goodId:this.oneGood._id,userId:localStorage.userId,removed:false});
+      this.addOrderSync({status:'未付款',goodId:this.oneGood._id,userId:localStorage.userId,removed:false});
+      this.$router.push('/orders')
+    },
   },
   async created() {
     this.shop = (
       await this.getOwnShopsSync({ _id: this.oneGood.shopId })
     ).data[0];
-    // console.log(msg);
+    const size = document.querySelectorAll(".p-size>p");
+    size.forEach((value) => {
+      value.onclick = function () {
+        size.forEach(item=>{item.style.border = ''})
+        // console.log(value.style.border);
+        value.style.border = "2px solid red"
+      };
+    });
   },
   data() {
     return {
@@ -231,9 +240,9 @@ export default {
     .p4 {
       border: 2px solid red;
     }
-    .num{
-        font-size: 14px;
-        color: red;
+    .num {
+      font-size: 14px;
+      color: red;
     }
   }
 }

@@ -30,10 +30,15 @@ export default {
       const {data} = await this.$api.users.login(this.users);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
+        // console.log(data.my.my[0]._id);
         localStorage.token = data.token;
         localStorage.useName = this.users.account;
         localStorage.isAdmin = false;
-        this.$router.push("/system");
+        console.log(data.my.my[0]._id);
+        //个人
+        localStorage.userId = data.my.my[0]._id
+        //
+        this.$router.push("/marketGoods");
         this.open2();
         // console.log('登录成功')
       }else{

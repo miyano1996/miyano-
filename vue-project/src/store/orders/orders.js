@@ -30,15 +30,16 @@ export default {
     },
     actions: {
         //个人
-        // async addOrderSync({ state, commit, actions }, good){
-        //     const {data} = await api.orders.addOrder(good);
-        //     commit('saveOrders',)
-        // },
+        async addOrderSync({ state, commit, actions }, good){
+            const {data} = await api.orders.addOrder(good);
+            // commit('saveOrders',data)
+        },
         async getAllOrders({ state, commit, actions }, shopId) {
             const { data } = await api.orders.getAllOrders(state.page);
             let savearr = data.data.data.filter(item => { return ((item.removed) == false && (item.goodId.shopId == shopId)) });
             commit('saveOrders', { savearr, num: savearr.length, delnum: data.data.delnum });
-
+            //个人
+            return data
         },
         async getDelOrders({ state, commit, actions }, shopId) {
             const { data } = await api.orders.getAllOrders(state.page);

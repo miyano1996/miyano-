@@ -5,7 +5,8 @@ module.exports.login=async data=>{//登录
     const goLogin=await login(data);
     if(goLogin.length){
         //将密码传到第一层用自带方法对比
-        return {msg:'登录成功',success:true,password:goLogin[0].password}
+        //个人
+        return {msg:'登录成功',success:true,password:goLogin[0].password,my:goLogin}
     }else{
         return{msg:'登录失败',success:false}
     }

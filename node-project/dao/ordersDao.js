@@ -24,7 +24,7 @@ module.exports.getOrder = async function(data) {
 };
 // 删除订单
 module.exports.delOrder = async function(data) {
-    console.log(data);
+    // console.log(data);
     let msg = await ordersModel.updateOne({ _id: data._id }, { removed: data.success });
     return {
         msg: msg

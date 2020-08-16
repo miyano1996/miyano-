@@ -13,11 +13,11 @@
           </div>
           <ul class="right-top">
             <li>
-              <a href>登陆</a>
+              <router-link tag='a' to='/login'>登陆</router-link>
               <span>/</span>
             </li>
             <li>
-              <a href>注册</a>
+              <router-link tag='a' to='/register'>注册</router-link>
               <span>/</span>
             </li>
             <li>
@@ -25,7 +25,7 @@
               <span>/</span>
             </li>
             <li>
-              <a href>我的订单</a>
+              <router-link tag='a'  to='/orders'>我的订单</router-link>
               <span>/</span>
             </li>
             <li>

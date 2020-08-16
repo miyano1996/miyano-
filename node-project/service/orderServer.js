@@ -1,4 +1,4 @@
-const { addOrder, getAllOrders, delOrder, getOrder } = require('../dao/ordersDao');
+const { getAllOrders, delOrder, getOrder } = require('../dao/ordersDao');
 
 module.exports.getAllOrders = async function(data) {
     let msg = await getAllOrders(data);
@@ -27,3 +27,9 @@ module.exports.delOrder = async function(data) {
     }
 
 };
+//个人
+// module.exports.addOrder = async function(data){
+//  if(await addOrder(data)._id){
+//      return '添加成功'
+//  }
+// }

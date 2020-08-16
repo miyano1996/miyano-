@@ -17,7 +17,8 @@ router.post('/login', async(req, res) => { //登录
                 KEY, //自定义密钥串
                 { expiresIn: 60*100} //100分钟有效期
             );
-            res.send({ msg: '登录成功', success: true, token })
+            //个人
+            res.send({ msg: '登录成功', success: true, token ,my:data})
         } else {
             res.send({ msg: "登录失败", success: false })
         }
