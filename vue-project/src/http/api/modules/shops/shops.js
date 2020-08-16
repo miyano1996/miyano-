@@ -6,7 +6,7 @@ const shops = {
         return axios({
             url: "/shops/getShops",
             method: "get",
-            params: {managerId:data},
+            params: data,
         })
     },
     addShopsSync(data){

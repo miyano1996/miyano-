@@ -116,6 +116,21 @@ const routes = [{
         component: login,
     },
     {
+        path:"/home",
+        redirect:"/marketGoods.vue",
+        component:()=>import("../views/market/home.vue"),
+        children:[
+            {
+                path:"/marketGoods",
+                component:()=>import("../components/marketGoods/MarketGoods.vue")
+            },
+            {
+                path:"/detail",
+                component:()=>import("../components/marketGoods/Detail.vue")
+            }
+        ]
+    },
+    {
         path: "/register",
         name: "register",
         component: () =>

@@ -20,6 +20,13 @@ const orders = {
                 success: id.success
             }
         })
+    },
+    addOrder:function(good){
+        return axios({
+            url:"/orders/addOrder",
+            method:"post",
+            data:good
+        })
     }
 }
 

@@ -169,7 +169,7 @@ export default {
     UsersViewCharts,
   },
   async created() {
-    this.datas = (await this.getOwnShopsSync(this.managerId)).data;
+    this.datas = (await this.getOwnShopsSync({managerId:this.managerId})).data;
     // console.log(await this.getOwnShopsSync(this.managerId));
     const num = this.datas.filter((value) => {
       return value.status == 4;

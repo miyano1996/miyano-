@@ -26,9 +26,14 @@ export default {
         },
         changedatanum(state, data) {
             state.page.datanum = data
-        }
+        },
     },
     actions: {
+        //个人
+        // async addOrderSync({ state, commit, actions }, good){
+        //     const {data} = await api.orders.addOrder(good);
+        //     commit('saveOrders',)
+        // },
         async getAllOrders({ state, commit, actions }, shopId) {
             const { data } = await api.orders.getAllOrders(state.page);
             let savearr = data.data.data.filter(item => { return ((item.removed) == false && (item.goodId.shopId == shopId)) });
