@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="value in orders" :key="value._id">
+        <tr v-for="value in myOrder" :key="value._id">
           <td class="goods">
             <div class="img">
               <img :src="'http://localhost:3000/images/'+value.goodId.image" alt />
@@ -55,11 +55,7 @@ export default {
       })
         .then(() => {
           this.delOrder({ id: _id, success: true });
-          this.orders.forEach(item=>{
-            if(item._id == _id){
-              item.removed == true
-            }
-          })
+          this.getAllOrders();
           this.$message({
             type: "success",
             message: "删除成功!",
@@ -73,22 +69,14 @@ export default {
         });
     },
   },
-  watch:{
-    'orders.removed'(newValue,oldValue){
-      newValue = this.orders.removed
-    }
+  created() {
+    this.getAllOrders();
   },
-  async created() {
-    const datas = (await this.getAllOrders()).data.data;
-    this.orders = datas.filter((value) => {
-      return value.userId._id == localStorage.userId && value.removed == false&&value.status!='未下单';
-    });
+  computed: {
+    ...mapState(["myOrder"]),
   },
-  computed: {},
   data() {
-    return {
-      orders: [],
-    };
+    return {};
   },
 };
 </script>

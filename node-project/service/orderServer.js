@@ -18,11 +18,13 @@ module.exports.delOrder = async function(data) {
     let msg = await delOrder(data);
     if (msg.msg.n == 1) {
         return {
-            success: true
+            success: true,
+            data:msg
         }
     } else {
         return {
-            success: false
+            success: false,
+            data:msg
         }
     }
 

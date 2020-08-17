@@ -26,15 +26,7 @@ router.get('/getAllOders', async function(req, res, next) {
 
 router.post("/delOrder", async function(req, res, next) {
     let msg = await delOrder(req.body);
-    if (msg.success) {
-        res.send({
-            success: true
-        })
-    } else {
-        res.send({
-            success: false
-        })
-    }
+    res.send(msg)
 
 });
 //个人

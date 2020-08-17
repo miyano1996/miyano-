@@ -81,7 +81,6 @@
             :default-active="activeIndex"
             class="el-menu-demo"
             mode="horizontal"
-            @select="handleSelect"
             background-color="rgba(255, 255, 255, 0)"
             active-text-color="#f10180"
           >

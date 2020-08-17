@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="value in orders" :key="value._id">
+        <tr v-for="value in carOrder" :key="value._id">
           <td class="goods">
             <div class="img">
               <img :src="'http://localhost:3000/images/'+value.goodId.image" alt />
@@ -35,9 +35,9 @@
             <span class="price">{{value.goodId.price}}.00元</span>
           </td>
           <td>
-              <button style="background:none;border:1px solid gray;outline:none">-</button>1
-              <button style="background:none;border:1px solid gray;outline:none">+</button>
-              </td>
+            <button style="background:none;border:1px solid gray;outline:none">-</button>1
+            <button style="background:none;border:1px solid gray;outline:none">+</button>
+          </td>
           <td>
             <el-button type="danger" @click="addOrder(value._id)">立即下单</el-button>
             <el-button type="primary" @click="del(value._id)">移除</el-button>
@@ -55,30 +55,23 @@ const { mapMutations, mapActions, mapState } = createNamespacedHelpers(
 );
 export default {
   async created() {
-    const datas = (await this.getAllOrders()).data.data;
-    this.orders = datas.filter((value) => {
-      return (
-        value.userId._id == localStorage.userId &&
-        value.status == "未下单" &&
-        value.removed == false
-      );
-    });
+    this.getAllOrders();
   },
-  computed: {},
+  computed: {
+    ...mapState(["carOrder"]),
+  },
   data() {
-    return {
-      orders: [],
-    };
+    return {};
   },
   methods: {
-    ...mapActions(["getAllOrders", "delOrder","updateOrderSync"]),
-    addOrder(_id){
-        this.updateOrderSync({_id,status:'未付款'});
-        this.$notify({
-          title: '成功',
-          message: '下单成功',
-          type: 'success'
-        });
+    ...mapActions(["getAllOrders", "delOrder", "updateOrderSync"]),
+    addOrder(_id) {
+      this.updateOrderSync({ _id, status: "未付款" });
+      this.$notify({
+        title: "成功",
+        message: "下单成功",
+        type: "success",
+      });
     },
     del(_id) {
       this.$confirm("将该商品移除购物车, 是否继续?", "提示", {
@@ -88,6 +81,7 @@ export default {
       })
         .then(() => {
           this.delOrder({ id: _id, success: true });
+          this.getAllOrders();
           this.$message({
             type: "success",
             message: "删除成功!",

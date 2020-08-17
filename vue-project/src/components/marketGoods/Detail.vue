@@ -179,7 +179,12 @@ export default {
         userId: localStorage.userId,
         removed: false,
       });
-      this.$router.push("/orders");
+      this.$notify({
+          title: '成功',
+          message: '已成功添加至购物车',
+          type: 'success'
+        });
+      // this.$router.push("/orders");
     },
   },
   async created() {

@@ -135,11 +135,12 @@ export default {
       return localStorage.useName;
     },
   },
-  methods:{
-    exit(){
+  methods: {
+    exit() {
       localStorage.clear();
-    }
-  }
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -266,6 +267,7 @@ header {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 2px 0 #f2f2f2; 
   .fenlei {
     color: white;
     background-color: #fa2a83;
