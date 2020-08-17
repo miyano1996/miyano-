@@ -29,25 +29,6 @@ export default {
     ShopSales,
     TypeSales,
   },
-  data(){
-      return {
-          shopData:{}
-      }
-  },
-  computed: {
-    ...mapState(['shopsId',"getOneShop"]),
-
-  },
- async created(){
-      const data = await this.getOneShopSync()
-      if(data.success) {
-        this.shopData = this.getOneShop;
-        console.log(this.shopData)
-      }
-  },
-  methods: {
-      ...mapActions(['getOneShopSync'])
-  },
 };
 </script>
 

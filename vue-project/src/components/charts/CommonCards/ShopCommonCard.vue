@@ -19,7 +19,9 @@
 export default {
     props:{
         title:String,
-        value:String
+        value:{
+            type:[Number,String]
+        }
     }
 }
 </script>
