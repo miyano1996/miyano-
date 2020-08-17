@@ -9,6 +9,7 @@ const goods = {
                 type: data.type,
                 name: data.name,
                 image: data.image,
+                detailimg: data.detailimg,
                 store: data.store,
                 detail: data.detail,
                 price: data.price,

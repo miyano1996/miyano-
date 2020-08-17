@@ -34,9 +34,8 @@ instance.interceptors.request.use( //数据返回到发送请求的地方
 instance.interceptors.response.use(
     // 响应成功
     res => {
-        console.log('success');
         return res; // { data: {}}
-        
+
     },
     // 响应失败
     err => {

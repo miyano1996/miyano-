@@ -8,6 +8,12 @@ module.exports.addGood = async function(data) {
         moveFiles({
             filename: data.image
         });
+        for (let i = 0; i < data.detailimg.length; i++) {
+            moveFiles({
+                filename: data.detailimg[i]
+            });
+
+        }
         removeFiles()
         return {
             success: true
