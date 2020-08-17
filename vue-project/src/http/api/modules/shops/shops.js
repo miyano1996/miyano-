@@ -29,6 +29,13 @@ const shops = {
             method:'post',
             data:data
         })
+    },
+    getOneShopSync(data){
+        return axios({
+            url:"/shops/getOneShop",
+            method:'post',
+            data
+        })
     }
 }
 export default shops

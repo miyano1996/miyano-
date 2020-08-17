@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <el-menu 
+  <div>
+    <el-menu
       :default-active="activeIndex2"
       class="el-menu-demo"
       mode="horizontal"
@@ -36,8 +36,8 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-      url: 'http://localhost:3000/images/webstar-service.svg'
+      fits: ["fill", "contain", "cover", "none", "scale-down"],
+      url: "http://localhost:3000/images/webstar-service.svg",
     };
   },
   methods: {
@@ -49,12 +49,12 @@ export default {
 </script>
 
 <style scoped>
-.el-menu-demo{
+.el-menu-demo {
   background-color: #fff;
   position: relative;
   color: #234b8d;
 }
-.el-menu-demo .imgBox{
+.el-menu-demo .imgBox {
   width: 180px;
   height: 80px;
   position: absolute;
@@ -62,5 +62,6 @@ export default {
   background-image: url(http://localhost:3000/images/webstar-service.svg);
   background-size: 180px 80px;
   background-position: center center;
+  outline: none;
 }
 </style>

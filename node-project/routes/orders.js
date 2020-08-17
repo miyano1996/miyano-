@@ -17,7 +17,6 @@ router.get('/getAllOders', async function(req, res, next) {
             success: msg.success
         })
     }
-
 });
 
 router.post("/delOrder", async function(req, res, next) {

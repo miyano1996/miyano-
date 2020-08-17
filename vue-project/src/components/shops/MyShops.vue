@@ -215,7 +215,7 @@ export default {
     },
     gogogo(shopsId) {
       this.changeShopsId(shopsId);
-      this.$router.push("/main/goodsList");
+      this.$router.push("/main/shopCharts");
     },
     toAdd() {
       this.$router.push("/addShops");

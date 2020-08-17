@@ -9,6 +9,15 @@
         :model="good"
         ref="good"
       >
+        <el-form-item label="上传商品图片:">
+          <el-upload
+            action="http://localhost:3000/images/upload"
+            list-type="picture"
+            :on-success="loadsuccess"
+          >
+            <i class="el-icon-plus"></i>
+          </el-upload>
+        </el-form-item>
         <el-form-item label="商品种类:" prop="type">
           <el-select
             v-model="good.type"
@@ -26,7 +35,7 @@
           <el-input clearable v-model="good.name"></el-input>
         </el-form-item>
         <el-form-item label="商品价格:" prop="price">
-          <el-input clearable v-model="good.price" oninput="value=value.replace(/[^\d]/g,'')"></el-input>
+          <el-input clearable v-model="good.price"></el-input>
         </el-form-item>
         <el-form-item label="商品简介:">
           <el-input
@@ -34,21 +43,21 @@
             v-model="good.detail"
             type="textarea"
             maxlength="200"
-            :autosize="{ minRows: 8, maxRows: 10}"
+            :autosize="{ minRows: 5, maxRows: 10}"
             show-word-limit
           ></el-input>
         </el-form-item>
-        <el-form-item label="上传商品图片:">
+        <el-form-item label="上传详情图片:">
           <el-upload
             action="http://localhost:3000/images/upload"
-            list-type="picture-card"
-            :on-success="loadsuccess"
+            list-type="picture"
+            :on-success="loaddetailimg"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
         </el-form-item>
         <el-form-item label="商品库存:" prop="store">
-          <el-input clearable v-model="good.store" oninput="value=value.replace(/[^\d]/g,'')"></el-input>
+          <el-input clearable v-model="good.store"></el-input>
         </el-form-item>
       </el-form>
       <el-button @click="sureadd('good')" type="primary">确认添加</el-button>
@@ -68,6 +77,7 @@ export default {
         type: "",
         name: "",
         image: "",
+        detailimg: [],
         store: "",
         detail: "",
         price: "",
@@ -99,8 +109,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.formisable = true;
-        } else {
-          return false;
         }
       });
       if (this.formisable) {
@@ -114,6 +122,11 @@ export default {
     loadsuccess(res) {
       if (res.success) {
         this.good.image = res.filename[0];
+      }
+    },
+    loaddetailimg(res) {
+      if (res.success) {
+        this.good.detailimg.push(res.filename[0]);
       }
     },
   },

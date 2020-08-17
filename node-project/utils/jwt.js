@@ -1,5 +1,5 @@
 const expressJWT = require('express-jwt');
-const {KEY}=require('./consts.js');//密钥会多次用到  封装为常量减少出错
+const { KEY } = require('./consts.js'); //密钥会多次用到  封装为常量减少出错
 
 const jwtAuth = expressJWT({
     secret: KEY, // 对应着生成 token 时的密钥字符串

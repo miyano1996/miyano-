@@ -21,14 +21,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+html,
+body {
+  user-select: none;
+}
 .system-container {
   width: 100%;
   min-height: 100vh;
   display: flex;
 }
 .system-container .main-sidebar {
-  width: 16%;
+  width: 240px;
   border-right: 1px solid #ccc;
 }
 .system-container .main-content {
