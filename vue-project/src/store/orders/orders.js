@@ -47,6 +47,7 @@ export default {
             commit('saveDeledOrders', delarr)
         },
         async delOrder({ state, commit, actions }, id) {
+            // console.log(id);
             const data = await api.orders.delOrder(id);
             return {
                 msg: data.data
