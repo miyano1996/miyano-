@@ -28,20 +28,20 @@
             <el-menu-item index="/addShops">新增店铺</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="2">
-          <template slot="title">
+        <el-submenu index="2" v-if="shopsId">
+          <template slot="title" >
             <i class="el-icon-goods"></i>
             <span>商品中心</span>
           </template>
-          <el-menu-item-group>
-            <!-- <el-menu-item index="/main/shopCharts">店铺数据</el-menu-item> -->
-            <el-menu-item index="/main/goodsList">商品列表</el-menu-item>
+          <el-menu-item-group >
+            <el-menu-item index="/main/shopCharts">店铺数据</el-menu-item>
+            <el-menu-item index="/main/goodsList" >商品列表</el-menu-item>
             <el-menu-item index="/main/addGood">添加商品</el-menu-item>
             <el-menu-item index="2-2">商品分类</el-menu-item>
             <el-menu-item index="/main/notListedGoods">未上架商品</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="3">
+        <el-submenu index="3" v-if="shopsId">
           <template slot="title">
             <i class="el-icon-s-order"></i>
             <span>订单</span>
@@ -53,7 +53,7 @@
             <el-menu-item index="3-4">退货原因设置</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="4">
+        <el-submenu index="4" v-if="shopsId">
           <template slot="title">
             <i class="el-icon-s-marketing"></i>
             <span>营销</span>
@@ -85,12 +85,19 @@
 </template>
 
 <script>
+
+import { createNamespacedHelpers } from "vuex";
+const { mapState } = createNamespacedHelpers("shops");
+
 export default {
   data() {
     return {
       isAdmin: false,
       str:'none'
     };
+  },
+  computed:{
+    ...mapState(['shopsId'])
   },
   created() {
     this.checkAdmin();

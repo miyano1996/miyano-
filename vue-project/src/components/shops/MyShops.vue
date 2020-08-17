@@ -161,6 +161,7 @@
 </template>
 
 <script>
+
 import { createNamespacedHelpers } from "vuex";
 import UsersViewCharts from "../charts/UsersView/UsersViewCharts";
 const { mapState, mapActions, mapMutations } = createNamespacedHelpers("shops");
@@ -169,6 +170,8 @@ export default {
     UsersViewCharts,
   },
   async created() {
+    //清空shopsId
+    this.changeShopsId('');
     this.datas = (await this.getOwnShopsSync(this.managerId)).data;
     // console.log(await this.getOwnShopsSync(this.managerId));
     const num = this.datas.filter((value) => {
