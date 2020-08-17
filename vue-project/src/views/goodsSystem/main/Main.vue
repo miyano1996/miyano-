@@ -21,7 +21,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+html,
+body {
+  user-select: none;
+}
 .system-container {
   width: 100%;
   min-height: 100vh;
