@@ -130,7 +130,14 @@ const routes = [{
             },
             {
                 path:"/orders",
-                component:()=>import("../components/marketGoods/Orders")
+                redirect:'/allOrders',
+                component:()=>import("../components/marketGoods/Orders"),
+                children:[
+                    {
+                        path:"/allOrders",
+                        component:()=>import("../components/marketGoods/Allorders.vue")
+                    },
+                ]
             }
         ]
     },

@@ -104,7 +104,7 @@ export default {
     ...mapAction(["getOwnShopsSync"]),
     ...order(["addOrderSync"]),
     toCar() {
-      // console.log({status:'未付款',goodId:this.oneGood._id,userId:localStorage.userId,removed:false});
+      // console.log(this.shop);
       this.addOrderSync({status:'未付款',goodId:this.oneGood._id,userId:localStorage.userId,removed:false});
       this.$router.push('/orders')
     },
@@ -113,6 +113,7 @@ export default {
     this.shop = (
       await this.getOwnShopsSync({ _id: this.oneGood.shopId })
     ).data[0];
+    // console.log({ _id: this.oneGood.shopId });
     const size = document.querySelectorAll(".p-size>p");
     size.forEach((value) => {
       value.onclick = function () {

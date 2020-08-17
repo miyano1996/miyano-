@@ -109,51 +109,6 @@
             <span style="font-size:16px">￥</span>{{value.price}}00
           </p>
         </div>
-        <!-- <div>
-          <img width="100%" src="../../views/images/first/test1.jpg" alt />
-          <p>
-            <span class="p1">爆款</span> 的就是卡机看来当时卡看到快撒打开打算
-          </p>
-          <p class="p2">
-            <span style="font-size:16px">￥</span>434.00
-          </p>
-        </div>
-        <div>
-          <img width="100%" src="../../views/images/first/test1.jpg" alt />
-          <p>
-            <span class="p1">爆款</span> 的就是卡机看来当时卡看到快撒打开打算
-          </p>
-          <p class="p2">
-            <span style="font-size:16px">￥</span>434.00
-          </p>
-        </div>
-        <div>
-          <img width="100%" src="../../views/images/first/test1.jpg" alt />
-          <p>
-            <span class="p1">爆款</span> 的就是卡机看来当时卡看到快撒打开打算
-          </p>
-          <p class="p2">
-            <span style="font-size:16px">￥</span>434.00
-          </p>
-        </div>
-        <div>
-          <img width="100%" src="../../views/images/first/test1.jpg" alt />
-          <p>
-            <span class="p1">爆款</span> 的就是卡机看来当时卡看到快撒打开打算
-          </p>
-          <p class="p2">
-            <span style="font-size:16px">￥</span>434.00
-          </p>
-        </div>
-        <div>
-          <img width="100%" src="../../views/images/first/test1.jpg" alt />
-          <p>
-            <span class="p1">爆款</span> 的就是卡机看来当时卡看到快撒打开打算
-          </p>
-          <p class="p2">
-            <span style="font-size:16px">￥</span>434.00
-          </p>
-        </div> -->
         <div id="space"></div>
       </div>
     </div>

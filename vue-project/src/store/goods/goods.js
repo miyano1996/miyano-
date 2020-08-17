@@ -38,7 +38,7 @@ export default {
         //个人
         async getMarketGoods({ state, commit, actions }) {
             const msg = await api.goods.getAllGoods();
-            console.log(msg.data.data.data.filter((item) => item.status != false));
+            // console.log(msg.data.data.data.filter((item) => item.status != false));
             commit('getAllGood', msg.data.data.data.filter((item) => item.status != false));
         },
         async getGood({ state, commit, actions }, _id) {
