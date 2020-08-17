@@ -1,4 +1,4 @@
-const { getShops,addShops,delShops,updateShops } = require('../dao/shopsDao')
+const { getShops,addShops,delShops,updateShops,getOneShop } = require('../dao/shopsDao')
 module.exports.getShops = async data => {
     return await getShops(data)
 }
@@ -24,5 +24,15 @@ module.exports.updateShops = async data=>{
             msg:'修改成功',
             success:true
         }
+    }
+};
+module.exports.getOneShop = async _id=>{
+    const data = await getOneShop(_id);
+    // if(data._id){
+        return{
+            msg:"获取单个店铺数据成功",
+            success:true,
+            rows:data
+        // }
     }
 }

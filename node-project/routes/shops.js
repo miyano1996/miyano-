@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-const { getShops,addShops,delShops,updateShops } = require('../service/shopsService');
+const { getShops,addShops,delShops,updateShops,getOneShop } = require('../service/shopsService');
 router.get('/getShops',async function (req, res, next) {
     const data = req.query;
     // console.log(data);
@@ -24,6 +24,13 @@ router.post('/updateShops',async function(req,res,next){
     const data = req.body;
     const datas = await updateShops(data)
     res.send(datas)
+})
+router.post("/getOneShop" , async (req,res)=>{
+   
+    const{_id} = req.body;
+    console.log(_id,'rout')
+    const data = await getOneShop(_id)
+    res.send(data)
 })
 
 

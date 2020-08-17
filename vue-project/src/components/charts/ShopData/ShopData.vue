@@ -40,12 +40,14 @@ export default {
     CreditPoints,
   },
   async created(){
-    const shopData = await this.getOwnShopsSync('5f335ec79a560000630005c3').data
+    //此处为请求表格数据 报错来源
+    // const shopData = await this.getOwnShopsSync('5f335ec79a560000630005c3').data
+
     // this.dailySales = shopData.chartsData.dailySales;
     // this.totalOrders = shopData.chartsData.totalOrders;
     // this.todayUsers = shopData.chartsData.todayUsers;
     // this.creditPoints = shopData.chartsData.creditPoints;
-    console.log(shopData)
+    // console.log(shopData)
     
   },
   methods:{
