@@ -1,13 +1,22 @@
 <!--页面主体 -->
 <template >
   <div class='system-main'>
-    <p class="system-use">
-      <i :class="weather"></i>
+    <div class="system-use">
+      
       <span>{{msg}}：{{useName}}</span>
-      <b style="text-indent:20px" @click="exit">|退出</b>
-    </p>
+      <b style="text-indent:20px" @click="exit">退出</b>
+      <div class="system-weather">
+        <i :class="weather" style="font-size:20px"></i>
+        <span>{{date}}</span>
+        <span>{{type}}</span>
+        <span>{{high}}</span>
+        <span>{{low}}</span>
+        <span>{{fengxiang}}</span>
+      </div>
+    </div>
+    <div class='system-weather'></div>
     <el-container class="system-box">
-      <el-header style="font-size:30px">
+      <el-header style="height:100px">
         <HeaderNav />
       </el-header>
       <el-container class="main">
@@ -31,6 +40,12 @@ export default {
       msg: "",
       city: "成都",
       weather: "",
+      date:'',
+      fengli:'',
+      fengxiang:'',
+      high:'',
+      low:'',
+      type:''
     };
   },
   created() {
@@ -41,7 +56,7 @@ export default {
   methods: {
     //获取本地用户名
     getUseName() {
-      this.useName = localStorage.getItem("usename");
+      this.useName = localStorage.getItem("useName");
     },
     //获取当前时间
     getMsg() {
@@ -67,7 +82,14 @@ export default {
         url: "http://wthrcdn.etouch.cn/weather_mini?city=" + this.city,
         method: "get",
       });
-      let type = data.data.data.forecast[1].type;
+      let type = data.data.data.forecast[0].type;
+      this.date = data.data.data.forecast[0].date
+      this.high = data.data.data.forecast[0].high
+      this.fengli = data.data.data.forecast[0].fengli
+      this.fengxiang = data.data.data.forecast[0].fengxiang
+      this.low = data.data.data.forecast[0].low
+      this.type = data.data.data.forecast[0].type
+      console.log(data);
       if (type.includes("雨")) {
         this.weather = "el-icon-heavy-rain";
       } else if (type.includes("云")) {
@@ -85,16 +107,18 @@ export default {
 </script>
 
 <style scoped>
-.system-mian{
+.system-main{
   position: relative;
 }
 .system-use {
   position: absolute;
-  right: 80px;
+  right: 50px;
+  top: 10px;
   z-index: 99;
+  text-align: right;
 }
 .system-use i {
-  color: black;
+  color: rgba(0, 0, 0, 0.329);
   font-size: 30px;
   display: inline-block;
   width: 70px;
@@ -103,8 +127,22 @@ export default {
   display: inline-block;
   width: 70px;
   text-align: right;
-  color: #e9eef3;
+  color: #e6a23c;
   font-weight: 400;
+}
+.system-main .system-use .system-weather{
+  width: 420px;
+  height: 30px;
+  margin-top: 36px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #234b8d;
+}
+.system-main .system-use .system-weather span{
+  display: inline-block;
+  width: 70px;
+  text-align: center;
 }
 .system-box {
   height: 100%;
@@ -112,7 +150,10 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-.el-header,
+.el-header{
+  font-size:30px; 
+  border-bottom: solid 1.5px #ccc;
+}
 .el-footer {
   background-color: #b3c0d1;
   color: #333;

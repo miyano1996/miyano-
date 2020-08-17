@@ -27,12 +27,7 @@
           default-first-option
           placeholder="请选择商品标签"
         >
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
+          <el-option v-for="item in options" :key="item.value" :value="item.value"></el-option>
         </el-select>
         <div>
           <span>商品名字：</span>
@@ -73,31 +68,26 @@ export default {
       options: [
         {
           value: "酒水饮品",
-          label: "酒水饮品",
         },
         {
           value: "生鲜",
-          label: "生鲜",
         },
         {
           value: "电器数码",
-          label: "电器数码",
         },
         {
           value: "零食",
-          label: "零食",
         },
         {
           value: "家电",
-          label: "家电",
         },
         {
           value: "服装服饰",
-          label: "服装服饰",
         },
       ],
       goods: {
-        type: [],
+        _id: "",
+        type: "",
         name: "",
         price: "",
         store: 1,
@@ -116,6 +106,7 @@ export default {
     ...mapActions(["getGood", "updatedGood"]),
     updatedgoods() {
       alert("修改成功");
+      console.log(this.goods);
       this.updatedGood(this.goods);
       this.getGood(this.goodid);
     },

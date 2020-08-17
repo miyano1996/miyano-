@@ -5,9 +5,9 @@
       <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b"
+        background-color="#fff"
+        text-color="#1e1e1e"
+        active-text-color="#f6dca1"
         width="300px"
         router
       >
@@ -64,19 +64,21 @@
             <el-menu-item index="4-3">促销专区</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="5">
-          <template slot="title">
-            <i class="el-icon-key"></i>
-            <span>权限</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="5-1">系统管理</el-menu-item>
-            <el-menu-item index="/shopManager">店铺管理</el-menu-item>
-            <el-menu-item index="5-3">用户管理</el-menu-item>
-            <el-menu-item index="5-4">产品管理</el-menu-item>
-            <el-menu-item index="/messageCenter">消息中心</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
+        
+          <el-submenu index="5" :style="{'display': str}">
+            <template slot="title">
+              <i class="el-icon-key"></i>
+              <span>管理员中心</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="5-1">系统管理</el-menu-item>
+              <el-menu-item index="/shopManager">店铺管理</el-menu-item>
+              <el-menu-item index="5-3">用户管理</el-menu-item>
+              <el-menu-item index="5-4">产品管理</el-menu-item>
+              <el-menu-item index="/messageCenter">消息中心</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+        
       </el-menu>
     </el-col>
   </el-row>
@@ -84,12 +86,31 @@
 
 <script>
 export default {
-  methods: {},
+  data() {
+    return {
+      isAdmin: false,
+      str:'none'
+    };
+  },
+  created() {
+    this.checkAdmin();
+  },
+  methods: {
+    checkAdmin() {
+      this.isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
+      if(this.isAdmin){
+        this.str = 'block'
+      }else{
+        this.str = 'none'
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .el-col {
   width: 240px;
+  
 }
 </style>

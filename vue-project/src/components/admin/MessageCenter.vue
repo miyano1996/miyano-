@@ -19,10 +19,10 @@
     </el-badge>
 
     <el-dropdown trigger="click">
-      <span class="el-dropdown-link">
+      <!-- <span class="el-dropdown-link">
         点我查看
         <i class="el-icon-caret-bottom el-icon--right"></i>
-      </span>
+      </span> -->
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item class="clearfix">
           留言
@@ -38,7 +38,6 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>店铺申请信息</span>
-        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="text item">
         <el-table :data="pageData.row" style="width: 70vw; overflow: hidden;" height="500">

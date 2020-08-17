@@ -29,11 +29,12 @@ export default {
 }
 .system-container .main-sidebar {
   width: 16%;
-  border-right: 2px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 .system-container .main-content {
   width: 84%;
-  background: rgb(248, 248, 248);
+  background: rgb(225, 225, 225);
+  background-color: white;
   padding: 20px;
 }
 </style>

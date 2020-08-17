@@ -8,7 +8,8 @@ module.exports.addShops = async data=>{
     return await shopsModel.create(data)
 }
 module.exports.delShops = async data=>{
-    return await shopsModel.deleteOne(data)
+    // console.log(data);
+    return await shopsModel.updateOne(data,{status:'2'})
 }
 module.exports.updateShops =  async data=>{
     // console.log(data);

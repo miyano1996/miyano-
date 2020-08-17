@@ -34,8 +34,7 @@ module.exports.updateGood = async function(data) {
         store: data.store,
         detail: data.detail,
         price: data.price,
-        status: data.statue,
-        typ: data.type
+        type: data.type
     });
     return {
         data: msg,

@@ -40,7 +40,6 @@ export default {
         },
         async delGood({ state, commit, actions }, data) {
             const msg = await api.goods.delGoods(data);
-            // commit("isgetGoods", msg.data)
 
         },
         async getNotlistedGoods({ state, commit, actions }) {
