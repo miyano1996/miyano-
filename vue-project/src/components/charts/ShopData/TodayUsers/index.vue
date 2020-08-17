@@ -1,5 +1,5 @@
 <template>
-  <shop-common-card title="今日交易用户数" value="3332">
+  <shop-common-card title="今日交易用户数" :value="chartsData[chartsData.length-1]">
     <template>
       <div id="today-users-charts" :style="{width:'100%',height:'100%'}"></div>
     </template>
@@ -13,6 +13,14 @@
 <script>
 import ShopCommonCard from "../../CommonCards/ShopCommonCard";
 export default {
+  props:{
+    todayUsers:Array
+  },
+  data(){
+    return {
+      chartsData:this.todayUsers
+    }
+  },
   components: {
     ShopCommonCard,
   },
@@ -24,7 +32,7 @@ export default {
         color:['#3398DB'],
         series:[{
             type:'bar',
-            data:[410,82,200,334,390,223,324,150,224,111],
+            data:this.chartsData,
             barWidth:'60%'
         }],
         xAxis:{

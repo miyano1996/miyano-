@@ -1,23 +1,22 @@
 <template>
-  <shop-common-card title="今日销售额" value="334332">
+  <shop-common-card title="今日销售额" :value="charts[charts.length-1]">
     <template>
       <div>
         <div class="compare">
           <span>日同比</span>
-          <span>4.24%</span>
-          <div class="increase"></div>
-
+          <span>{{dayCompare}}%</span>
+          <div :class="{increase:dayCompare>=0,decrease:dayCompare<0}"></div>
         </div>
         <div class="compare">
           <span>月同比</span>
-          <span>3.13%</span>
-          <div class="decrease"></div>
+          <span>{{monthCompare}}%</span>
+          <div :class="{increase:monthCompare>=0,decrease:monthCompare<0}"></div>
         </div>
       </div>
     </template>
     <template v-slot:footer>
       <span>昨日销售额</span>
-      <span class="emphasis">￥300000</span>
+      <span class="emphasis">￥{{charts[charts.length-2]}}</span>
     </template>
   </shop-common-card>
 </template>
@@ -26,6 +25,33 @@
 <script>
 import ShopCommonCard from "../../CommonCards/ShopCommonCard";
 export default {
+  props: {
+    dailySales: Array,
+    monthlySales: Array,
+  },
+  data() {
+    return {
+      charts: this.dailySales,
+      mcharts: this.monthlySales,
+    };
+  },
+  computed: {
+    dayCompare() {
+      let l = this.charts[this.charts.length - 1];
+      let p = this.charts[this.charts.length - 2];
+      let num = ((l - p) / l) * 100;
+      num = num.toFixed(2);
+      return num;
+    },
+    monthCompare() {
+      let l = this.mcharts[this.mcharts.length - 1];
+      let p = this.mcharts[this.mcharts.length - 2];
+      let num = ((l - p) / l) * 100;
+      num = num.toFixed(2);
+      return num;
+    },
+  },
+  created() {},
   components: {
     ShopCommonCard,
   },
@@ -43,8 +69,7 @@ export default {
     border-width: 3px;
     border-color: transparent transparent red transparent;
     border-style: solid;
-    margin:-3px 0 0 3px
-    
+    margin: -3px 0 0 3px;
   }
   .decrease {
     width: 0;
@@ -52,7 +77,7 @@ export default {
     border-width: 3px;
     border-color: green transparent transparent transparent;
     border-style: solid;
-    margin:0 0 -3px 3px
+    margin: 0 0 -3px 3px;
   }
 }
 </style>

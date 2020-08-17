@@ -1,5 +1,5 @@
 <template>
-  <shop-common-card title="信用分" value="650">
+  <shop-common-card title="信用分" :value="creditPoints">
     <template>
       <div id="credit-points-charts" :style="{width:'100%',height:'100%'}"></div>
     </template>
@@ -17,7 +17,11 @@ export default {
   components: {
     ShopCommonCard,
   },
-
+  props:{
+    creditPoints:{
+      type:[String,Number]
+    }
+  },
   mounted() {
     const chartsDom = document.getElementById("credit-points-charts");
     const chart = this.$echarts.init(chartsDom);

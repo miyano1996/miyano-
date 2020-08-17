@@ -6,7 +6,7 @@
     <div class="rank">
         <span class="rankTitle">销售排行</span>
       <el-card class="box-card" shadow="hidden">
-        <div v-for="o in 5" :key="o" class="text item">{{'列表内容 ' + o }}</div>
+        <div v-for="(item,index) in dailySalesRank" :key="index" class="text item">{{(index+1)+'.' + item }}</div>
       </el-card>
     </div>
   </div>
@@ -14,6 +14,10 @@
 
 <script>
 export default {
+  props:{
+    dailySales:Array,
+    dailySalesRank:Array
+  },
   data() {
     return {
       xAxisData: [],
@@ -32,23 +36,7 @@ export default {
         {
           name: "销售额",
           type: "bar",
-          data: [
-            410,
-            82,
-            200,
-            334,
-            390,
-            223,
-            324,
-            150,
-            224,
-            111,
-            324,
-            150,
-            224,
-            111,
-            111,
-          ],
+          data: this.dailySales,
           barWidth: "60%",
         },
       ],

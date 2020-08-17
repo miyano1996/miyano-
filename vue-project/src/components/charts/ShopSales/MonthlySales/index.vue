@@ -4,9 +4,13 @@
       <div id="monthly-sales-charts"></div>
     </div>
     <div class="rank">
-        <span class="rankTitle">销售排行</span>
+      <span class="rankTitle">销售排行</span>
       <el-card class="box-card" shadow="hidden">
-        <div v-for="o in 5" :key="o" class="text item">{{'列表内容 ' + o }}</div>
+        <div
+          v-for="(item,index) in monthlySalesRank"
+          :key="index"
+          class="text item"
+        >{{(index+1)+'.' + item }}</div>
       </el-card>
     </div>
   </div>
@@ -14,6 +18,10 @@
 
 <script>
 export default {
+  props: {
+    monthlySales: Array,
+    monthlySalesRank: Array,
+  },
   data() {
     return {
       xAxisData: [],
@@ -32,23 +40,7 @@ export default {
         {
           name: "销售额",
           type: "bar",
-          data: [
-            3410,
-            382,
-            2300,
-            3334,
-            3390,
-            2323,
-            3324,
-            3150,
-            3224,
-            3111,
-            3324,
-            1530,
-            3224,
-            3111,
-            3111,
-          ],
+          data: this.monthlySales,
           barWidth: "60%",
         },
       ],
@@ -106,10 +98,10 @@ export default {
   .rank {
     width: 380px;
     height: inherit;
-    .rankTitle{
-        font-size: 14px;
-        line-height: 30px;
-        padding-left: 5px;
+    .rankTitle {
+      font-size: 14px;
+      line-height: 30px;
+      padding-left: 5px;
     }
     .text {
       font-size: 14px;
