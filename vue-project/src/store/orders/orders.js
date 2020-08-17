@@ -34,6 +34,9 @@ export default {
             const {data} = await api.orders.addOrder(good);
             // commit('saveOrders',data)
         },
+        async updateOrderSync({state, commit, actions},data){
+            const {datas} = await api.orders.updateOrder(data)
+        },
         async getAllOrders({ state, commit, actions }, shopId) {
             const { data } = await api.orders.getAllOrders(state.page);
             let savearr = data.data.data.filter(item => { return ((item.removed) == false && (item.goodId.shopId == shopId)) });

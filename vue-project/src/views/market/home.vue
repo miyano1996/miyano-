@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width:100vw">
     <header>
       <div class="header-top">
         <div class="header-top-content">
@@ -12,20 +12,32 @@
             </select>
           </div>
           <ul class="right-top">
-            <li>
-              <router-link tag='a' to='/login'>登陆</router-link>
-              <span>/</span>
-            </li>
-            <li>
-              <router-link tag='a' to='/register'>注册</router-link>
-              <span>/</span>
-            </li>
+            <template v-if="username">
+              <li>
+                <router-link tag="a" to="/login">{{username}}</router-link>
+                <span>/</span>
+              </li>
+              <li>
+                <a tag="a" @click.prevent="exit">退出</a>
+                <span>/</span>
+              </li>
+            </template>
+            <template v-else>
+              <li>
+                <router-link tag="a" to="/login">登陆</router-link>​
+                <span>/</span>
+              </li>​
+              <li>
+                <router-link tag="a" to="/register">注册</router-link>​
+                <span>/</span>
+              </li>
+            </template>
             <li>
               <a href>签到有礼</a>
               <span>/</span>
             </li>
             <li>
-              <router-link tag='a'  to='/orders'>我的订单</router-link>
+              <router-link tag="a" to="/orders">我的订单</router-link>
               <span>/</span>
             </li>
             <li>
@@ -117,31 +129,42 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    username() {
+      return localStorage.useName;
+    },
+  },
+  methods:{
+    exit(){
+      localStorage.clear();
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
 footer {
   background-color: #fcfcfc;
   width: 100%;
-  .footer-content{
-      width: 60%;
-      margin: 20px auto;
-      text-align: center;
-      font-size: 12px;
-      >div{
-          color: white;
-          background-color: #fa2a83;
-          margin-bottom: 10px;
-          padding: 5px 0;
-      }
-      >p{
-          margin-top: 3px;
-          font-size: 11px;
-      }
-      .footer-p1{
-          color: gray;
-      }
+  .footer-content {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 12px;
+    > div {
+      color: white;
+      background-color: #fa2a83;
+      margin-bottom: 10px;
+      padding: 5px 0;
+    }
+    > p {
+      margin-top: 3px;
+      font-size: 11px;
+    }
+    .footer-p1 {
+      color: gray;
+    }
   }
 }
 

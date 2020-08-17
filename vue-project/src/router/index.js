@@ -137,6 +137,10 @@ const routes = [{
                         path:"/allOrders",
                         component:()=>import("../components/marketGoods/Allorders.vue")
                     },
+                    {
+                        path:"/car",
+                        component:()=>import("../components/marketGoods/Car.vue")
+                    }
                 ]
             }
         ]

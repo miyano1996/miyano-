@@ -27,6 +27,13 @@ const orders = {
             method:"post",
             data:good
         })
+    },
+    updateOrder:function(data){
+        return axios({
+            url:"/orders/updateOrders",
+            method:"post",
+            data:data
+        })
     }
 }
 

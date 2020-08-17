@@ -1,4 +1,8 @@
 const { ordersModel } = require('./models/ordersModels');
+//个人
+module.exports.updateOrders = async function(data){
+    await ordersModel.updateOne({ _id: data._id }, { status: data.status })
+}
 // 添加订单
 module.exports.addOrder = async function(data) {
     await ordersModel.create(data);

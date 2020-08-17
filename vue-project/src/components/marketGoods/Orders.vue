@@ -1,13 +1,13 @@
 <template>
   <div style="background-color:#f5f6f8">
-    <div class="pink">
+    <div class="pink" style="width:100vw">
       <div class="nav">
         <div class="left">
           <span class="p1">我的唯品会</span>
           <span class="p2">安全中心</span>
         </div>
         <div class="right">
-          <span class="p2">首页</span>
+          <router-link tag='span' to='/marketGoods' class="p2">首页</router-link>
           <span style="color:gainsboro;">|</span>
           <span class="p2">我的特卖</span>
         </div>
@@ -33,7 +33,8 @@
                   <span>我的交易</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index='2'>订单管理</el-menu-item>
+                  <el-menu-item @click="toCar">购物车</el-menu-item>
+                  <el-menu-item @click="toOrders">订单管理</el-menu-item>
                   <el-menu-item>退换/售后</el-menu-item>
                   <el-menu-item>收货地址</el-menu-item>
                 </el-menu-item-group>
@@ -67,7 +68,7 @@
         <div class="main">
           <el-breadcrumb style="font-size:13px;margin-top:5px" separator="/">
             <el-breadcrumb-item>我的唯品会</el-breadcrumb-item>
-            <el-breadcrumb-item>订单管理</el-breadcrumb-item>
+            <el-breadcrumb-item>{{path}}</el-breadcrumb-item>
           </el-breadcrumb>
           <div class="warning">
             <div class="xuebi"></div>
@@ -112,6 +113,14 @@ const { mapMutations, mapActions, mapState } = createNamespacedHelpers(
 export default {
   methods: {
     ...mapActions(["getAllOrders"]),
+    toCar(){
+      this.path = '购物车'
+      this.$router.push('/car')
+    },
+    toOrders(){
+      this.path = '订单管理'
+      this.$router.push('/orders')
+    }
   },
   async created() {
     //   const msg = await this.getAllOrders();
@@ -127,6 +136,7 @@ export default {
       orders: [],
       activeIndex: "1",
       activeIndex2: "1",
+      path:'订单管理'
     };
   },
 };

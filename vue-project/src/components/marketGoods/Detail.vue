@@ -31,10 +31,10 @@
         <img src="../../views/images/first/hrbottom.png" alt />
       </div>
       <div class="content-r">
-        <h2 style="color:blue">{{shop.name}}</h2>
+        <h2 style="color:blue;font-size:22px">{{shop.name}}</h2>
         <p style="font-weight:bold;font-size:18px;margin-top:10px">
           <span class="p2">爆款</span>
-          {{oneGood.name}}
+          <span style="font-size:24px">{{oneGood.name}}</span>
         </p>
         <div class="pricebox">
           <span>￥</span>
@@ -89,6 +89,74 @@
         </div>
       </div>
     </div>
+    <ul class="list">
+      <li style="border-bottom:3px solid #f10180;color:#f10180">规格参数</li>
+      <li>商品展示</li>
+      <li>全部口碑</li>
+      <li>商品咨询</li>
+      <li style="flex-grow:1">关于我们</li>
+    </ul>
+    <div class="one">
+      <h3 class="title">
+        商品参数
+        <span class="eng">DETAIL</span>
+      </h3>
+      <div class="hr2"></div>
+      <table>
+        <tr>
+          <td class="td-1">层数：</td>
+          <td>2层</td>
+          <td class="td-3">包装：</td>
+          <td>箱装</td>
+        </tr>
+        <tr>
+          <td class="td-1">国产进口：</td>
+          <td>国产</td>
+          <td class="td-3">净含量：</td>
+          <td>220g以上</td>
+        </tr>
+        <tr>
+          <td class="td-1">原料成分：</td>
+          <td>原生浆</td>
+          <td class="td-3">量贩装：</td>
+          <td>否</td>
+        </tr>
+        <tr>
+          <td class="td-1">类型：</td>
+          <td>抽取式</td>
+          <td class="td-3">抽/段数：</td>
+          <td>130抽</td>
+        </tr>
+        <tr>
+          <td class="td-1">商品款号：</td>
+          <td>JK201-12E</td>
+          <td class="td-3">商品编码：</td>
+          <td>COLOR75抽12包</td>
+        </tr>
+      </table>
+    </div>
+    <div class="two">
+      <h3 class="title">
+        商品展示
+        <span class="eng">IMAGE</span>
+      </h3>
+      <div class="hr2"></div>
+      <div class="two-img">
+        <img src="../../views/images/哈哈哈/03bb1cf8-68a5-4803-9504-03dd5c6b67cb.jpg" alt />
+        <img src="../../views/images/哈哈哈/3bd44ddc-ca97-4b08-bce8-b441dd8dfa6e.jpg" alt />
+        <img src="../../views/images/哈哈哈/3e24d692-4e7e-40da-bcfb-87d2de8e35b4.jpg" alt />
+        <img src="../../views/images/哈哈哈/3fe9cc24-beea-4336-aacf-566290b3c3cb.jpg" alt />
+        <img src="../../views/images/哈哈哈/50c38066-d771-4985-b96d-97edbcd01731.jpg" alt />
+        <img src="../../views/images/哈哈哈/5ab46293-7be4-4a2c-8c96-1667da8d97db.jpg" alt />
+        <img src="../../views/images/哈哈哈/5ab46293-7be4-4a2c-8c96-1667da8d97db_525x525_90.jpg" alt />
+        <img src="../../views/images/哈哈哈/a47dc2ca-6411-46f9-9f99-5ad0f714094b_525x525_90.jpg" alt />
+        <img src="../../views/images/哈哈哈/b6d65c1e-c7b4-47ab-9a02-bb36667fb5eb.jpg" alt />
+        <img src="../../views/images/哈哈哈/c8296d44-02a6-4fd7-8930-392292b94fc0.jpg" alt />
+        <img src="../../views/images/哈哈哈/dbb5f1e8-3ef2-4c28-b22c-e27b1385da1b_525x525_90.jpg" alt />
+        <img src="../../views/images/哈哈哈/ef3b8254-8f9a-4d61-bfd3-043bbbd57307.jpg" alt />
+        <!-- <img src="../../views/images/哈哈哈/share-sef3db69c23.png" alt /> -->
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -105,8 +173,13 @@ export default {
     ...order(["addOrderSync"]),
     toCar() {
       // console.log(this.shop);
-      this.addOrderSync({status:'未付款',goodId:this.oneGood._id,userId:localStorage.userId,removed:false});
-      this.$router.push('/orders')
+      this.addOrderSync({
+        status: "未付款",
+        goodId: this.oneGood._id,
+        userId: localStorage.userId,
+        removed: false,
+      });
+      this.$router.push("/orders");
     },
   },
   async created() {
@@ -117,9 +190,11 @@ export default {
     const size = document.querySelectorAll(".p-size>p");
     size.forEach((value) => {
       value.onclick = function () {
-        size.forEach(item=>{item.style.border = ''})
+        size.forEach((item) => {
+          item.style.border = "";
+        });
         // console.log(value.style.border);
-        value.style.border = "2px solid red"
+        value.style.border = "2px solid red";
       };
     });
   },
@@ -244,6 +319,70 @@ export default {
     .num {
       font-size: 14px;
       color: red;
+    }
+  }
+}
+.title {
+  color: #f10180;
+  font-weight: 400;
+  margin: 15px 0 5px 0;
+  padding: 0px;
+}
+.eng {
+  color: #a69999;
+  margin-left: 10px;
+}
+.hr2 {
+  width: 100%;
+  height: 5px;
+  background-image: url("../../views/images/first/xuebi-2.png");
+}
+.list {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: black;
+  display: flex;
+  border: 1px solid gainsboro;
+  border-left: none;
+
+  margin-top: 40px;
+  > li {
+    padding: 0 10px;
+    font-size: 16px;
+    border-left: 1px solid gainsboro;
+    border-bottom: 3px solid black;
+  }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid gainsboro;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+td {
+  padding: 5px;
+  color: #999999;
+  border: 1px solid gainsboro;
+}
+.td-1,
+.td-3 {
+  background-color: gainsboro;
+  font-weight: bold;
+  text-align: right;
+  width: 10%;
+  color: gray;
+}
+.two {
+  > .two-img {
+    padding: 0px 150px;
+    padding-top: 80px;
+    >img{
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      margin: 0 auto;
     }
   }
 }

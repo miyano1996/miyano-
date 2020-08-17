@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-const { getAllOrders, delOrder } = require('../service/orderServer');
-const { addOrder } = require('../dao/ordersDao');
+const { getAllOrders, delOrder} = require('../service/orderServer');
+const { addOrder,updateOrders } = require('../dao/ordersDao');
+//个人
+router.post('/updateOrders',async function(req,res,next){
+    let msg = await updateOrders(req.body);
+    res.send(msg)
+})
 // 获取所有订单
 router.get('/getAllOders', async function(req, res, next) {
     let msg = await getAllOrders(req.query);

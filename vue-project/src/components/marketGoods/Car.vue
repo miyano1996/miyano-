@@ -1,11 +1,17 @@
 <template>
-  <div style="margin:30px 0">
+  <div style="position:relative">
+    <div class="car">
+      <div class="head">
+        <div class="head-1">购物车</div>
+        <div class="head-2"></div>
+      </div>
+    </div>
     <table>
       <thead>
         <tr>
           <td>商品</td>
-          <td>订单总额</td>
-          <td>订单状态</td>
+          <td>商品单价</td>
+          <td>商品数量</td>
           <td>操作</td>
         </tr>
       </thead>
@@ -28,10 +34,13 @@
             ￥
             <span class="price">{{value.goodId.price}}.00元</span>
           </td>
-          <td>{{value.status}}</td>
           <td>
-            <el-button type="danger">去付款</el-button>
-            <el-button type="primary" @click="del(value._id)">删除订单</el-button>
+              <button style="background:none;border:1px solid gray;outline:none">-</button>1
+              <button style="background:none;border:1px solid gray;outline:none">+</button>
+              </td>
+          <td>
+            <el-button type="danger" @click="addOrder(value._id)">立即下单</el-button>
+            <el-button type="primary" @click="del(value._id)">移除</el-button>
           </td>
         </tr>
       </tbody>
@@ -45,21 +54,40 @@ const { mapMutations, mapActions, mapState } = createNamespacedHelpers(
   "orders"
 );
 export default {
+  async created() {
+    const datas = (await this.getAllOrders()).data.data;
+    this.orders = datas.filter((value) => {
+      return (
+        value.userId._id == localStorage.userId &&
+        value.status == "未下单" &&
+        value.removed == false
+      );
+    });
+  },
+  computed: {},
+  data() {
+    return {
+      orders: [],
+    };
+  },
   methods: {
-    ...mapActions(["getAllOrders", "delOrder"]),
+    ...mapActions(["getAllOrders", "delOrder","updateOrderSync"]),
+    addOrder(_id){
+        this.updateOrderSync({_id,status:'未付款'});
+        this.$notify({
+          title: '成功',
+          message: '下单成功',
+          type: 'success'
+        });
+    },
     del(_id) {
-      this.$confirm("此操作将删除该订单, 是否继续?", "提示", {
+      this.$confirm("将该商品移除购物车, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
           this.delOrder({ id: _id, success: true });
-          this.orders.forEach(item=>{
-            if(item._id == _id){
-              item.removed == true
-            }
-          })
           this.$message({
             type: "success",
             message: "删除成功!",
@@ -73,32 +101,40 @@ export default {
         });
     },
   },
-  watch:{
-    'orders.removed'(newValue,oldValue){
-      newValue = this.orders.removed
-    }
-  },
-  async created() {
-    const datas = (await this.getAllOrders()).data.data;
-    this.orders = datas.filter((value) => {
-      return value.userId._id == localStorage.userId && value.removed == false&&value.status!='未下单';
-    });
-  },
-  computed: {},
-  data() {
-    return {
-      orders: [],
-    };
-  },
 };
 </script>
 
 <style lang='less' scoped>
+.car {
+  position: absolute;
+  width: 100%;
+  //   min-height: 200px;
+  top: -60px;
+  left: 0;
+  background-color: white;
+}
+.head {
+  width: 100%;
+  display: flex;
+  .head-1 {
+    font-size: 20px;
+    color: #f10180;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-bottom: 3px solid #f10180;
+  }
+  .head-2 {
+    flex-grow: 1;
+    border-bottom: 1px solid gainsboro;
+  }
+}
 table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
   font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 100px;
   // line-height: 36px;
 }
 tr {
