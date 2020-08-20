@@ -1,4 +1,4 @@
-const {getShops,changeState,changeCredit,changeLift} = require('../dao/shopManagerDao/shopManagerDao.js')
+const {getShops,changeState,changeCredit,changeLift,getShopsById} = require('../dao/shopManagerDao/shopManagerDao.js')
 
 module.exports.getShops = async obj=>{
     const data = await getShops(obj);
@@ -18,4 +18,9 @@ module.exports.changeCredit = async obj=>{
 module.exports.changeLift = async obj=>{
     const data = await changeLift(obj);
     return {msg:'店铺封禁状态修改成功',success:true,row:data}
+}
+
+module.exports.getShopsById = async obj=>{
+    const data = await getShopsById(obj);
+    return {msg:'ID获取店铺成功',success:true,row:data}
 }

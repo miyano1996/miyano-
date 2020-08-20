@@ -2,7 +2,6 @@ const {shopsModel} = require('../models/shopsModel.js');
 
 
 module.exports.getShops = async (obj)=>{
-    console.log('我是obj',obj);
     const{params,pageSize,currentPage} = obj
     const newParams = JSON.parse(params);
 
@@ -26,4 +25,8 @@ module.exports.changeCredit = async obj=>{
 
 module.exports.changeLift = async obj=>{
     return await shopsModel.updateOne({_id:obj._id},{isLift:obj.isLift})
+}
+
+module.exports.getShopsById = async obj=>{
+    return await shopsModel.find(obj)
 }

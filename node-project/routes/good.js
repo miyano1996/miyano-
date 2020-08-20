@@ -30,7 +30,6 @@ router.get('/findAllGoods', async function(req, res, next) {
             success: msg.success
         })
     }
-
 });
 // 获取某个商品信息
 router.post('/findGood', async function(req, res, next) {

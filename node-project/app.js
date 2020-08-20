@@ -18,6 +18,7 @@ var shopsManagerRouter = require('./routes/shopManagerRouter/shopManager');
 var usersRouter = require('./routes/users');
 var managersRouter = require('./routes/managers');
 var ordersRouter = require('./routes/orders')
+var myOrdersRouter = require('./routes/shopManagerRouter/myOrder')
 
 
 
@@ -58,6 +59,7 @@ app.use('/shops', shopsRouter);
 app.use('/users', usersRouter); //用户登录注册
 app.use('/managers', managersRouter); //商家登录注册
 app.use('/orders', ordersRouter);
+app.use('/myOrders',myOrdersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
