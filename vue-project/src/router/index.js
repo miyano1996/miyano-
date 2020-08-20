@@ -109,7 +109,25 @@ import $api from '../http/api/api.js'
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+    {
+        path:'/users',
+        name:'users',
+        component:()=> import ('../components/yangProject/usersPage'),
+        redirect:'/users/main',
+        children:[
+            {
+                path:'main',
+                component:()=>import("../components/yangProject/usersPage/main/main.vue")
+            },
+            {
+                path:'vipService',
+                component:()=>import("../components/yangProject/usersPage/main/VipService.vue")
+            }
+        ]
+    },
+    
+    {
         //买家  用户
         path: "/login",
         name: "login",

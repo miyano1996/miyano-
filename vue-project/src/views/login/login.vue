@@ -33,7 +33,7 @@ export default {
         localStorage.token = data.token;
         localStorage.useName = this.users.account;
         localStorage.isAdmin = false;
-        this.$router.push("/system");
+        this.$router.push("/users");
         this.open2();
         // console.log('登录成功')
       }else{
