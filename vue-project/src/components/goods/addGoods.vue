@@ -115,6 +115,7 @@ export default {
         this.good.shopId = this.shopsId;
         let msg = await this.addGood(this.good);
         if (msg.data.success) {
+          this.$refs.good.resetFields("");
           alert("添加成功");
         }
       }

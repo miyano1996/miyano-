@@ -16,7 +16,7 @@ export default {
             state.goodid = id
         },
         getgood(state, data) {
-            state.goodone = data
+            state.goodone = {...data }
         },
         isgetGoods(state, data) {
             state.shopId = data
@@ -27,9 +27,13 @@ export default {
             const msg = await api.goods.addGood(data);
             return msg
         },
+        async getGoods({ state, commit, actions }) {
+            const msg = await api.goods.getAllGoods();
+            commit('getAllGood', msg.data.data.data);
+        },
         async getAllGoods({ state, commit, actions }) {
             const msg = await api.goods.getAllGoods();
-            commit('getAllGood', msg.data.data.data.filter((item) => item.status != false && item.shopId == state.shopId));
+            commit('getAllGood', msg.data.data.data.filter((item) => item.status != false && item.shopId._id == state.shopId));
         },
         async getGood({ state, commit, actions }, _id) {
             const msg = await api.goods.getGood(_id);

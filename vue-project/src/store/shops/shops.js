@@ -41,12 +41,11 @@ export default {
             return await $api.shops.updateShopsSync(data)
         },
         async getOneShopSync({ state, commit }) {
-            console.log(state.shopsId)
             const data = await $api.shops.getOneShopSync({ _id: state.shopsId })
             commit('saveOneShop', data.data.rows[0])
             return data.data
-         
-        
+
+
         }
     },
 }

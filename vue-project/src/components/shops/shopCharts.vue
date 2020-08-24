@@ -29,24 +29,22 @@ export default {
     ShopSales,
     TypeSales,
   },
-  data(){
-      return {
-          shopData:{}
-      }
+  data() {
+    return {
+      shopData: {},
+    };
   },
   computed: {
-    ...mapState(['shopsId',"getOneShop"]),
-
+    ...mapState(["shopsId", "getOneShop"]),
   },
- async created(){
-      const data = await this.getOneShopSync()
-      if(data.success) {
-        this.shopData = this.getOneShop;
-        console.log(this.shopData)
-      }
+  async created() {
+    const data = await this.getOneShopSync();
+    if (data.success) {
+      this.shopData = this.getOneShop;
+    }
   },
   methods: {
-      ...mapActions(['getOneShopSync'])
+    ...mapActions(["getOneShopSync"]),
   },
 };
 </script>

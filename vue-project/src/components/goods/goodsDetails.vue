@@ -106,7 +106,6 @@ export default {
     ...mapActions(["getGood", "updatedGood"]),
     updatedgoods() {
       alert("修改成功");
-      console.log(this.goods);
       this.updatedGood(this.goods);
       this.getGood(this.goodid);
     },

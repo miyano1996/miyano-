@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const ordersSchema = new mongoose.Schema({
-    status:String,
-    goodId:{
+    status: String,
+    goodId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'goodsModel'
     },
@@ -10,6 +10,8 @@ const ordersSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'usersModel'
     },
-    removed:Boolean
+    num: Number,
+    removed: Boolean,
+    isPay: Boolean
 }, { versionKey: false });
 module.exports.ordersModel = mongoose.model('ordersModel', ordersSchema, 'orders');

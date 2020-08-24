@@ -1,8 +1,7 @@
 <!--页面主体 -->
 <template >
-  <div class='system-main'>
+  <div class="system-main">
     <div class="system-use">
-      
       <span>{{msg}}：{{useName}}</span>
       <b style="text-indent:20px" @click="exit">退出</b>
       <div class="system-weather">
@@ -14,7 +13,7 @@
         <span>{{fengxiang}}</span>
       </div>
     </div>
-    <div class='system-weather'></div>
+    <div class="system-weather"></div>
     <el-container class="system-box">
       <el-header style="height:100px">
         <HeaderNav />
@@ -40,12 +39,12 @@ export default {
       msg: "",
       city: "成都",
       weather: "",
-      date:'',
-      fengli:'',
-      fengxiang:'',
-      high:'',
-      low:'',
-      type:''
+      date: "",
+      fengli: "",
+      fengxiang: "",
+      high: "",
+      low: "",
+      type: "",
     };
   },
   created() {
@@ -83,13 +82,12 @@ export default {
         method: "get",
       });
       let type = data.data.data.forecast[0].type;
-      this.date = data.data.data.forecast[0].date
-      this.high = data.data.data.forecast[0].high
-      this.fengli = data.data.data.forecast[0].fengli
-      this.fengxiang = data.data.data.forecast[0].fengxiang
-      this.low = data.data.data.forecast[0].low
-      this.type = data.data.data.forecast[0].type
-      console.log(data);
+      this.date = data.data.data.forecast[0].date;
+      this.high = data.data.data.forecast[0].high;
+      this.fengli = data.data.data.forecast[0].fengli;
+      this.fengxiang = data.data.data.forecast[0].fengxiang;
+      this.low = data.data.data.forecast[0].low;
+      this.type = data.data.data.forecast[0].type;
       if (type.includes("雨")) {
         this.weather = "el-icon-heavy-rain";
       } else if (type.includes("云")) {
@@ -107,7 +105,7 @@ export default {
 </script>
 
 <style scoped>
-.system-main{
+.system-main {
   position: relative;
 }
 .system-use {
@@ -130,7 +128,7 @@ export default {
   color: #e6a23c;
   font-weight: 400;
 }
-.system-main .system-use .system-weather{
+.system-main .system-use .system-weather {
   width: 420px;
   height: 30px;
   margin-top: 36px;
@@ -139,7 +137,7 @@ export default {
   justify-content: space-between;
   color: #234b8d;
 }
-.system-main .system-use .system-weather span{
+.system-main .system-use .system-weather span {
   display: inline-block;
   width: 70px;
   text-align: center;
@@ -150,8 +148,8 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-.el-header{
-  font-size:30px; 
+.el-header {
+  font-size: 30px;
   border-bottom: solid 1.5px #ccc;
 }
 .el-footer {
