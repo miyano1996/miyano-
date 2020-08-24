@@ -1,11 +1,15 @@
 <template>
   <el-card shadow="hover" :body-style="{padding:'10px'}">
-    <img src="../../../../../assets/yangSrc/images/productslide-1.jpg" alt width="100%" />
-    <p class="title">妈妈的微波炉</p>
+    <img :src="'http://localhost:3000/images/'+image" 
+    width="100%" 
+    height="220px"
+    @click="toGoodDetail"
+     />
+    <p class="title">{{title}}</p>
     <div class="line"></div>
     <div class="card-bottom">
       <div class="price">
-        <span>￥620</span>
+        <span>￥{{price}}</span>
       </div>
       <div id="draw-border">
         <button>加入购物车</button>
@@ -14,11 +18,26 @@
   </el-card>
 </template>
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapMutations } = createNamespacedHelpers("goods");
 export default {
   props:{
     title:String,
     price:String,
-    image:String
+    image:String,
+    goodIdProp:String
+  },
+  data(){
+    return{
+      goodId:this.goodIdProp
+    }
+  },
+  methods:{
+    ...mapMutations(['changeGoodOne']),
+    toGoodDetail(){
+      this.changeGoodOne(this.goodId)
+      this.$router.push('goodDetail')
+    }
   }
 };
 </script>
@@ -93,13 +112,13 @@ button:hover::after {
 button:hover::before {
   border-top-color: #cd1f25;
   border-right-color: #cd1f25;
-  transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+  transition: width 0.1s ease-out, height 0.1s ease-out 0.1s;
 }
 
 button:hover::after {
   border-bottom-color: #cd1f25;
   border-left-color: #cd1f25;
-  transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s,
-    height 0.2s ease-out 0.6s;
+  transition: border-color 0s ease-out 0.2s, width 0.1s ease-out 0.2s,
+    height 0.1s ease-out 0.3s;
 }
 </style>

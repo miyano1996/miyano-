@@ -13,7 +13,8 @@ import shops from './shops/shops.js'
 import shopManager from './shopManager/shopManager.js'
 // import shops from './shops.js'
 import orders from './orders/orders'
-
+import users from './users/users'
+import cart from './cart/cart'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -24,6 +25,8 @@ export default new Vuex.Store({
         goods,
         shops,
         shopManager,
-        orders
+        orders,
+        users,
+        cart
     }
 })

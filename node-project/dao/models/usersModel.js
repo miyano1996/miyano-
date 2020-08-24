@@ -14,6 +14,7 @@ const usersSchema = new mongoose.Schema({
     name: String,
     age: String,
     gender: String,
+    cart:Array,
     orders: Array
 }, { versionKey: false });
 module.exports.usersModel = mongoose.model('usersModel', usersSchema, 'users');

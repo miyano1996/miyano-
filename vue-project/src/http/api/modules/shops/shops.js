@@ -36,6 +36,13 @@ const shops = {
             method:'post',
             data
         })
+    },
+    addShopView(data){
+        return axios({
+            url:'/shops/addShopView',
+            method:'post',
+            data
+        })
     }
 }
 export default shops

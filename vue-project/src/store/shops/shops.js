@@ -53,5 +53,8 @@ export default {
         //     commit('saveOneShop', data.data.rows[0])
         //     return data.data
         // }
+        async addShopViewAsync({state},_id) {
+            return await $api.shops.addShopView({_id})
+        }
     },
 }

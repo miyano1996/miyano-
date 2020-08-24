@@ -17,8 +17,8 @@ var shopsRouter = require('./routes/shops')
 var shopsManagerRouter = require('./routes/shopManagerRouter/shopManager');
 var usersRouter = require('./routes/users');
 var managersRouter = require('./routes/managers');
-var ordersRouter = require('./routes/orders')
-
+var ordersRouter = require('./routes/orders');
+var cartRouter = require('./routes/cart')
 
 
 // 跨域===================================================================================
@@ -58,6 +58,7 @@ app.use('/shops', shopsRouter);
 app.use('/users', usersRouter); //用户登录注册
 app.use('/managers', managersRouter); //商家登录注册
 app.use('/orders', ordersRouter);
+app.use('/cart',cartRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

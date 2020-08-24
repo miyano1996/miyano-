@@ -5,6 +5,7 @@ import orders from './modules/orders/orders'
 import users from './modules/users.js'
 import managers from './modules/managers.js'
 import charts from './modules/charts/charts'
+import cart from './modules/cart/cart'
 const api = {
     shopsManager,
     goods,
@@ -12,7 +13,8 @@ const api = {
     users,
     managers,
     orders,
-    charts
+    charts,
+    cart
 }
 
 export default api;

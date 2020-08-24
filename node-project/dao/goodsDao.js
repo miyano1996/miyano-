@@ -8,7 +8,9 @@ module.exports.delGood = async function(data) {
     return msg
 };
 module.exports.findAllGoods = async function() {
-    let msg = await goodsModel.find();
+    let msg = await goodsModel.find().populate({
+        path: 'shopId',
+    })
     return {
         data: msg,
     }

@@ -1,4 +1,4 @@
-const { getShops,addShops,delShops,updateShops,getOneShop } = require('../dao/shopsDao')
+const { getShops,addShops,delShops,updateShops,getOneShop,addShopView } = require('../dao/shopsDao')
 module.exports.getShops = async data => {
     return await getShops(data)
 }
@@ -34,5 +34,11 @@ module.exports.getOneShop = async _id=>{
             success:true,
             rows:data
         // }
+    }
+}
+module.exports.addShopView = async _id=>{
+    const data = await addShopView(_id);
+    return {
+        msg:'Views+1'
     }
 }

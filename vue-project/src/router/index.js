@@ -110,7 +110,7 @@ import $api from '../http/api/api.js'
 Vue.use(VueRouter);
 
 const routes = [
-    {
+    {   
         path:'/users',
         name:'users',
         component:()=> import ('../components/yangProject/usersPage'),
@@ -123,6 +123,18 @@ const routes = [
             {
                 path:'vipService',
                 component:()=>import("../components/yangProject/usersPage/main/VipService.vue")
+            },
+            {
+                path:"goodDetail",
+                component:()=>import('../components/yangProject/usersPage/GoodDetail/GoodDetail.vue')
+            },
+            {
+                path:'cart',
+                component:()=>import('../components/yangProject/usersPage/Cart/Cart.vue')
+            },
+            {
+                path:'myOrders',
+                component:()=>import('../components/yangProject/usersPage/MyOrders/MyOrders.vue')
             }
         ]
     },
@@ -161,7 +173,7 @@ const routes = [
     },
     {
         path: "/",
-        redirect: "/system",
+        redirect: "/login",
     },
     {
         path: "/system",

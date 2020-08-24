@@ -7,6 +7,8 @@ export default {
         goodid: "",
         goodone: {},
         shopId: "",
+        AllGoods: []
+
     },
     mutations: {
         getAllGood(state, data) {
@@ -20,7 +22,18 @@ export default {
         },
         isgetGoods(state, data) {
             state.shopId = data
+        },
+        //ydh
+        userChangeAllGoods(state, data) {
+            state.AllGoods = data
+        },
+        changeGoodOne(state,id) {
+            state.goodone = (state.AllGoods.filter(item => item._id == id))[0]
+        },
+        renewGoodOneShop(state,shop){
+            state.goodone.shopId = shop
         }
+
     },
     actions: {
         async addGood({ state, commit, actions }, data) {
@@ -44,6 +57,10 @@ export default {
         async getNotlistedGoods({ state, commit, actions }) {
             const msg = await api.goods.getAllGoods();
             commit('getAllGood', msg.data.data.data.filter((item) => item.status == false));
-        }
+        },
+        async userGetAllGoods({ commit }) {
+            const data = await api.goods.getAllGoods();
+            commit('userChangeAllGoods', data.data.data.data.filter(item => item.status))
+        },
     }
 }

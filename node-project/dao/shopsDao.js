@@ -19,3 +19,8 @@ module.exports.getOneShop = async _id => {
     console.log(_id)
     return await shopsModel.find({ _id })
 }
+module.exports.addShopView = async data =>{
+    console.log({data})
+    const arr = await shopsModel.updateOne({_id:data._id},{...data})
+    
+}

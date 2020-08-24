@@ -19,17 +19,23 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const {  mapState, mapMutations } = createNamespacedHelpers("users");
 export default {
   data() {
     return {
       users: { account: "", password: "" },
     };
   },
+  
   methods: {
+    ...mapMutations(['saveUserId']),
     async login() {
       const {data} = await this.$api.users.login(this.users);
       if (data.success) {
         //将生成带有时间限制的token保存到本地
+        this.saveUserId(data.userId)
+        localStorage.userId = data.userId;
         localStorage.token = data.token;
         localStorage.useName = this.users.account;
         localStorage.isAdmin = false;
